@@ -4,44 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Jahid Hasan — WordPress Developer specializing in WordPress, WooCommerce, Elementor, custom plugins and high-performance websites.">
-    <meta name="author" content="Jahid Hasan">
-
     <title>Jahid Hasan — WordPress Developer</title>
+
+    <meta name="description"
+          content="Jahid Hasan is a WordPress Developer specializing in WordPress, WooCommerce, Elementor, custom plugins and performance optimization.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
+
         /* =========================================================
            ROOT
         ========================================================= */
 
         :root {
-            --bg: #05070d;
-            --bg-soft: #080c16;
-            --surface: rgba(255,255,255,.045);
-            --surface-2: rgba(255,255,255,.07);
+            --bg: #050507;
+            --bg-soft: #090a0f;
+            --card: rgba(255,255,255,.045);
+            --card-hover: rgba(255,255,255,.075);
 
-            --blue: #4f7cff;
-            --blue-light: #7aa2ff;
+            --text: #f7f7fb;
+            --muted: #9b9ca8;
+            --muted-2: #696b78;
+
+            --blue: #4f8cff;
             --purple: #8b5cf6;
             --cyan: #22d3ee;
-
-            --white: #f8fafc;
-            --text: #cbd5e1;
-            --muted: #7d8ba1;
+            --pink: #ec4899;
 
             --border: rgba(255,255,255,.09);
 
-            --heading: "Space Grotesk", sans-serif;
-            --body: "Inter", sans-serif;
+            --radius: 24px;
+            --radius-sm: 16px;
+
+            --container: 1180px;
+
+            --ease: cubic-bezier(.22,1,.36,1);
         }
+
 
         /* =========================================================
            RESET
@@ -58,14 +65,15 @@
         }
 
         body {
-            font-family: var(--body);
             background: var(--bg);
             color: var(--text);
+            font-family: "Inter", sans-serif;
             overflow-x: hidden;
         }
 
-        body.menu-open {
-            overflow: hidden;
+        body::selection {
+            background: var(--blue);
+            color: white;
         }
 
         a {
@@ -73,41 +81,18 @@
             text-decoration: none;
         }
 
-        button {
-            font: inherit;
-        }
-
         img {
             max-width: 100%;
             display: block;
         }
 
-        ::selection {
-            background: var(--blue);
-            color: white;
+        button {
+            font-family: inherit;
         }
 
-        /* =========================================================
-           SCROLL PROGRESS
-        ========================================================= */
-
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(
-                90deg,
-                var(--blue),
-                var(--purple),
-                var(--cyan)
-            );
-            z-index: 9999;
-        }
 
         /* =========================================================
-           BACKGROUND
+           GLOBAL BACKGROUND
         ========================================================= */
 
         .background {
@@ -117,102 +102,80 @@
             overflow: hidden;
             pointer-events: none;
             background:
-                radial-gradient(
-                    circle at 15% 15%,
-                    rgba(79,124,255,.13),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(139,92,246,.10),
-                    transparent 28%
-                ),
-                radial-gradient(
-                    circle at 50% 90%,
-                    rgba(34,211,238,.06),
-                    transparent 30%
-                ),
-                var(--bg);
+                radial-gradient(circle at 15% 20%, rgba(79,140,255,.08), transparent 30%),
+                radial-gradient(circle at 85% 10%, rgba(139,92,246,.08), transparent 30%),
+                radial-gradient(circle at 50% 90%, rgba(34,211,238,.05), transparent 35%),
+                #050507;
         }
 
         .grid {
             position: absolute;
             inset: 0;
-            opacity: .32;
+
             background-image:
-                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-            background-size: 60px 60px;
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+            background-size: 70px 70px;
+
             mask-image: linear-gradient(
                 to bottom,
-                black,
-                transparent 90%
+                black 0%,
+                rgba(0,0,0,.8) 50%,
+                transparent 100%
             );
         }
 
-        .glow {
+        .orb {
             position: absolute;
-            width: 450px;
-            height: 450px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: .16;
+            filter: blur(90px);
+            opacity: .18;
+            animation: orbFloat 14s ease-in-out infinite;
         }
 
-        .glow-one {
-            background: var(--blue);
-            top: -220px;
+        .orb.one {
+            top: -250px;
             left: -150px;
-            animation: glowMoveOne 12s ease-in-out infinite;
+            background: var(--blue);
         }
 
-        .glow-two {
+        .orb.two {
+            right: -250px;
+            top: 20%;
             background: var(--purple);
-            right: -180px;
-            top: 25%;
-            animation: glowMoveTwo 15s ease-in-out infinite;
+            animation-delay: -5s;
         }
 
-        .glow-three {
-            background: var(--cyan);
-            bottom: -250px;
+        .orb.three {
             left: 35%;
-            animation: glowMoveThree 14s ease-in-out infinite;
+            bottom: -350px;
+            background: var(--cyan);
+            animation-delay: -9s;
         }
 
-        @keyframes glowMoveOne {
+        @keyframes orbFloat {
+            0%,100% {
+                transform: translate3d(0,0,0) scale(1);
+            }
+
             50% {
-                transform: translate(130px, 120px) scale(1.2);
+                transform: translate3d(40px,-30px,0) scale(1.1);
             }
         }
 
-        @keyframes glowMoveTwo {
-            50% {
-                transform: translate(-120px, 100px) scale(1.15);
-            }
-        }
-
-        @keyframes glowMoveThree {
-            50% {
-                transform: translate(100px, -100px) scale(1.15);
-            }
-        }
-
-        .noise {
-            position: absolute;
-            inset: 0;
-            opacity: .025;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-        }
 
         /* =========================================================
            CONTAINER
         ========================================================= */
 
         .container {
-            width: min(1180px, calc(100% - 40px));
-            margin: auto;
+            width: min(var(--container), calc(100% - 40px));
+            margin-inline: auto;
         }
+
 
         /* =========================================================
            HEADER
@@ -222,119 +185,127 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+
             z-index: 1000;
-            transition: .35s ease;
+
+            transition: .4s var(--ease);
         }
 
         header.scrolled {
-            background: rgba(5,7,13,.72);
+            background: rgba(5,5,7,.72);
             backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
             border-bottom: 1px solid var(--border);
         }
 
         .nav {
             height: 82px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            font-family: var(--heading);
+            font-family: "Space Grotesk", sans-serif;
             font-size: 22px;
             font-weight: 700;
-            color: white;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .logo-mark {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(
-                135deg,
-                var(--blue),
-                var(--purple)
-            );
-            color: white;
-            font-size: 14px;
-            box-shadow: 0 10px 30px rgba(79,124,255,.25);
+        .logo-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 20px var(--cyan);
+            animation: pulse 2s infinite;
         }
 
-        .logo span {
-            color: var(--blue-light);
+        @keyframes pulse {
+            50% {
+                transform: scale(1.4);
+                opacity: .5;
+            }
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 8px;
         }
 
         .nav-links a {
             position: relative;
-            color: #8e9bad;
-            font-size: 12px;
-            font-weight: 500;
-            transition: .25s ease;
+
+            padding: 10px 14px;
+
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: .3s;
         }
 
         .nav-links a::after {
             content: "";
+
             position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 0;
-            height: 2px;
-            border-radius: 5px;
-            background: var(--blue);
-            transition: .25s ease;
+            left: 14px;
+            right: 14px;
+            bottom: 3px;
+
+            height: 1px;
+
+            background: linear-gradient(
+                90deg,
+                var(--blue),
+                var(--purple)
+            );
+
+            transform: scaleX(0);
+            transform-origin: center;
+
+            transition: .3s;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: white;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
-        .nav-contact {
-            padding: 10px 17px;
-            border-radius: 9px;
-            border: 1px solid rgba(122,162,255,.25);
-            background: rgba(79,124,255,.09);
-            color: #bcd0ff !important;
-        }
+        .nav-cta {
+            padding: 11px 17px !important;
 
-        .nav-contact::after {
-            display: none;
-        }
+            border: 1px solid rgba(79,140,255,.35);
+            border-radius: 12px;
 
-        .nav-contact:hover {
-            background: var(--blue);
-            border-color: var(--blue);
-            transform: translateY(-2px);
+            color: white !important;
+
+            background: rgba(79,140,255,.08);
         }
 
         .menu-btn {
             display: none;
-            width: 42px;
-            height: 42px;
+
+            width: 44px;
+            height: 44px;
+
             border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--surface);
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.04);
             color: white;
+
             cursor: pointer;
         }
+
 
         /* =========================================================
            HERO
@@ -342,215 +313,199 @@
 
         .hero {
             min-height: 100vh;
+
             display: flex;
             align-items: center;
-            padding: 130px 0 80px;
+
+            padding: 150px 0 100px;
+
             position: relative;
         }
 
-        .hero-grid {
+        .hero-layout {
             display: grid;
             grid-template-columns: 1.05fr .95fr;
+            gap: 80px;
+
             align-items: center;
-            gap: 70px;
         }
 
-        .hero-content {
-            position: relative;
-        }
-
-        .eyebrow {
+        .availability {
             display: inline-flex;
             align-items: center;
             gap: 9px;
+
             padding: 8px 12px;
-            border: 1px solid rgba(122,162,255,.17);
-            background: rgba(79,124,255,.07);
-            border-radius: 50px;
-            color: #9bb8ff;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
+
+            border: 1px solid rgba(34,211,238,.18);
+            border-radius: 999px;
+
+            background: rgba(34,211,238,.045);
+
+            color: #a5f3fc;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: .08em;
             text-transform: uppercase;
-            margin-bottom: 24px;
+
+            margin-bottom: 25px;
         }
 
-        .status-dot {
+        .availability span {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: #4ade80;
-            box-shadow: 0 0 15px #4ade80;
-            animation: statusPulse 1.7s infinite;
-        }
 
-        @keyframes statusPulse {
-            50% {
-                opacity: .4;
-                transform: scale(.75);
-            }
+            background: #22c55e;
+
+            box-shadow: 0 0 15px #22c55e;
+
+            animation: pulse 2s infinite;
         }
 
         .hero h1 {
-            font-family: var(--heading);
-            color: white;
-            font-size: clamp(50px, 7vw, 82px);
-            line-height: .98;
-            letter-spacing: -5px;
-            margin-bottom: 24px;
+            max-width: 760px;
+
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(55px, 7vw, 94px);
+            line-height: .94;
+            letter-spacing: -.065em;
+
+            margin-bottom: 28px;
         }
 
-        .hero h1 .gradient {
-            background: linear-gradient(
-                100deg,
-                #fff,
-                #9dbaff 45%,
-                #a78bfa
-            );
+        .gradient-text {
+            background:
+                linear-gradient(
+                    100deg,
+                    #fff 10%,
+                    #8cb8ff 40%,
+                    #9d7bff 65%,
+                    #67e8f9 90%
+                );
+
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
+
+            background-size: 200% auto;
+
+            animation: gradientMove 6s linear infinite;
         }
 
-        .hero-role {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            min-height: 30px;
-            margin-bottom: 20px;
-            color: #dce7ff;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .role-prefix {
-            color: var(--muted);
-        }
-
-        .role-text {
-            color: var(--blue-light);
-        }
-
-        .cursor {
-            width: 2px;
-            height: 21px;
-            background: var(--blue-light);
-            animation: blink .7s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
+        @keyframes gradientMove {
+            to {
+                background-position: 200% center;
             }
         }
 
         .hero-description {
             max-width: 650px;
+
             color: var(--muted);
-            font-size: 14px;
-            line-height: 1.9;
-            margin-bottom: 30px;
+
+            font-size: 17px;
+            line-height: 1.8;
+
+            margin-bottom: 32px;
         }
 
         .hero-description strong {
-            color: #dbe7ff;
-            font-weight: 600;
+            color: #ddd;
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+
+            margin-bottom: 35px;
         }
 
         .btn {
-            position: relative;
-            overflow: hidden;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 9px;
-            padding: 13px 20px;
-            border-radius: 10px;
-            font-size: 11px;
+            gap: 10px;
+
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            border-radius: 13px;
+
+            font-size: 13px;
             font-weight: 700;
-            transition: .3s ease;
-        }
 
-        .btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,.2),
-                transparent
-            );
-            transform: skewX(-20deg);
-            transition: .6s ease;
-        }
-
-        .btn:hover::before {
-            left: 140%;
+            transition: .35s var(--ease);
         }
 
         .btn-primary {
-            background: linear-gradient(
-                135deg,
-                var(--blue),
-                #6366f1
-            );
             color: white;
-            box-shadow: 0 15px 35px rgba(79,124,255,.2);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 15px 40px rgba(79,140,255,.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(79,124,255,.3);
+            box-shadow:
+                0 20px 55px rgba(79,140,255,.32);
         }
 
-        .btn-outline {
+        .btn-secondary {
             border: 1px solid var(--border);
-            background: rgba(255,255,255,.025);
-            color: #cbd5e1;
+            background: rgba(255,255,255,.035);
+            color: #ddd;
         }
 
-        .btn-outline:hover {
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.08);
             transform: translateY(-4px);
-            border-color: rgba(122,162,255,.3);
-            color: white;
-            background: rgba(255,255,255,.05);
         }
 
         .socials {
             display: flex;
-            gap: 9px;
-            margin-top: 30px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .social {
-            width: 39px;
-            height: 39px;
+        .socials a {
+            width: 42px;
+            height: 42px;
+
             display: grid;
             place-items: center;
+
             border: 1px solid var(--border);
-            border-radius: 10px;
-            color: #7f8da1;
+            border-radius: 12px;
+
             background: rgba(255,255,255,.025);
-            transition: .3s ease;
+
+            color: var(--muted);
+
+            transition: .3s;
         }
 
-        .social:hover {
+        .socials a:hover {
             color: white;
-            border-color: var(--blue);
-            background: var(--blue);
+            border-color: rgba(79,140,255,.45);
+            background: rgba(79,140,255,.1);
+
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(79,124,255,.2);
         }
+
 
         /* =========================================================
            HERO VISUAL
@@ -558,348 +513,489 @@
 
         .hero-visual {
             position: relative;
-            min-height: 560px;
+            min-height: 570px;
+
             display: grid;
             place-items: center;
         }
 
-        .visual-glow {
+        .visual-ring {
             position: absolute;
-            width: 380px;
-            height: 380px;
+
+            width: 460px;
+            height: 460px;
+
             border-radius: 50%;
-            background: linear-gradient(
-                135deg,
-                rgba(79,124,255,.22),
-                rgba(139,92,246,.12)
-            );
-            filter: blur(70px);
-            animation: visualGlow 6s ease-in-out infinite;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            animation: rotate 25s linear infinite;
         }
 
-        @keyframes visualGlow {
-            50% {
-                transform: scale(1.12);
-                opacity: .75;
+        .visual-ring::before,
+        .visual-ring::after {
+            content: "";
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            border: 1px dashed rgba(79,140,255,.16);
+        }
+
+        .visual-ring::before {
+            inset: 45px;
+        }
+
+        .visual-ring::after {
+            inset: 90px;
+            border-color: rgba(139,92,246,.2);
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
             }
-        }
-
-        .orbit {
-            position: absolute;
-            border: 1px solid rgba(122,162,255,.13);
-            border-radius: 50%;
-        }
-
-        .orbit-one {
-            width: 440px;
-            height: 440px;
-            animation: orbitSpin 20s linear infinite;
-        }
-
-        .orbit-two {
-            width: 360px;
-            height: 360px;
-            border-style: dashed;
-            opacity: .5;
-            animation: orbitSpinReverse 15s linear infinite;
-        }
-
-        @keyframes orbitSpin {
-            from { transform: rotate(0); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes orbitSpinReverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0); }
-        }
-
-        .orbit-dot {
-            position: absolute;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--blue-light);
-            box-shadow: 0 0 25px var(--blue);
-            top: 26px;
-            right: 65px;
         }
 
         .profile-card {
             position: relative;
-            width: 330px;
-            height: 450px;
-            padding: 8px;
-            border-radius: 25px;
-            background: linear-gradient(
-                145deg,
-                rgba(122,162,255,.28),
-                rgba(255,255,255,.04)
-            );
-            border: 1px solid rgba(122,162,255,.2);
+            z-index: 3;
+
+            width: min(390px, 80vw);
+
+            padding: 10px;
+
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.11),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter: blur(20px);
+
             box-shadow:
-                0 35px 100px rgba(0,0,0,.5),
-                0 0 80px rgba(79,124,255,.09);
-            animation: profileFloat 6s ease-in-out infinite;
+                0 40px 100px rgba(0,0,0,.5),
+                inset 0 1px rgba(255,255,255,.1);
+
+            transform:
+                perspective(1000px)
+                rotateY(-8deg)
+                rotateX(4deg);
+
+            transition: .6s var(--ease);
+
+            animation: cardFloat 6s ease-in-out infinite;
         }
 
-        @keyframes profileFloat {
+        .profile-card:hover {
+            transform:
+                perspective(1000px)
+                rotateY(0)
+                rotateX(0)
+                translateY(-10px);
+        }
+
+        @keyframes cardFloat {
+            0%,100% {
+                transform:
+                    perspective(1000px)
+                    rotateY(-8deg)
+                    rotateX(4deg)
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    perspective(1000px)
+                    rotateY(-5deg)
+                    rotateX(5deg)
+                    translateY(-15px);
+            }
+        }
+
+        .profile-inner {
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background: #0c0d12;
+        }
+
+        .profile-image {
+            position: relative;
+
+            height: 400px;
+
+            overflow: hidden;
+        }
+
+        .profile-image::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #0c0d12,
+                    transparent 50%
+                );
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            filter: grayscale(15%) contrast(1.05);
+        }
+
+        .profile-info {
+            padding: 20px 22px 22px;
+        }
+
+        .profile-info h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 22px;
+
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .floating-card {
+            position: absolute;
+            z-index: 5;
+
+            padding: 13px 15px;
+
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 14px;
+
+            background: rgba(10,11,16,.8);
+            backdrop-filter: blur(18px);
+
+            box-shadow: 0 20px 50px rgba(0,0,0,.35);
+
+            font-size: 11px;
+
+            animation: floatSmall 5s ease-in-out infinite;
+        }
+
+        .floating-card strong {
+            display: block;
+
+            color: white;
+            font-size: 13px;
+
+            margin-bottom: 3px;
+        }
+
+        .floating-card span {
+            color: var(--muted);
+        }
+
+        .float-one {
+            top: 14%;
+            right: 0;
+        }
+
+        .float-two {
+            bottom: 17%;
+            left: 0;
+
+            animation-delay: -2s;
+        }
+
+        .float-three {
+            bottom: 5%;
+            right: 10%;
+
+            animation-delay: -4s;
+        }
+
+        @keyframes floatSmall {
             0%,100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-12px);
             }
         }
 
-        .profile-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            border-radius: 19px;
-            background: #0b1320;
-        }
-
-        .profile-inner::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(3,7,18,.9),
-                    transparent 48%
-                );
-            z-index: 2;
-        }
-
-        .profile-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            transition: transform .7s ease;
-        }
-
-        .profile-card:hover img {
-            transform: scale(1.04);
-        }
-
-        .profile-info {
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            z-index: 5;
-            padding: 16px;
-            border: 1px solid rgba(255,255,255,.1);
-            background: rgba(5,7,13,.65);
-            backdrop-filter: blur(15px);
-            border-radius: 14px;
-        }
-
-        .profile-info strong {
-            display: block;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .profile-info span {
-            color: #9bb8ff;
-            font-size: 10px;
-        }
-
-        .floating-card {
-            position: absolute;
-            z-index: 10;
-            padding: 11px 14px;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            border: 1px solid var(--border);
-            border-radius: 11px;
-            background: rgba(8,12,22,.82);
-            backdrop-filter: blur(15px);
-            color: #cbd5e1;
-            font-size: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,.25);
-        }
-
-        .floating-card i {
-            color: var(--blue-light);
-        }
-
-        .float-one {
-            left: 0;
-            top: 100px;
-            animation: floatOne 5s ease-in-out infinite;
-        }
-
-        .float-two {
-            right: -15px;
-            bottom: 110px;
-            animation: floatTwo 5s ease-in-out infinite;
-        }
-
-        @keyframes floatOne {
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes floatTwo {
-            50% { transform: translateY(10px); }
-        }
 
         /* =========================================================
-           SECTION COMMON
+           MARQUEE
+        ========================================================= */
+
+        .marquee {
+            overflow: hidden;
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+
+            background: rgba(255,255,255,.015);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            padding: 22px 35px;
+
+            color: #777987;
+
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            letter-spacing: .15em;
+        }
+
+        .marquee-item i {
+            color: var(--blue);
+        }
+
+        @keyframes marquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+        /* =========================================================
+           SECTION
         ========================================================= */
 
         section {
-            padding: 115px 0;
+            padding: 130px 0;
             position: relative;
         }
 
-        .section-header {
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+
             margin-bottom: 55px;
         }
 
-        .section-tag {
+        .section-label {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--blue-light);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
+
+            color: var(--cyan);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
             text-transform: uppercase;
-            margin-bottom: 13px;
+
+            margin-bottom: 14px;
         }
 
-        .section-tag::before {
+        .section-label::before {
             content: "";
+
             width: 25px;
             height: 1px;
-            background: var(--blue);
+
+            background: var(--cyan);
         }
 
         .section-title {
-            font-family: var(--heading);
-            color: white;
-            font-size: clamp(38px, 5vw, 58px);
-            line-height: 1;
-            letter-spacing: -3px;
-        }
+            max-width: 650px;
 
-        .section-title span {
-            color: var(--blue-light);
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(35px, 5vw, 58px);
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
         }
 
         .section-description {
-            max-width: 650px;
+            max-width: 390px;
+
             color: var(--muted);
-            font-size: 13px;
+
+            font-size: 14px;
             line-height: 1.8;
-            margin-top: 17px;
         }
+
 
         /* =========================================================
            ABOUT
         ========================================================= */
 
-        .about {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: rgba(255,255,255,.015);
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: .8fr 1.2fr;
-            gap: 70px;
+            gap: 80px;
+
             align-items: center;
         }
 
-        .about-box {
+        .about-image {
             position: relative;
-            padding: 10px;
-            border-radius: 22px;
+
+            padding: 8px;
+
             border: 1px solid var(--border);
+            border-radius: 26px;
+
             background: rgba(255,255,255,.025);
         }
 
-        .about-box img {
+        .about-image img {
             width: 100%;
-            height: 430px;
+            aspect-ratio: 1;
             object-fit: cover;
-            object-position: center top;
-            border-radius: 15px;
+
+            border-radius: 20px;
+
+            filter: grayscale(100%);
+            transition: .6s;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0);
         }
 
         .about-badge {
             position: absolute;
-            right: -20px;
-            bottom: 35px;
-            padding: 15px 17px;
-            border-radius: 13px;
-            border: 1px solid var(--border);
-            background: rgba(8,12,22,.9);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+
+            right: -25px;
+            bottom: 30px;
+
+            padding: 17px 20px;
+
+            border: 1px solid rgba(79,140,255,.25);
+            border-radius: 16px;
+
+            background: rgba(9,10,15,.9);
+            backdrop-filter: blur(20px);
+
+            box-shadow: 0 20px 50px rgba(0,0,0,.35);
         }
 
         .about-badge strong {
             display: block;
-            color: white;
-            font-size: 18px;
-            font-family: var(--heading);
+
+            font-family: "Space Grotesk";
+            font-size: 24px;
         }
 
         .about-badge span {
             color: var(--muted);
-            font-size: 9px;
-        }
-
-        .about-content h3 {
-            font-family: var(--heading);
-            color: white;
-            font-size: 28px;
-            margin-bottom: 18px;
+            font-size: 11px;
         }
 
         .about-content p {
             color: var(--muted);
-            font-size: 13px;
-            line-height: 1.9;
-            margin-bottom: 14px;
-        }
 
-        .about-content strong {
-            color: #dbe7ff;
+            font-size: 16px;
+            line-height: 1.9;
+
+            margin-bottom: 25px;
         }
 
         .about-points {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 11px;
-            margin-top: 27px;
+            gap: 12px;
+
+            margin-top: 30px;
         }
 
-        .point {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding: 11px 12px;
+        .about-point {
+            padding: 17px;
+
             border: 1px solid var(--border);
-            border-radius: 9px;
+            border-radius: 15px;
+
             background: rgba(255,255,255,.025);
-            color: #aab6c7;
-            font-size: 10px;
+
+            color: #bbb;
+
+            font-size: 12px;
+
+            transition: .3s;
         }
 
-        .point i {
-            color: var(--blue-light);
+        .about-point:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79,140,255,.3);
+            background: rgba(79,140,255,.05);
         }
+
+        .about-point i {
+            color: var(--cyan);
+            margin-right: 8px;
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+
+            margin-top: 80px;
+        }
+
+        .stat {
+            padding: 35px 25px;
+
+            border-right: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .stat-number {
+            font-family: "Space Grotesk";
+
+            font-size: 38px;
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
 
         /* =========================================================
            SKILLS
@@ -908,203 +1004,212 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 17px;
+            gap: 15px;
         }
 
         .skill-card {
             position: relative;
-            padding: 25px;
+
+            padding: 27px;
+
+            min-height: 190px;
+
             border: 1px solid var(--border);
-            background: var(--surface);
-            border-radius: 17px;
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.018)
+                );
+
             overflow: hidden;
-            transition: .4s ease;
+
+            transition: .4s var(--ease);
         }
 
         .skill-card::before {
             content: "";
+
             position: absolute;
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: rgba(79,124,255,.12);
-            filter: blur(40px);
-            top: -80px;
+
+            width: 120px;
+            height: 120px;
+
+            top: -70px;
             right: -60px;
-            transition: .4s ease;
+
+            border-radius: 50%;
+
+            background: var(--blue);
+
+            filter: blur(60px);
+
+            opacity: .1;
         }
 
         .skill-card:hover {
             transform: translateY(-7px);
-            border-color: rgba(122,162,255,.25);
-            box-shadow: 0 25px 60px rgba(0,0,0,.2);
-        }
 
-        .skill-card:hover::before {
-            transform: scale(1.5);
+            border-color: rgba(79,140,255,.28);
+
+            background: var(--card-hover);
         }
 
         .skill-icon {
-            width: 46px;
-            height: 46px;
+            width: 45px;
+            height: 45px;
+
             display: grid;
             place-items: center;
-            border-radius: 12px;
-            background: rgba(79,124,255,.1);
-            color: var(--blue-light);
-            margin-bottom: 20px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid var(--border);
+            border-radius: 13px;
+
+            background: rgba(255,255,255,.035);
+
+            color: var(--cyan);
+
             font-size: 18px;
         }
 
         .skill-card h3 {
-            font-family: var(--heading);
-            color: white;
-            font-size: 17px;
-            margin-bottom: 8px;
+            font-family: "Space Grotesk";
+            font-size: 18px;
+
+            margin-bottom: 7px;
         }
 
         .skill-card p {
             color: var(--muted);
-            font-size: 11px;
+
+            font-size: 12px;
             line-height: 1.7;
-            margin-bottom: 18px;
         }
 
-        .skill-level {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .skill-level span {
-            color: #718096;
-            font-size: 9px;
-        }
-
-        .skill-level strong {
-            color: var(--blue-light);
-            font-size: 9px;
-        }
-
-        .skill-bar {
-            height: 4px;
-            border-radius: 10px;
-            background: rgba(255,255,255,.06);
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            width: 0;
-            height: 100%;
-            border-radius: inherit;
-            background: linear-gradient(
-                90deg,
-                var(--blue),
-                var(--purple)
-            );
-            transition: width 1.4s cubic-bezier(.22,1,.36,1);
-        }
 
         /* =========================================================
            EXPERIENCE
         ========================================================= */
 
         .experience {
-            background: rgba(255,255,255,.015);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .experience-wrap {
-            max-width: 900px;
-            margin: auto;
+            position: relative;
         }
 
         .timeline {
             position: relative;
+
+            max-width: 900px;
+
+            margin: auto;
         }
 
         .timeline::before {
             content: "";
+
             position: absolute;
-            left: 19px;
+
+            left: 9px;
             top: 0;
             bottom: 0;
+
             width: 1px;
-            background: linear-gradient(
-                to bottom,
-                transparent,
-                var(--blue),
-                var(--purple),
-                transparent
-            );
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--blue),
+                    var(--purple),
+                    transparent
+                );
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 65px;
-            padding-bottom: 35px;
-        }
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
+            padding-left: 55px;
+
+            margin-bottom: 55px;
         }
 
         .timeline-dot {
             position: absolute;
-            left: 11px;
-            top: 3px;
-            width: 17px;
-            height: 17px;
+
+            left: 0;
+            top: 5px;
+
+            width: 19px;
+            height: 19px;
+
             border-radius: 50%;
-            background: var(--blue);
-            border: 4px solid var(--bg);
-            box-shadow:
-                0 0 0 4px rgba(79,124,255,.12),
-                0 0 25px rgba(79,124,255,.4);
-        }
 
-        .timeline-card {
-            padding: 27px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            border-radius: 17px;
-            transition: .35s ease;
-        }
+            background: var(--bg);
 
-        .timeline-card:hover {
-            transform: translateX(7px);
-            border-color: rgba(122,162,255,.25);
+            border: 4px solid var(--blue);
+
+            box-shadow: 0 0 25px rgba(79,140,255,.45);
         }
 
         .timeline-date {
-            color: var(--blue-light);
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            color: var(--cyan);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .1em;
             text-transform: uppercase;
-            margin-bottom: 8px;
+
+            margin-bottom: 10px;
         }
 
-        .timeline-card h3 {
-            font-family: var(--heading);
-            color: white;
-            font-size: 21px;
-            margin-bottom: 4px;
+        .timeline-item h3 {
+            font-family: "Space Grotesk";
+            font-size: 25px;
+
+            margin-bottom: 5px;
         }
 
         .timeline-company {
-            color: #8da0bb;
-            font-size: 11px;
-            margin-bottom: 15px;
+            color: var(--muted);
+
+            font-size: 13px;
+
+            margin-bottom: 16px;
         }
 
-        .timeline-card p {
+        .timeline-item p {
             color: var(--muted);
-            font-size: 12px;
+
+            font-size: 14px;
             line-height: 1.8;
+
+            max-width: 700px;
         }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 18px;
+        }
+
+        .tech-tag {
+            padding: 6px 9px;
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            color: #999;
+
+            background: rgba(255,255,255,.025);
+
+            font-size: 10px;
+        }
+
 
         /* =========================================================
            PROJECTS
@@ -1112,367 +1217,405 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 17px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
         }
 
         .project-card {
             position: relative;
-            min-height: 380px;
-            display: flex;
-            flex-direction: column;
-            padding: 27px;
+
+            min-height: 360px;
+
+            padding: 30px;
+
             border: 1px solid var(--border);
-            background: var(--surface);
-            border-radius: 18px;
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.06),
+                    rgba(255,255,255,.018)
+                );
+
             overflow: hidden;
-            transition: .4s ease;
+
+            transition: .5s var(--ease);
+        }
+
+        .project-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            right: -130px;
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background: var(--project-color, var(--blue));
+
+            filter: blur(100px);
+
+            opacity: .12;
+
+            transition: .5s;
         }
 
         .project-card:hover {
             transform: translateY(-9px);
-            border-color: rgba(122,162,255,.28);
-            box-shadow: 0 30px 70px rgba(0,0,0,.25);
+
+            border-color: rgba(255,255,255,.17);
+        }
+
+        .project-card:hover::before {
+            opacity: .25;
+            transform: scale(1.2);
         }
 
         .project-top {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
+            align-items: center;
+
+            margin-bottom: 80px;
         }
 
         .project-number {
-            font-family: var(--heading);
-            color: #293448;
-            font-size: 14px;
-            font-weight: 700;
+            color: #666873;
+
+            font-family: "Space Grotesk";
+            font-size: 12px;
         }
 
         .project-arrow {
-            width: 34px;
-            height: 34px;
+            width: 42px;
+            height: 42px;
+
             display: grid;
             place-items: center;
+
             border: 1px solid var(--border);
-            border-radius: 9px;
-            color: #8493a9;
-            transition: .3s ease;
+            border-radius: 12px;
+
+            color: #aaa;
+
+            transition: .3s;
         }
 
         .project-card:hover .project-arrow {
-            background: var(--blue);
-            color: white;
-            border-color: var(--blue);
-            transform: rotate(-45deg);
-        }
-
-        .project-icon {
-            width: 49px;
-            height: 49px;
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            background: linear-gradient(
-                135deg,
-                rgba(79,124,255,.14),
-                rgba(139,92,246,.1)
-            );
-            color: var(--blue-light);
-            font-size: 18px;
-            margin-bottom: 22px;
+            background: white;
+            color: black;
+            transform: rotate(45deg);
         }
 
         .project-card h3 {
-            font-family: var(--heading);
-            color: white;
-            font-size: 19px;
-            margin-bottom: 10px;
+            font-family: "Space Grotesk";
+
+            font-size: 29px;
+            letter-spacing: -.03em;
+
+            margin-bottom: 12px;
         }
 
         .project-card p {
+            max-width: 530px;
+
             color: var(--muted);
-            font-size: 11px;
+
+            font-size: 13px;
             line-height: 1.8;
+
+            margin-bottom: 22px;
         }
 
-        .tags {
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 18px;
-        }
-
-        .tags span {
-            padding: 5px 8px;
-            border-radius: 5px;
-            background: rgba(255,255,255,.045);
-            color: #8290a4;
-            font-size: 8px;
-        }
-
-        .project-bottom {
-            margin-top: auto;
-            padding-top: 24px;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
             gap: 7px;
-            color: var(--blue-light);
-            font-size: 10px;
-            font-weight: 700;
-            transition: .25s ease;
         }
 
-        .project-link:hover {
-            gap: 11px;
-            color: white;
+        .project-tag {
+            padding: 6px 9px;
+
+            border: 1px solid var(--border);
+            border-radius: 7px;
+
+            color: #8d8f9b;
+
+            font-size: 10px;
         }
+
 
         /* =========================================================
            SERVICES
         ========================================================= */
 
-        .services {
-            background: rgba(255,255,255,.015);
-            border-top: 1px solid var(--border);
-        }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
+            gap: 13px;
         }
 
         .service {
-            padding: 24px 20px;
+            padding: 25px;
+
+            min-height: 230px;
+
             border: 1px solid var(--border);
-            border-radius: 15px;
-            background: var(--surface);
-            transition: .35s ease;
+            border-radius: 20px;
+
+            background: rgba(255,255,255,.025);
+
+            transition: .4s var(--ease);
         }
 
         .service:hover {
-            transform: translateY(-6px);
-            border-color: rgba(122,162,255,.25);
+            transform: translateY(-7px);
+            background: rgba(255,255,255,.05);
         }
 
-        .service i {
-            color: var(--blue-light);
-            font-size: 18px;
+        .service-number {
+            color: #565864;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            margin-bottom: 45px;
+        }
+
+        .service-icon {
+            font-size: 21px;
+            color: var(--cyan);
+
             margin-bottom: 18px;
         }
 
         .service h3 {
-            color: white;
-            font-family: var(--heading);
-            font-size: 15px;
-            margin-bottom: 8px;
+            font-family: "Space Grotesk";
+            font-size: 18px;
+
+            margin-bottom: 9px;
         }
 
         .service p {
             color: var(--muted);
-            font-size: 10px;
+
+            font-size: 11px;
             line-height: 1.7;
         }
+
 
         /* =========================================================
            CONTACT
         ========================================================= */
 
-        .contact {
-            padding-bottom: 120px;
+        .contact-section {
+            padding-bottom: 80px;
         }
 
         .contact-box {
             position: relative;
-            overflow: hidden;
-            text-align: center;
-            padding: 85px 30px;
-            border: 1px solid rgba(122,162,255,.16);
-            border-radius: 25px;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,124,255,.11),
-                    rgba(139,92,246,.06),
-                    rgba(255,255,255,.02)
-                );
-        }
 
-        .contact-box::before,
-        .contact-box::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
+            padding: 75px;
+
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 10% 0%,
+                    rgba(79,140,255,.16),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 100% 100%,
+                    rgba(139,92,246,.13),
+                    transparent 35%
+                ),
+                rgba(255,255,255,.035);
         }
 
         .contact-box::before {
-            width: 300px;
-            height: 300px;
-            background: rgba(79,124,255,.12);
-            filter: blur(80px);
-            top: -180px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: contactGlow 5s ease-in-out infinite;
+            content: "";
+
+            position: absolute;
+
+            inset: 1px;
+
+            border-radius: 29px;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(255,255,255,.04),
+                    transparent
+                );
+
+            transform: translateX(-100%);
+
+            animation: shine 7s infinite;
         }
 
-        .contact-box::after {
-            width: 180px;
-            height: 180px;
-            background: rgba(139,92,246,.1);
-            filter: blur(60px);
-            right: -80px;
-            bottom: -100px;
-        }
-
-        @keyframes contactGlow {
-            50% {
-                transform: translateX(-50%) scale(1.2);
+        @keyframes shine {
+            50%,100% {
+                transform: translateX(100%);
             }
         }
 
-        .contact-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .contact-box h2 {
-            font-family: var(--heading);
-            color: white;
-            font-size: clamp(40px, 6vw, 65px);
-            line-height: .95;
-            letter-spacing: -4px;
-            margin-bottom: 17px;
-        }
+            position: relative;
 
-        .contact-box h2 span {
-            color: var(--blue-light);
+            max-width: 800px;
+
+            font-family: "Space Grotesk";
+
+            font-size: clamp(40px, 6vw, 72px);
+
+            line-height: .98;
+            letter-spacing: -.06em;
+
+            margin-bottom: 22px;
         }
 
         .contact-box p {
-            max-width: 570px;
-            margin: auto auto 28px;
+            position: relative;
+
+            max-width: 600px;
+
             color: var(--muted);
-            font-size: 13px;
+
+            font-size: 15px;
             line-height: 1.8;
+
+            margin-bottom: 30px;
         }
 
-        .contact-buttons {
+        .contact-links {
+            position: relative;
+
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 22px;
-            margin-top: 27px;
-        }
-
-        .contact-detail {
-            display: flex;
+        .contact-link {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: #7f8da1;
-            font-size: 10px;
+            gap: 9px;
+
+            padding: 12px 15px;
+
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            background: rgba(255,255,255,.04);
+
+            font-size: 12px;
+
+            transition: .3s;
         }
 
-        .contact-detail i {
-            color: var(--blue-light);
+        .contact-link:hover {
+            background: white;
+            color: black;
+
+            transform: translateY(-3px);
         }
+
 
         /* =========================================================
            FOOTER
         ========================================================= */
 
         footer {
-            padding: 27px 0;
             border-top: 1px solid var(--border);
-            background: #03050a;
+
+            padding: 30px 0;
         }
 
-        .footer {
+        .footer-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
         }
 
-        .footer-logo {
-            font-family: var(--heading);
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
+        .footer-copy {
+            color: #62646f;
+            font-size: 11px;
         }
 
-        .footer-logo span {
-            color: var(--blue-light);
-        }
-
-        .footer p {
-            color: #536074;
-            font-size: 9px;
-        }
-
-        .footer-socials {
+        .footer-links {
             display: flex;
-            gap: 7px;
+            gap: 18px;
         }
 
-        .footer-socials a {
-            width: 30px;
-            height: 30px;
-            display: grid;
-            place-items: center;
-            color: #66758a;
-            border: 1px solid var(--border);
-            border-radius: 7px;
-            font-size: 10px;
-            transition: .25s;
+        .footer-links a {
+            color: #777985;
+            font-size: 11px;
+
+            transition: .3s;
         }
 
-        .footer-socials a:hover {
+        .footer-links a:hover {
             color: white;
-            background: var(--blue);
-            border-color: var(--blue);
         }
+
 
         /* =========================================================
-           REVEAL
+           SCROLL REVEAL
         ========================================================= */
 
         .reveal {
             opacity: 0;
             transform: translateY(35px);
+
             transition:
-                opacity .8s ease,
-                transform .8s cubic-bezier(.22,1,.36,1);
+                opacity .8s var(--ease),
+                transform .8s var(--ease);
         }
 
-        .reveal.active {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .reveal-delay-1 {
-            transition-delay: .1s;
+
+        /* =========================================================
+           SCROLL PROGRESS
+        ========================================================= */
+
+        .scroll-progress {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 0%;
+            height: 2px;
+
+            z-index: 2000;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--blue),
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            box-shadow: 0 0 15px rgba(79,140,255,.7);
         }
 
-        .reveal-delay-2 {
-            transition-delay: .2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: .3s;
-        }
 
         /* =========================================================
            RESPONSIVE
@@ -1480,209 +1623,222 @@
 
         @media (max-width: 1050px) {
 
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .hero-layout {
+                gap: 40px;
             }
 
-            .hero-content {
-                order: 2;
-            }
-
-            .hero-visual {
-                order: 1;
-            }
-
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons,
-            .socials {
-                justify-content: center;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2,1fr);
+            .hero h1 {
+                font-size: 70px;
             }
 
             .services-grid {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
         }
 
-        @media (max-width: 800px) {
 
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-box {
-                max-width: 430px;
-                margin: auto;
-            }
-
-            .about-badge {
-                right: -10px;
-            }
+        @media (max-width: 850px) {
 
             .nav-links {
                 position: fixed;
-                top: 78px;
-                left: 14px;
-                right: 14px;
-                padding: 12px;
+
+                top: 82px;
+                left: 20px;
+                right: 20px;
+
+                padding: 15px;
+
+                display: flex;
                 flex-direction: column;
                 align-items: stretch;
-                gap: 2px;
+
                 border: 1px solid var(--border);
-                border-radius: 14px;
-                background: rgba(5,7,13,.96);
+                border-radius: 18px;
+
+                background: rgba(8,9,13,.95);
                 backdrop-filter: blur(20px);
-                transform: translateY(-15px);
+
                 opacity: 0;
                 visibility: hidden;
-                transition: .3s ease;
+                transform: translateY(-10px);
+
+                transition: .3s;
             }
 
-            .nav-links.open {
-                transform: translateY(0);
+            .nav-links.active {
                 opacity: 1;
                 visibility: visible;
+                transform: translateY(0);
             }
 
             .nav-links a {
-                padding: 12px;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-contact {
-                text-align: center;
-                margin-top: 5px;
+                padding: 14px;
             }
 
             .menu-btn {
                 display: grid;
                 place-items: center;
             }
+
+            .hero-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-inline: auto;
+            }
+
+            .hero-actions,
+            .socials {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image {
+                max-width: 500px;
+                margin: auto;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
         }
+
 
         @media (max-width: 600px) {
 
             .container {
-                width: calc(100% - 28px);
+                width: min(100% - 28px, var(--container));
             }
 
             section {
-                padding: 85px 0;
+                padding: 90px 0;
             }
 
             .hero {
-                padding-top: 110px;
+                padding-top: 125px;
             }
 
             .hero h1 {
-                font-size: 48px;
-                letter-spacing: -3px;
+                font-size: 53px;
             }
 
-            .hero-role {
-                justify-content: center;
-                font-size: 15px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
+            .hero-description {
+                font-size: 14px;
             }
 
             .hero-visual {
-                min-height: 450px;
+                min-height: 430px;
+            }
+
+            .visual-ring {
+                width: 340px;
+                height: 340px;
             }
 
             .profile-card {
-                width: 270px;
-                height: 370px;
+                width: 290px;
             }
 
-            .orbit-one {
-                width: 360px;
-                height: 360px;
+            .profile-image {
+                height: 310px;
             }
 
-            .orbit-two {
-                width: 300px;
-                height: 300px;
+            .float-one {
+                right: -5px;
             }
 
-            .floating-card {
-                display: none;
+            .float-two {
+                left: -5px;
             }
 
-            .section-title {
-                font-size: 40px;
-                letter-spacing: -2px;
+            .float-three {
+                right: 0;
             }
 
-            .skills-grid,
-            .projects-grid,
-            .services-grid {
-                grid-template-columns: 1fr;
+            .section-head {
+                display: block;
+            }
+
+            .section-description {
+                margin-top: 20px;
             }
 
             .about-points {
                 grid-template-columns: 1fr;
             }
 
-            .about-box img {
-                height: 370px;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
 
-            .timeline-item {
-                padding-left: 48px;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
-            .timeline::before {
-                left: 14px;
+            .project-card {
+                min-height: 330px;
+                padding: 24px;
             }
 
-            .timeline-dot {
-                left: 6px;
+            .project-top {
+                margin-bottom: 65px;
             }
 
-            .timeline-card {
-                padding: 21px;
+            .project-card h3 {
+                font-size: 25px;
             }
 
             .contact-box {
-                padding: 65px 20px;
+                padding: 40px 25px;
             }
 
             .contact-box h2 {
                 font-size: 44px;
-                letter-spacing: -3px;
             }
 
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .footer {
+            .footer-inner {
                 flex-direction: column;
                 text-align: center;
             }
+
+            .footer-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
         }
+
 
         /* =========================================================
            REDUCED MOTION
@@ -1690,37 +1846,31 @@
 
         @media (prefers-reduced-motion: reduce) {
 
-            html {
-                scroll-behavior: auto;
-            }
-
             *,
             *::before,
             *::after {
+                scroll-behavior: auto !important;
                 animation-duration: .01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: .01ms !important;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
+<div class="scroll-progress"></div>
 
 <div class="background">
     <div class="grid"></div>
-    <div class="noise"></div>
-
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
-    <div class="glow glow-three"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
 </div>
-
-<div class="scroll-progress" id="scrollProgress"></div>
 
 
 <!-- =========================================================
@@ -1732,29 +1882,24 @@
     <div class="container nav">
 
         <a href="#home" class="logo">
-            <span class="logo-mark">J</span>
-            Jahid<span>.</span>
+            Jahid
+            <span class="logo-dot"></span>
         </a>
-
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-        >
-            <i class="fa-solid fa-bars"></i>
-        </button>
 
         <nav class="nav-links" id="navLinks">
 
-            <a href="#home" class="active">Home</a>
+            <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
-            <a href="#contact" class="nav-contact">Let's Talk</a>
+            <a href="#contact" class="nav-cta">Let's Talk</a>
 
         </nav>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
     </div>
 
@@ -1765,155 +1910,135 @@
      HERO
 ========================================================= -->
 
+<main>
+
 <section class="hero" id="home">
 
-    <div class="container">
+    <div class="container hero-layout">
 
-        <div class="hero-grid">
+        <div class="hero-content reveal">
 
-            <div class="hero-content reveal">
+            <div class="availability">
+                <span></span>
+                Available for WordPress Projects
+            </div>
 
-                <div class="eyebrow">
-                    <span class="status-dot"></span>
-                    Available for WordPress Projects
-                </div>
+            <h1>
+                I build
+                <span class="gradient-text">digital experiences</span>
+                that work.
+            </h1>
 
-                <h1>
-                    Building the
-                    <span class="gradient">Web Better.</span>
-                </h1>
+            <p class="hero-description">
+                I'm <strong>Jahid Hasan</strong>, a WordPress Developer focused on
+                building fast, scalable and conversion-focused websites,
+                WooCommerce stores and custom WordPress solutions.
+            </p>
 
-                <div class="hero-role">
-                    <span class="role-prefix">I'm a</span>
-                    <span class="role-text" id="roleText">
-                        WordPress Developer
-                    </span>
-                    <span class="cursor"></span>
-                </div>
+            <div class="hero-actions">
 
-                <p class="hero-description">
-                    I create <strong>modern WordPress websites</strong>,
-                    WooCommerce stores, custom plugins and Elementor-based
-                    experiences focused on performance, usability and clean
-                    development.
-                </p>
+                <a href="#projects" class="btn btn-primary">
+                    Explore My Work
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
 
-                <div class="hero-buttons">
+                <a href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view"
+                   class="btn btn-secondary"
+                   target="_blank">
+                    View Resume
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
 
-                    <a href="#projects" class="btn btn-primary">
-                        Explore My Work
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                <a href="tel:+8801701367333"
+                   class="btn btn-secondary">
+                    Call Me
+                    <i class="fa-solid fa-phone"></i>
+                </a>
 
-                    <a
-                        href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-outline"
-                    >
-                        <i class="fa-solid fa-file-lines"></i>
-                        View Resume
-                    </a>
+            </div>
 
-                    <a
-                        href="tel:+8801701367333"
-                        class="btn btn-outline"
-                    >
-                        <i class="fa-solid fa-phone"></i>
-                        Call Me
-                    </a>
+            <div class="socials">
 
-                </div>
+                <a href="https://github.com/jahid-we"
+                   target="_blank"
+                   aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
 
-                <div class="socials">
+                <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+                   target="_blank"
+                   aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
 
-                    <a
-                        href="https://github.com/jahid-we"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social"
-                        aria-label="GitHub"
-                    >
-                        <i class="fa-brands fa-github"></i>
-                    </a>
+                <a href="https://profiles.wordpress.org/jahidzendforce/"
+                   target="_blank"
+                   aria-label="WordPress">
+                    <i class="fa-brands fa-wordpress"></i>
+                </a>
 
-                    <a
-                        href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social"
-                        aria-label="LinkedIn"
-                    >
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
+                <a href="mailto:jahidhasan370919@gmail.com"
+                   aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
 
-                    <a
-                        href="https://profiles.wordpress.org/jahidzendforce/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social"
-                        aria-label="WordPress.org"
-                    >
-                        <i class="fa-brands fa-wordpress"></i>
-                    </a>
+            </div>
 
-                    <a
-                        href="mailto:jahidhasan370919@gmail.com"
-                        class="social"
-                        aria-label="Email"
-                    >
-                        <i class="fa-solid fa-envelope"></i>
-                    </a>
+        </div>
+
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual reveal">
+
+            <div class="visual-ring"></div>
+
+            <div class="profile-card">
+
+                <div class="profile-inner">
+
+                    <div class="profile-image">
+
+                        <img src="passport_size_photo.jpg"
+                             alt="Jahid Hasan">
+
+                    </div>
+
+                    <div class="profile-info">
+
+                        <h3>Jahid Hasan</h3>
+
+                        <p>
+                            WordPress Developer · Plugin Developer
+                        </p>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <!-- HERO IMAGE -->
+            <div class="floating-card float-one">
 
-            <div class="hero-visual reveal reveal-delay-2">
+                <strong>WordPress</strong>
+                <span>Development</span>
 
-                <div class="visual-glow"></div>
+            </div>
 
-                <div class="orbit orbit-one">
-                    <span class="orbit-dot"></span>
-                </div>
 
-                <div class="orbit orbit-two"></div>
+            <div class="floating-card float-two">
 
-                <div class="floating-card float-one">
-                    <i class="fa-brands fa-wordpress"></i>
-                    WordPress Expert
-                </div>
+                <strong>WooCommerce</strong>
+                <span>E-Commerce</span>
 
-                <div class="floating-card float-two">
-                    <i class="fa-solid fa-bolt"></i>
-                    Performance Focused
-                </div>
+            </div>
 
-                <div class="profile-card">
 
-                    <div class="profile-inner">
+            <div class="floating-card float-three">
 
-                        <img
-                            src="passport_size_photo.jpg"
-                            alt="Jahid Hasan"
-                        >
-
-                        <div class="profile-info">
-
-                            <strong>Jahid Hasan</strong>
-
-                            <span>
-                                WordPress Developer · Bangladesh 🇧🇩
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <strong>Performance</strong>
+                <span>Optimization</span>
 
             </div>
 
@@ -1925,27 +2050,80 @@
 
 
 <!-- =========================================================
+     MARQUEE
+========================================================= -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            WordPress
+            <i class="fa-solid fa-plus"></i>
+            WooCommerce
+        </div>
+
+        <div class="marquee-item">
+            Elementor
+            <i class="fa-solid fa-plus"></i>
+            Custom Plugins
+        </div>
+
+        <div class="marquee-item">
+            Performance
+            <i class="fa-solid fa-plus"></i>
+            Optimization
+        </div>
+
+        <div class="marquee-item">
+            WordPress
+            <i class="fa-solid fa-plus"></i>
+            WooCommerce
+        </div>
+
+        <div class="marquee-item">
+            Elementor
+            <i class="fa-solid fa-plus"></i>
+            Custom Plugins
+        </div>
+
+        <div class="marquee-item">
+            Performance
+            <i class="fa-solid fa-plus"></i>
+            Optimization
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      ABOUT
 ========================================================= -->
 
-<section class="about" id="about">
+<section id="about">
 
     <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                About Me
+            <div>
+
+                <div class="section-label">
+                    About Me
+                </div>
+
+                <h2 class="section-title">
+                    Turning ideas into
+                    <span class="gradient-text">working products.</span>
+                </h2>
+
             </div>
 
-            <h2 class="section-title">
-                Turning ideas into
-                <span>web experiences.</span>
-            </h2>
-
             <p class="section-description">
-                I focus on building practical, polished and scalable
-                WordPress solutions for businesses, brands and online stores.
+                Clean development, thoughtful UX and performance-first
+                WordPress solutions.
             </p>
 
         </div>
@@ -1953,79 +2131,88 @@
 
         <div class="about-grid">
 
-            <div class="about-box reveal">
+            <div class="about-image reveal">
 
-                <img
-                    src="passport_size_photo.jpg"
-                    alt="Jahid Hasan - WordPress Developer"
-                >
+                <img src="passport_size_photo.jpg"
+                     alt="Jahid Hasan">
 
                 <div class="about-badge">
+
                     <strong>WP</strong>
-                    <span>WordPress Developer</span>
+
+                    <span>
+                        WordPress Developer
+                    </span>
+
                 </div>
 
             </div>
 
 
-            <div class="about-content reveal reveal-delay-1">
-
-                <h3>
-                    WordPress Developer focused on real-world solutions.
-                </h3>
+            <div class="about-content reveal">
 
                 <p>
-                    I'm a <strong>WordPress Developer at Zend Force</strong>,
-                    working on websites, WooCommerce solutions, custom
-                    plugins and modern WordPress experiences.
+                    I specialize in creating modern WordPress websites,
+                    WooCommerce stores, Elementor experiences and custom
+                    plugins designed around real business requirements.
                 </p>
 
                 <p>
-                    My approach combines clean development, thoughtful UI,
-                    responsive layouts and performance optimization to
-                    create websites that are easy to use and maintain.
+                    My approach combines clean development, responsive
+                    interfaces, maintainable code and website performance
+                    to create products that are reliable and easy to manage.
                 </p>
 
-                <p>
-                    I enjoy transforming ideas into reliable WordPress
-                    products — from business websites and landing pages to
-                    ecommerce systems and custom plugin functionality.
-                </p>
 
                 <div class="about-points">
 
-                    <div class="point">
+                    <div class="about-point">
                         <i class="fa-solid fa-check"></i>
-                        WordPress Development
+                        Clean & Maintainable Code
                     </div>
 
-                    <div class="point">
+                    <div class="about-point">
                         <i class="fa-solid fa-check"></i>
-                        WooCommerce
+                        Responsive Development
                     </div>
 
-                    <div class="point">
+                    <div class="about-point">
                         <i class="fa-solid fa-check"></i>
-                        Elementor Development
+                        Performance Focused
                     </div>
 
-                    <div class="point">
+                    <div class="about-point">
                         <i class="fa-solid fa-check"></i>
-                        Custom Plugins
-                    </div>
-
-                    <div class="point">
-                        <i class="fa-solid fa-check"></i>
-                        Website Performance
-                    </div>
-
-                    <div class="point">
-                        <i class="fa-solid fa-check"></i>
-                        Responsive Design
+                        Business-Focused Solutions
                     </div>
 
                 </div>
 
+            </div>
+
+        </div>
+
+
+        <div class="stats reveal">
+
+            <div class="stat">
+                <div class="stat-number">WP</div>
+                <div class="stat-label">WordPress Development</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">WC</div>
+                <div class="stat-label">WooCommerce Solutions</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">PHP</div>
+                <div class="stat-label">Backend Development</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Learning & Building</div>
             </div>
 
         </div>
@@ -2043,19 +2230,24 @@
 
     <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                Expertise
+            <div>
+
+                <div class="section-label">
+                    Expertise
+                </div>
+
+                <h2 class="section-title">
+                    Tools I use to
+                    <span class="gradient-text">build.</span>
+                </h2>
+
             </div>
 
-            <h2 class="section-title">
-                My <span>toolbox.</span>
-            </h2>
-
             <p class="section-description">
-                Technologies and tools I use to build modern WordPress
-                websites and digital experiences.
+                A practical toolkit focused on WordPress development,
+                customization and performance.
             </p>
 
         </div>
@@ -2063,7 +2255,7 @@
 
         <div class="skills-grid">
 
-            <div class="skill-card reveal">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     <i class="fa-brands fa-wordpress"></i>
@@ -2072,23 +2264,14 @@
                 <h3>WordPress</h3>
 
                 <p>
-                    Custom WordPress websites, themes, functionality and
-                    content management solutions.
+                    Custom websites, themes, admin functionality,
+                    integrations and scalable WordPress solutions.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>95%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="95%"></div>
-                </div>
-
-            </div>
+            </article>
 
 
-            <div class="skill-card reveal reveal-delay-1">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -2097,48 +2280,30 @@
                 <h3>WooCommerce</h3>
 
                 <p>
-                    Ecommerce stores, products, variations, checkout and
-                    custom WooCommerce functionality.
+                    Product systems, variations, checkout customization,
+                    ecommerce functionality and store optimization.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>92%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="92%"></div>
-                </div>
-
-            </div>
+            </article>
 
 
-            <div class="skill-card reveal reveal-delay-2">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
-                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <i class="fa-solid fa-code"></i>
                 </div>
 
                 <h3>Custom Plugins</h3>
 
                 <p>
-                    Building focused WordPress plugins with clean,
-                    maintainable functionality.
+                    Custom WordPress plugins built around specific
+                    business requirements and workflows.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>90%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="90%"></div>
-                </div>
-
-            </div>
+            </article>
 
 
-            <div class="skill-card reveal">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     <i class="fa-solid fa-layer-group"></i>
@@ -2147,23 +2312,14 @@
                 <h3>Elementor</h3>
 
                 <p>
-                    Pixel-focused page building, custom sections,
-                    responsive layouts and reusable components.
+                    Pixel-focused landing pages, responsive layouts,
+                    reusable components and Elementor customization.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>94%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="94%"></div>
-                </div>
-
-            </div>
+            </article>
 
 
-            <div class="skill-card reveal reveal-delay-1">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     <i class="fa-brands fa-php"></i>
@@ -2172,23 +2328,14 @@
                 <h3>PHP</h3>
 
                 <p>
-                    WordPress hooks, custom functionality, plugin logic and
-                    backend development.
+                    WordPress hooks, filters, custom functionality,
+                    integrations and backend development.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>88%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="88%"></div>
-                </div>
-
-            </div>
+            </article>
 
 
-            <div class="skill-card reveal reveal-delay-2">
+            <article class="skill-card reveal">
 
                 <div class="skill-icon">
                     <i class="fa-solid fa-gauge-high"></i>
@@ -2197,20 +2344,11 @@
                 <h3>Performance</h3>
 
                 <p>
-                    Caching, asset optimization, image optimization and
-                    practical WordPress speed improvements.
+                    Speed optimization, caching, asset optimization,
+                    database cleanup and Core Web Vitals improvements.
                 </p>
 
-                <div class="skill-level">
-                    <span>Expertise</span>
-                    <strong>86%</strong>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" data-width="86%"></div>
-                </div>
-
-            </div>
+            </article>
 
         </div>
 
@@ -2227,183 +2365,97 @@
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-label">
-                Experience
+            <div>
+
+                <div class="section-label">
+                    Experience
+                </div>
+
+                <h2 class="section-title">
+                    Building,
+                    <span class="gradient-text">learning, improving.</span>
+                </h2>
+
             </div>
-
-            <h2>
-                My Development
-                <span class="gradient-text">
-                    Journey.
-                </span>
-            </h2>
-
-            <p>
-                From frontend development to Laravel applications
-                and my current focus on WordPress development.
-            </p>
 
         </div>
 
 
         <div class="timeline">
 
-
-            <!-- 2026 — PRESENT -->
-
-            <div class="timeline-item reveal">
+            <article class="timeline-item reveal">
 
                 <div class="timeline-dot"></div>
 
                 <div class="timeline-date">
-                    2026 — Present
+                    Current
                 </div>
 
-                <h3>
-                    WordPress Developer
-                </h3>
+                <h3>WordPress Developer</h3>
 
                 <div class="timeline-company">
-                    Professional Experience
+                    Zend Force
                 </div>
 
                 <p>
-                    Working on WordPress websites, Elementor,
-                    WooCommerce customization and modern
-                    responsive web experiences.
+                    Developing WordPress websites, custom plugins,
+                    ecommerce solutions and performance-focused
+                    experiences for real-world projects.
                 </p>
 
                 <div class="tech-tags">
 
-                    <span class="tech-tag">
-                        WordPress
-                    </span>
-
-                    <span class="tech-tag">
-                        Elementor
-                    </span>
-
-                    <span class="tech-tag">
-                        WooCommerce
-                    </span>
-
-                    <span class="tech-tag">
-                        PHP
-                    </span>
+                    <span class="tech-tag">WordPress</span>
+                    <span class="tech-tag">WooCommerce</span>
+                    <span class="tech-tag">Elementor</span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">JavaScript</span>
 
                 </div>
 
-            </div>
+            </article>
 
 
-            <!-- 2024 — PRESENT -->
-
-            <div class="timeline-item reveal">
+            <article class="timeline-item reveal">
 
                 <div class="timeline-dot"></div>
 
                 <div class="timeline-date">
-                    2024 — Present
+                    Previous Experience
                 </div>
 
-                <h3>
-                    Laravel &amp; PHP Development
-                </h3>
+                <h3>Web Developer</h3>
 
                 <div class="timeline-company">
-                    Full-Stack Development
+                    Web Development Projects
                 </div>
 
                 <p>
-                    Building Laravel applications, REST APIs,
-                    authentication systems, CRUD functionality
-                    and database-driven projects.
+                    Worked on web applications and custom development
+                    projects while building strong foundations in
+                    frontend and backend development.
                 </p>
 
                 <div class="tech-tags">
 
-                    <span class="tech-tag">
-                        PHP
-                    </span>
-
-                    <span class="tech-tag">
-                        Laravel
-                    </span>
-
-                    <span class="tech-tag">
-                        Vue.js
-                    </span>
-
-                    <span class="tech-tag">
-                        MySQL
-                    </span>
-
-                    <span class="tech-tag">
-                        REST API
-                    </span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
 
                 </div>
 
-            </div>
-
-
-            <!-- LEARNING & PROJECTS -->
-
-            <div class="timeline-item reveal">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-date">
-                    Learning &amp; Projects
-                </div>
-
-                <h3>
-                    Web Development Journey
-                </h3>
-
-                <div class="timeline-company">
-                    HTML • CSS • PHP • Laravel • Vue
-                </div>
-
-                <p>
-                    Started with frontend development and gradually
-                    moved into backend and full-stack application
-                    development.
-                </p>
-
-                <div class="tech-tags">
-
-                    <span class="tech-tag">
-                        HTML
-                    </span>
-
-                    <span class="tech-tag">
-                        CSS
-                    </span>
-
-                    <span class="tech-tag">
-                        PHP
-                    </span>
-
-                    <span class="tech-tag">
-                        Laravel
-                    </span>
-
-                    <span class="tech-tag">
-                        Vue.js
-                    </span>
-
-                </div>
-
-            </div>
+            </article>
 
         </div>
 
     </div>
 
 </section>
+
 
 <!-- =========================================================
      PROJECTS
@@ -2413,381 +2465,319 @@
 
     <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                Selected Work
+            <div>
+
+                <div class="section-label">
+                    Selected Work
+                </div>
+
+                <h2 class="section-title">
+                    Things I've
+                    <span class="gradient-text">built.</span>
+                </h2>
+
             </div>
 
-            <h2 class="section-title">
-                Things I've <span>built.</span>
-            </h2>
-
             <p class="section-description">
-                A selection of WordPress, ecommerce and plugin-focused work.
+                A selection of projects demonstrating development,
+                WordPress and product-building experience.
             </p>
 
         </div>
 
+
         <div class="projects-grid">
 
-        <!-- PROJECT 01 -->
 
-    <article class="project-card reveal">
+            <!-- PROJECT 01 -->
 
-        <div class="project-top">
+            <article class="project-card reveal"
+                     style="--project-color:#4f8cff;">
 
-            <span class="project-number">
-                01
-            </span>
+                <div class="project-top">
 
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <a href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-"
+                       target="_blank"
+                       class="project-arrow"
+                       aria-label="Open project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    Freelance Time Tracker
+                </h3>
+
+                <p>
+                    A time tracking platform designed for freelancers
+                    to manage projects, time logs and productivity.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">Laravel</span>
+                    <span class="project-tag">Vue</span>
+                    <span class="project-tag">MySQL</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 02 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#8b5cf6;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <a href="https://github.com/jahid-we/loginflux"
+                       target="_blank"
+                       class="project-arrow"
+                       aria-label="Open project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    Loginflux
+                </h3>
+
+                <p>
+                    A modern WordPress login customizer plugin with
+                    animated backgrounds, advanced styling controls
+                    and a modern customization experience.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">WordPress</span>
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">JavaScript</span>
+                    <span class="project-tag">CSS</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 03 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#22d3ee;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <a href="https://github.com/jahid-we/Smart-Contact"
+                       target="_blank"
+                       class="project-arrow"
+                       aria-label="Open project">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    Smart Contact
+                </h3>
+
+                <p>
+                    A contact management project designed to organize
+                    and manage contact information through a clean
+                    web interface.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">Web App</span>
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">MySQL</span>
+                    <span class="project-tag">JavaScript</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 04 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#ec4899;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        04
+                    </span>
+
+                    <a href="#contact"
+                       class="project-arrow"
+                       aria-label="Contact">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    WooCommerce Solutions
+                </h3>
+
+                <p>
+                    Custom ecommerce experiences with WooCommerce,
+                    product systems, checkout customization and
+                    business-specific functionality.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">WooCommerce</span>
+                    <span class="project-tag">WordPress</span>
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">Elementor</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 05 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#6366f1;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        05
+                    </span>
+
+                    <a href="#contact"
+                       class="project-arrow"
+                       aria-label="Contact">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    Custom WordPress Websites
+                </h3>
+
+                <p>
+                    Modern responsive WordPress websites built with
+                    performance, usability and maintainability in mind.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">WordPress</span>
+                    <span class="project-tag">Elementor</span>
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">CSS</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 06 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#14b8a6;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        06
+                    </span>
+
+                    <a href="#contact"
+                       class="project-arrow"
+                       aria-label="Contact">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    Custom WordPress Development
+                </h3>
+
+                <p>
+                    Custom WordPress functionality, integrations,
+                    hooks, filters and business-specific solutions.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">WordPress</span>
+                    <span class="project-tag">API</span>
+                    <span class="project-tag">JavaScript</span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 07 -->
+
+            <article class="project-card reveal"
+                     style="--project-color:#f59e0b;">
+
+                <div class="project-top">
+
+                    <span class="project-number">
+                        07
+                    </span>
+
+                    <a href="#contact"
+                       class="project-arrow"
+                       aria-label="Contact">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+                <h3>
+                    WordPress Optimization
+                </h3>
+
+                <p>
+                    Performance-focused optimization for faster loading,
+                    improved Core Web Vitals and better user experience.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">Caching</span>
+                    <span class="project-tag">CSS</span>
+                    <span class="project-tag">JavaScript</span>
+                    <span class="project-tag">Performance</span>
+
+                </div>
+
+            </article>
+
 
         </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-clock"></i>
-        </div>
-
-        <h3>Freelance Time Tracker</h3>
-
-        <p>
-            A time tracking and project management application designed
-            to help freelancers manage projects, tasks, time logs and
-            work activities from a centralized dashboard.
-        </p>
-
-        <div class="tags">
-            <span>PHP</span>
-            <span>Laravel</span>
-            <span>Vue.js</span>
-            <span>MySQL</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-"
-                class="project-link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                View Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 02 -->
-
-    <article class="project-card reveal reveal-delay-1">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                02
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-brands fa-wordpress"></i>
-        </div>
-
-        <h3>Loginflux</h3>
-
-        <p>
-            A modern WordPress login customization plugin designed
-            to create visually impressive and highly customizable
-            login experiences.
-        </p>
-
-        <div class="tags">
-            <span>WordPress</span>
-            <span>Plugin</span>
-            <span>Customizer</span>
-            <span>UI</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="https://github.com/jahid-we/loginflux"
-                class="project-link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                View Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 03 -->
-
-    <article class="project-card reveal reveal-delay-2">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                03
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-address-book"></i>
-        </div>
-
-        <h3>Smart Contact</h3>
-
-        <p>
-            A contact management system featuring secure authentication,
-            role-based user management, contact management, REST APIs
-            and Excel/PDF export functionality.
-        </p>
-
-        <div class="tags">
-            <span>Laravel</span>
-            <span>Vue.js</span>
-            <span>Inertia.js</span>
-            <span>MySQL</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="https://github.com/jahid-we/Smart-Contact"
-                class="project-link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                View Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 04 -->
-
-    <article class="project-card reveal">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                04
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-
-        <h3>WooCommerce Solutions</h3>
-
-        <p>
-            Ecommerce solutions involving product management,
-            variations, inventory workflows, purchasing and
-            customer-focused shopping experiences.
-        </p>
-
-        <div class="tags">
-            <span>WooCommerce</span>
-            <span>PHP</span>
-            <span>Inventory</span>
-            <span>Elementor</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="#contact"
-                class="project-link"
-            >
-                Discuss Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 05 -->
-
-    <article class="project-card reveal reveal-delay-1">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                05
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-palette"></i>
-        </div>
-
-        <h3>Custom WordPress Websites</h3>
-
-        <p>
-            Modern business websites and landing pages designed
-            with responsive layouts, strong visual hierarchy and
-            conversion-focused sections.
-        </p>
-
-        <div class="tags">
-            <span>WordPress</span>
-            <span>Elementor</span>
-            <span>Responsive</span>
-            <span>UI</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="#contact"
-                class="project-link"
-            >
-                Discuss Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 06 -->
-
-    <article class="project-card reveal reveal-delay-2">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                06
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-code"></i>
-        </div>
-
-        <h3>Custom WordPress Development</h3>
-
-        <p>
-            Custom WordPress functionality built around hooks, APIs,
-            admin interfaces, settings pages and specific business
-            requirements.
-        </p>
-
-        <div class="tags">
-            <span>PHP</span>
-            <span>WordPress</span>
-            <span>Hooks</span>
-            <span>API</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="#contact"
-                class="project-link"
-            >
-                Discuss Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-
-    <!-- PROJECT 07 -->
-
-    <article class="project-card reveal">
-
-        <div class="project-top">
-
-            <span class="project-number">
-                07
-            </span>
-
-            <span class="project-arrow">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-
-        </div>
-
-        <div class="project-icon">
-            <i class="fa-solid fa-gauge-high"></i>
-        </div>
-
-        <h3>WordPress Optimization</h3>
-
-        <p>
-            Practical performance improvements covering caching,
-            assets, images, fonts, database cleanup and unnecessary
-            WordPress overhead.
-        </p>
-
-        <div class="tags">
-            <span>Speed</span>
-            <span>Caching</span>
-            <span>CSS</span>
-            <span>JS</span>
-        </div>
-
-        <div class="project-bottom">
-
-            <a
-                href="#contact"
-                class="project-link"
-            >
-                Discuss Project
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </article>
-
-</div>
-
 
     </div>
 
@@ -2798,78 +2788,118 @@
      SERVICES
 ========================================================= -->
 
-<section class="services">
+<section>
 
     <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                What I Do
+            <div>
+
+                <div class="section-label">
+                    What I Do
+                </div>
+
+                <h2 class="section-title">
+                    From idea to
+                    <span class="gradient-text">launch.</span>
+                </h2>
+
             </div>
-
-            <h2 class="section-title">
-                How I can <span>help.</span>
-            </h2>
 
         </div>
 
 
         <div class="services-grid">
 
-            <div class="service reveal">
 
-                <i class="fa-brands fa-wordpress"></i>
+            <article class="service reveal">
 
-                <h3>WordPress Development</h3>
+                <div class="service-number">
+                    01
+                </div>
+
+                <div class="service-icon">
+                    <i class="fa-brands fa-wordpress"></i>
+                </div>
+
+                <h3>
+                    WordPress Development
+                </h3>
 
                 <p>
-                    Professional WordPress websites built around your
+                    Custom WordPress websites and functionality
+                    tailored around your business.
+                </p>
+
+            </article>
+
+
+            <article class="service reveal">
+
+                <div class="service-number">
+                    02
+                </div>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <h3>
+                    WooCommerce
+                </h3>
+
+                <p>
+                    Ecommerce stores, custom product systems,
+                    checkout and WooCommerce customization.
+                </p>
+
+            </article>
+
+
+            <article class="service reveal">
+
+                <div class="service-number">
+                    03
+                </div>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                </div>
+
+                <h3>
+                    Custom Plugins
+                </h3>
+
+                <p>
+                    Purpose-built WordPress plugins for unique
                     business requirements.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="service reveal reveal-delay-1">
+            <article class="service reveal">
 
-                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="service-number">
+                    04
+                </div>
 
-                <h3>WooCommerce</h3>
+                <div class="service-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
 
-                <p>
-                    Ecommerce stores, products, variations and custom
-                    WooCommerce functionality.
-                </p>
-
-            </div>
-
-
-            <div class="service reveal reveal-delay-2">
-
-                <i class="fa-solid fa-puzzle-piece"></i>
-
-                <h3>Custom Plugins</h3>
+                <h3>
+                    Performance
+                </h3>
 
                 <p>
-                    Purpose-built WordPress plugins and custom features.
+                    Website speed optimization focused on real
+                    performance improvements.
                 </p>
 
-            </div>
+            </article>
 
-
-            <div class="service reveal reveal-delay-3">
-
-                <i class="fa-solid fa-gauge-high"></i>
-
-                <h3>Performance</h3>
-
-                <p>
-                    Speed optimization and practical WordPress performance
-                    improvements.
-                </p>
-
-            </div>
 
         </div>
 
@@ -2882,72 +2912,59 @@
      CONTACT
 ========================================================= -->
 
-<section class="contact" id="contact">
+<section class="contact-section" id="contact">
 
     <div class="container">
 
         <div class="contact-box reveal">
 
-            <div class="contact-content">
+            <div class="section-label">
+                Let's Work Together
+            </div>
 
-                <div class="section-tag">
-                    Get In Touch
-                </div>
+            <h2>
+                Have a project?
+                <span class="gradient-text">Let's build it.</span>
+            </h2>
 
-                <h2>
-                    Have a project in <span>mind?</span>
-                </h2>
-
-                <p>
-                    Whether you need a WordPress website, WooCommerce store,
-                    custom plugin or performance improvements, let's talk
-                    about your project.
-                </p>
-
-                <div class="contact-buttons">
-
-                    <a
-                        href="mailto:jahidhasan370919@gmail.com"
-                        class="btn btn-primary"
-                    >
-                        <i class="fa-solid fa-envelope"></i>
-                        Email Me
-                    </a>
-
-                    <a
-                        href="tel:+8801701367333"
-                        class="btn btn-outline"
-                    >
-                        <i class="fa-solid fa-phone"></i>
-                        +880 1701 367333
-                    </a>
-
-                    <a
-                        href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-outline"
-                    >
-                        <i class="fa-brands fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-
-                </div>
+            <p>
+                Whether you need a WordPress website, WooCommerce store,
+                custom plugin or performance optimization, let's talk
+                about what you're building.
+            </p>
 
 
-                <div class="contact-details">
+            <div class="contact-links">
 
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-envelope"></i>
-                        jahidhasan370919@gmail.com
-                    </div>
+                <a href="mailto:jahidhasan370919@gmail.com"
+                   class="contact-link">
 
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Bangladesh
-                    </div>
+                    <i class="fa-solid fa-envelope"></i>
 
-                </div>
+                    Email Me
+
+                </a>
+
+
+                <a href="tel:+8801701367333"
+                   class="contact-link">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    Call Me
+
+                </a>
+
+
+                <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+                   target="_blank"
+                   class="contact-link">
+
+                    <i class="fa-brands fa-linkedin-in"></i>
+
+                    LinkedIn
+
+                </a>
 
             </div>
 
@@ -2957,6 +2974,8 @@
 
 </section>
 
+</main>
+
 
 <!-- =========================================================
      FOOTER
@@ -2964,50 +2983,34 @@
 
 <footer>
 
-    <div class="container footer">
+    <div class="container footer-inner">
 
-        <div class="footer-logo">
-            Jahid<span>.</span>
+        <div class="footer-copy">
+
+            © <span id="year"></span> Jahid Hasan.
+            Built with WordPress mindset.
+
         </div>
 
-        <p>
-            © 2026 Jahid Hasan. WordPress Developer.
-        </p>
+        <div class="footer-links">
 
-        <div class="footer-socials">
-
-            <a
-                href="https://github.com/jahid-we"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-            >
-                <i class="fa-brands fa-github"></i>
+            <a href="https://github.com/jahid-we"
+               target="_blank">
+                GitHub
             </a>
 
-            <a
-                href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-            >
-                <i class="fa-brands fa-linkedin-in"></i>
+            <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+               target="_blank">
+                LinkedIn
             </a>
 
-            <a
-                href="https://profiles.wordpress.org/jahidzendforce/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WordPress.org"
-            >
-                <i class="fa-brands fa-wordpress"></i>
+            <a href="https://profiles.wordpress.org/jahidzendforce/"
+               target="_blank">
+                WordPress.org
             </a>
 
-            <a
-                href="mailto:jahidhasan370919@gmail.com"
-                aria-label="Email"
-            >
-                <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:jahidhasan370919@gmail.com">
+                Email
             </a>
 
         </div>
@@ -3016,10 +3019,6 @@
 
 </footer>
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
 
 <script>
 
@@ -3031,7 +3030,7 @@
 
     window.addEventListener("scroll", () => {
 
-        if (window.scrollY > 40) {
+        if (window.scrollY > 30) {
             header.classList.add("scrolled");
         } else {
             header.classList.remove("scrolled");
@@ -3046,19 +3045,18 @@
 
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
-    const menuIcon = menuBtn.querySelector("i");
 
     menuBtn.addEventListener("click", () => {
 
-        const open = navLinks.classList.toggle("open");
+        navLinks.classList.toggle("active");
 
-        document.body.classList.toggle("menu-open", open);
+        const icon = menuBtn.querySelector("i");
 
-        menuBtn.setAttribute("aria-expanded", open);
-
-        menuIcon.className = open
-            ? "fa-solid fa-xmark"
-            : "fa-solid fa-bars";
+        if (navLinks.classList.contains("active")) {
+            icon.className = "fa-solid fa-xmark";
+        } else {
+            icon.className = "fa-solid fa-bars";
+        }
 
     });
 
@@ -3067,13 +3065,10 @@
 
         link.addEventListener("click", () => {
 
-            navLinks.classList.remove("open");
+            navLinks.classList.remove("active");
 
-            document.body.classList.remove("menu-open");
-
-            menuBtn.setAttribute("aria-expanded", "false");
-
-            menuIcon.className = "fa-solid fa-bars";
+            menuBtn.querySelector("i").className =
+                "fa-solid fa-bars";
 
         });
 
@@ -3081,256 +3076,103 @@
 
 
     /* =========================================================
-       SCROLL REVEAL
+       REVEAL ANIMATION
     ========================================================= */
 
-    const revealElements = document.querySelectorAll(".reveal");
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("active");
-
-                    revealObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-
-
-    /* =========================================================
-       SKILL BARS
-    ========================================================= */
-
-    const skillBars = document.querySelectorAll(".skill-progress");
-
-    const skillObserver = new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    const width = entry.target.dataset.width;
-
-                    entry.target.style.width = width;
-
-                    skillObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.5
-        }
-    );
-
-    skillBars.forEach(bar => {
-        skillObserver.observe(bar);
-    });
-
-
-    /* =========================================================
-       TYPING ROLE
-    ========================================================= */
-
-    const roles = [
-        "WordPress Developer",
-        "WooCommerce Developer",
-        "Plugin Developer",
-        "Elementor Developer",
-        "Performance Optimizer"
-    ];
-
-    const roleText = document.getElementById("roleText");
-
-    let roleIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    function typeRole() {
-
-        const currentRole = roles[roleIndex];
-
-        if (!deleting) {
-
-            roleText.textContent =
-                currentRole.substring(0, charIndex + 1);
-
-            charIndex++;
-
-            if (charIndex === currentRole.length) {
-
-                deleting = true;
-
-                setTimeout(typeRole, 1500);
-
-                return;
-            }
-
-        } else {
-
-            roleText.textContent =
-                currentRole.substring(0, charIndex - 1);
-
-            charIndex--;
-
-            if (charIndex === 0) {
-
-                deleting = false;
-
-                roleIndex =
-                    (roleIndex + 1) % roles.length;
-
-            }
-
-        }
-
-        setTimeout(
-            typeRole,
-            deleting ? 45 : 80
-        );
-    }
-
-    typeRole();
-
-
-    /* =========================================================
-       SCROLL PROGRESS
-    ========================================================= */
-
-    const scrollProgress =
-        document.getElementById("scrollProgress");
-
-    function updateScrollProgress() {
-
-        const scrollTop =
-            window.scrollY;
-
-        const scrollHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-
-        const progress =
-            scrollHeight > 0
-                ? (scrollTop / scrollHeight) * 100
-                : 0;
-
-        scrollProgress.style.width =
-            progress + "%";
-    }
-
-    window.addEventListener(
-        "scroll",
-        updateScrollProgress,
-        { passive: true }
-    );
-
-
-    /* =========================================================
-       ACTIVE NAVIGATION
-    ========================================================= */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navItems =
-        document.querySelectorAll(
-            '.nav-links a[href^="#"]'
-        );
-
-    const sectionObserver =
+    const revealObserver =
         new IntersectionObserver(
+
             entries => {
 
                 entries.forEach(entry => {
 
                     if (entry.isIntersecting) {
 
-                        const id =
-                            entry.target.getAttribute("id");
+                        entry.target.classList.add("visible");
 
-                        navItems.forEach(link => {
-
-                            link.classList.remove("active");
-
-                            if (
-                                link.getAttribute("href") ===
-                                "#" + id
-                            ) {
-                                link.classList.add("active");
-                            }
-
-                        });
+                        revealObserver.unobserve(entry.target);
 
                     }
 
                 });
 
             },
+
             {
-                rootMargin: "-35% 0px -55% 0px"
+                threshold: .12
             }
+
         );
 
-    sections.forEach(section => {
-        sectionObserver.observe(section);
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
     });
 
 
     /* =========================================================
-       SUBTLE MOUSE PARALLAX
+       SCROLL PROGRESS
+    ========================================================= */
+
+    const progress =
+        document.querySelector(".scroll-progress");
+
+    window.addEventListener("scroll", () => {
+
+        const scrollTop = window.scrollY;
+
+        const height =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const percentage =
+            (scrollTop / height) * 100;
+
+        progress.style.width =
+            percentage + "%";
+
+    });
+
+
+    /* =========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================================================
+       MOUSE PARALLAX
     ========================================================= */
 
     const profileCard =
         document.querySelector(".profile-card");
 
-    const heroVisual =
-        document.querySelector(".hero-visual");
+    if (window.matchMedia("(pointer:fine)").matches) {
 
-    if (
-        window.matchMedia("(pointer:fine)").matches &&
-        window.matchMedia("(prefers-reduced-motion: no-preference)").matches
-    ) {
-
-        heroVisual.addEventListener("mousemove", event => {
-
-            const rect =
-                heroVisual.getBoundingClientRect();
+        document.addEventListener("mousemove", e => {
 
             const x =
-                (event.clientX - rect.left) /
-                rect.width -
-                .5;
+                (e.clientX / window.innerWidth - .5) * 10;
 
             const y =
-                (event.clientY - rect.top) /
-                rect.height -
-                .5;
+                (e.clientY / window.innerHeight - .5) * 10;
 
-            profileCard.style.transform =
-                `translate(${x * 8}px, ${y * 8}px)`;
-        });
+            if (profileCard) {
 
-        heroVisual.addEventListener("mouseleave", () => {
+                profileCard.style.transform =
+                    `perspective(1000px)
+                     rotateY(${x * -0.8}deg)
+                     rotateX(${y * 0.5}deg)
+                     translateY(-4px)`;
 
-            profileCard.style.transform = "";
+            }
 
         });
 
@@ -3338,16 +3180,127 @@
 
 
     /* =========================================================
-       YEAR
+       CARD TILT
     ========================================================= */
 
-    const yearText =
-        document.querySelector(".footer p");
+    if (window.matchMedia("(pointer:fine)").matches) {
 
-    if (yearText) {
+        document.querySelectorAll(".skill-card, .service").forEach(card => {
 
-        yearText.textContent =
-            `© ${new Date().getFullYear()} Jahid Hasan. WordPress Developer.`;
+            card.addEventListener("mousemove", e => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - .5) * -4;
+
+                const rotateY =
+                    ((x / rect.width) - .5) * 4;
+
+                card.style.transform =
+                    `perspective(700px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-7px)`;
+
+            });
+
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.transform = "";
+
+            });
+
+        });
+
+    }
+
+
+    /* =========================================================
+       ACTIVE NAV
+    ========================================================= */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navItems =
+        document.querySelectorAll(".nav-links a");
+
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+
+        });
+
+
+        navItems.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (
+                link.getAttribute("href") ===
+                "#" + current
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================================================
+       MAGNETIC BUTTON EFFECT
+    ========================================================= */
+
+    if (window.matchMedia("(pointer:fine)").matches) {
+
+        document.querySelectorAll(".btn").forEach(button => {
+
+            button.addEventListener("mousemove", e => {
+
+                const rect =
+                    button.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left - rect.width / 2;
+
+                const y =
+                    e.clientY - rect.top - rect.height / 2;
+
+                button.style.transform =
+                    `translate(${x * .08}px, ${y * .08}px)`;
+
+            });
+
+
+            button.addEventListener("mouseleave", () => {
+
+                button.style.transform = "";
+
+            });
+
+        });
 
     }
 
