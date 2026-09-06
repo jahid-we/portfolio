@@ -3,543 +3,4570 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Jahid Hasan — WordPress Developer</title>
-<meta name="description" content="Jahid Hasan — WordPress Developer, WooCommerce specialist and PHP developer.">
+
+<meta name="description"
+      content="Jahid Hasan — WordPress Developer, WooCommerce specialist, PHP and plugin developer.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
     --bg:#07090d;
     --surface:#0d1118;
     --surface-2:#111722;
+
     --text:#f4f7fb;
     --muted:#8b94a5;
+
     --line:rgba(255,255,255,.09);
-    --white-line:rgba(255,255,255,.14);
-    --accent:#8b5cf6;
-    --accent-2:#22d3ee;
+    --line-strong:rgba(255,255,255,.15);
+
+    --purple:#8b5cf6;
+    --cyan:#22d3ee;
     --green:#55d98b;
+
     --max:1180px;
-    --radius:24px;
+
     --ease:cubic-bezier(.22,1,.36,1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
+}
+
 body{
-    background:var(--bg);color:var(--text);
-    font-family:"DM Sans",sans-serif;overflow-x:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"DM Sans",sans-serif;
     line-height:1.6;
+    overflow-x:hidden;
 }
-body::selection{background:var(--accent);color:#fff}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-button{font:inherit}
-.container{width:min(var(--max),calc(100% - 40px));margin:auto}
-.site-bg{position:fixed;inset:0;z-index:-5;overflow:hidden;pointer-events:none;background:
-    radial-gradient(circle at 15% 10%,rgba(139,92,246,.09),transparent 28%),
-    radial-gradient(circle at 85% 35%,rgba(34,211,238,.06),transparent 25%),
-    var(--bg)}
-.noise{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-.cursor-light{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(139,92,246,.10),transparent 68%);transform:translate(-50%,-50%)}
 
-/* NAV */
-.header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.4s var(--ease)}
-.header.scrolled{background:rgba(7,9,13,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.nav{height:82px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:Manrope,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.05em}
-.logo span{color:var(--accent-2)}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{padding:9px 12px;color:var(--muted);font-size:12px;font-weight:600;transition:.3s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-cta{border:1px solid var(--white-line);border-radius:10px;background:rgba(255,255,255,.04);color:#fff!important}
-.menu{display:none;width:42px;height:42px;border:1px solid var(--line);background:transparent;color:#fff;border-radius:11px}
-
-/* HERO */
-.hero{min-height:100vh;display:grid;align-items:center;padding:130px 0 80px}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:80px;align-items:center}
-.eyebrow{display:flex;align-items:center;gap:9px;color:#a7f3d0;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:25px}
-.status{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 16px rgba(85,217,139,.7)}
-.hero h1{font:800 clamp(58px,7.5vw,104px)/.91 Manrope,sans-serif;letter-spacing:-.075em;max-width:850px}
-.hero h1 .outline{-webkit-text-stroke:1px rgba(255,255,255,.65);color:transparent}
-.hero h1 .gradient{background:linear-gradient(100deg,#fff,#b9a1ff 48%,#7de8f5);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-copy{max-width:620px;margin:28px 0;color:var(--muted);font-size:15px;line-height:1.9}
-.hero-copy strong{color:#fff}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 17px;border-radius:11px;font-size:12px;font-weight:700;transition:.35s var(--ease)}
-.btn-primary{background:#fff;color:#080a0e}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(255,255,255,.10)}
-.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#dce2ec}
-.btn-ghost:hover{background:rgba(255,255,255,.07);transform:translateY(-3px)}
-.socials{display:flex;gap:8px}
-.socials a{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;color:var(--muted);transition:.3s}
-.socials a:hover{color:#fff;border-color:var(--white-line);transform:translateY(-3px)}
-
-/* PORTRAIT */
-.hero-visual{position:relative;min-height:600px;display:grid;place-items:center}
-.portrait-wrap{position:relative;width:min(410px,80vw)}
-.portrait-wrap::before{
-    content:"";position:absolute;inset:-18px;
-    border:1px solid rgba(255,255,255,.08);border-radius:34px;
-    transform:rotate(4deg)
+::selection{
+    background:var(--purple);
+    color:white;
 }
-.portrait-wrap::after{
-    content:"";position:absolute;inset:25% -18% auto auto;width:170px;height:170px;
-    border-radius:50%;background:rgba(139,92,246,.18);filter:blur(55px);z-index:-1
+
+a{
+    color:inherit;
+    text-decoration:none;
 }
-.portrait{
-    position:relative;overflow:hidden;border-radius:27px;border:1px solid var(--white-line);
-    background:#111;box-shadow:0 35px 90px rgba(0,0,0,.48)
+
+img{
+    display:block;
+    max-width:100%;
 }
-.portrait img{
-    width:100%;height:510px;object-fit:cover;object-position:center 28%;
-    filter:grayscale(100%) contrast(1.04);transition:filter .7s var(--ease)
+
+button{
+    font:inherit;
 }
-.portrait:hover img{filter:grayscale(55%) contrast(1.03)}
-.portrait-meta{position:absolute;left:0;right:0;bottom:0;padding:50px 25px 24px;background:linear-gradient(transparent,rgba(5,7,10,.96))}
-.portrait-meta strong{display:block;font:700 23px Manrope,sans-serif}
-.portrait-meta span{font-size:11px;color:#aab2c0}
-.float-label{position:absolute;z-index:2;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(10,13,18,.82);backdrop-filter:blur(16px);font-size:10px;color:#c9d0dc;box-shadow:0 20px 45px rgba(0,0,0,.3)}
-.float-label i{color:var(--accent-2);margin-right:6px}
-.label-a{top:12%;right:-5%}.label-b{bottom:17%;left:-9%}
 
-/* COMMON */
-section{padding:125px 0;position:relative}
-.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:50px}
-.kicker{display:inline-flex;align-items:center;gap:8px;color:var(--accent-2);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:13px}
-.kicker::before{content:"";width:22px;height:1px;background:currentColor}
-h2{font:800 clamp(39px,5.2vw,67px)/.98 Manrope,sans-serif;letter-spacing:-.065em;max-width:720px}
-.section-note{max-width:390px;color:var(--muted);font-size:13px;line-height:1.85}
-.rule{height:1px;background:var(--line)}
+.container{
+    width:min(var(--max),calc(100% - 40px));
+    margin:auto;
+}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:80px;align-items:start}
-.about-copy{max-width:650px}
-.about-copy p{color:var(--muted);font-size:14px;line-height:1.95;margin-bottom:18px}
-.about-copy p strong{color:#fff}
-.about-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
-.point{padding:16px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);font-size:11px;color:#c1c8d4}
-.point i{color:var(--accent-2);margin-right:7px}
-.mini-card{border:1px solid var(--line);border-radius:20px;padding:25px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018))}
-.mini-card .big{font:800 52px Manrope,sans-serif;letter-spacing:-.06em}
-.mini-card p{color:var(--muted);font-size:11px;margin-top:4px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:65px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:28px 22px;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}.stat b{display:block;font:800 27px Manrope,sans-serif;margin-bottom:5px}.stat span{font-size:10px;color:var(--muted)}
 
-/* JOURNEY */
-.journey{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
-.timeline{position:relative;margin-top:65px}
-.timeline-line{position:absolute;left:0;right:0;top:21px;height:1px;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,.08),var(--accent-2))}
-.timeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.step{position:relative;padding-top:55px}
-.step-dot{position:absolute;top:14px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid #9b7cff;box-shadow:0 0 0 7px rgba(139,92,246,.07)}
-.step:nth-child(3) .step-dot,.step:nth-child(4) .step-dot{border-color:var(--accent-2)}
-.step-card{height:100%;padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
-.step-card:hover{transform:translateY(-7px);border-color:rgba(139,92,246,.35);background:rgba(255,255,255,.045)}
-.step-year{font-size:10px;color:var(--accent-2);font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.step h3{font:700 20px Manrope,sans-serif;margin:10px 0 8px}
-.step p{color:var(--muted);font-size:11px;line-height:1.8}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}
-.tag{padding:5px 8px;border:1px solid var(--line);border-radius:7px;color:#8f98a8;font-size:9px}
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
-/* SKILLS */
-.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.skill{min-height:205px;padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);transition:.4s var(--ease)}
-.skill:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.25);background:rgba(255,255,255,.045)}
-.skill-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;color:var(--accent-2);margin-bottom:22px}
-.skill h3{font:700 18px Manrope,sans-serif;margin-bottom:7px}.skill p{font-size:11px;color:var(--muted);line-height:1.75}
+.site-bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    pointer-events:none;
 
-/* PROJECTS */
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.project{position:relative;min-height:360px;padding:28px;border:1px solid var(--line);border-radius:21px;overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));transition:.45s var(--ease)}
-.project::after{content:"";position:absolute;right:-70px;bottom:-100px;width:220px;height:220px;border-radius:50%;background:var(--pc);filter:blur(80px);opacity:.11;transition:.45s}
-.project:hover{transform:translateY(-7px);border-color:var(--white-line)}.project:hover::after{opacity:.22}
-.project-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:75px}
-.project-no{font:600 11px Manrope,sans-serif;color:#626a78}.project-link{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;color:#9da5b2;transition:.35s}
-.project:hover .project-link{background:#fff;color:#000;transform:rotate(45deg)}
-.project h3{font:700 27px Manrope,sans-serif;letter-spacing:-.035em;margin-bottom:10px}.project p{color:var(--muted);font-size:11px;line-height:1.8;max-width:540px}
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(139,92,246,.09),
+            transparent 30%
+        ),
 
-/* SERVICES */
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.service{padding:23px;min-height:220px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.02);transition:.4s var(--ease)}
-.service:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.3);background:rgba(255,255,255,.045)}
-.service-no{font-size:9px;font-weight:800;color:#606978;margin-bottom:40px}.service i{color:var(--accent-2);font-size:19px;margin-bottom:16px}.service h3{font:700 16px Manrope,sans-serif;margin-bottom:8px}.service p{font-size:10px;color:var(--muted);line-height:1.75}
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(34,211,238,.06),
+            transparent 28%
+        ),
 
-/* CONTACT */
-.contact-box{position:relative;overflow:hidden;padding:70px;border:1px solid var(--line);border-radius:26px;background:radial-gradient(circle at 10% 0,rgba(139,92,246,.14),transparent 35%),radial-gradient(circle at 100% 100%,rgba(34,211,238,.08),transparent 32%),rgba(255,255,255,.025)}
-.contact-box h2{max-width:850px}.contact-box p{max-width:620px;color:var(--muted);font-size:13px;line-height:1.85;margin:20px 0 28px}.contact-links{display:flex;gap:9px;flex-wrap:wrap}.contact-link{display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);font-size:10px;font-weight:700;transition:.3s}.contact-link:hover{background:#fff;color:#000;transform:translateY(-3px)}
+        #07090d;
+}
 
-/* FOOTER */
-footer{padding:28px 0;border-top:1px solid var(--line)}.footer-inner{display:flex;justify-content:space-between;gap:20px}.footer-copy,.footer-links a{font-size:10px;color:#687180}.footer-links{display:flex;gap:17px}.footer-links a:hover{color:#fff}
+.noise{
+    position:absolute;
+    inset:0;
+    opacity:.035;
 
-/* REVEALS */
-.reveal{opacity:0;transform:translateY(28px)}.char{display:inline-block}.line-mask{overflow:hidden}
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.cursor-light{
+    position:fixed;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.11),
+            transparent 68%
+        );
+
+    transform:translate(-50%,-50%);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    transition:.4s var(--ease);
+}
+
+.header.scrolled{
+    background:rgba(7,9,13,.76);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.nav{
+    height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:Manrope,sans-serif;
+
+    font-size:20px;
+    font-weight:800;
+
+    letter-spacing:-.05em;
+}
+
+.logo span{
+    color:var(--cyan);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+.nav-links a{
+    padding:9px 12px;
+
+    color:var(--muted);
+
+    font-size:12px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:white;
+}
+
+.nav-cta{
+    border:1px solid var(--line-strong);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.04);
+
+    color:white!important;
+}
+
+.menu{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--line);
+
+    border-radius:11px;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:grid;
+    align-items:center;
+
+    padding:130px 0 80px;
+}
+
+.hero-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    color:#a7f3d0;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.13em;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+.status{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 16px rgba(85,217,139,.7);
+}
+
+.hero h1{
+    font-family:Manrope,sans-serif;
+
+    font-size:clamp(58px,7vw,102px);
+
+    line-height:.91;
+
+    font-weight:800;
+
+    letter-spacing:-.075em;
+
+    max-width:850px;
+}
+
+.hero h1 .gradient{
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #b9a1ff 48%,
+            #7de8f5
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero h1 .outline{
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.62);
+}
+
+.hero-copy{
+    max-width:620px;
+
+    margin:28px 0;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+.hero-copy strong{
+    color:white;
+}
+
+.actions{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:28px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:13px 17px;
+
+    border-radius:11px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    transition:.35s var(--ease);
+}
+
+.btn-primary{
+    background:white;
+
+    color:#080a0e;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 40px rgba(255,255,255,.1);
+}
+
+.btn-ghost{
+    border:1px solid var(--line);
+
+    background:rgba(255,255,255,.025);
+
+    color:#dce2ec;
+}
+
+.btn-ghost:hover{
+    background:rgba(255,255,255,.07);
+
+    transform:translateY(-3px);
+}
+
+.socials{
+    display:flex;
+    gap:8px;
+}
+
+.socials a{
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--line);
+
+    border-radius:10px;
+
+    color:var(--muted);
+
+    transition:.3s;
+}
+
+.socials a:hover{
+    color:white;
+
+    border-color:var(--line-strong);
+
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   MODERN HERO VISUAL
+========================================================= */
+
+.hero-visual{
+    min-height:650px;
+
+    display:grid;
+
+    place-items:center;
+
+    position:relative;
+}
+
+.visual-stage{
+    width:min(560px,92vw);
+
+    height:620px;
+
+    position:relative;
+
+    isolation:isolate;
+
+    perspective:1000px;
+}
+
+
+/* GRID */
+
+.stage-grid{
+    position:absolute;
+
+    inset:7% 2% 3%;
+
+    opacity:.35;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.045) 1px,
+            transparent 1px
+        );
+
+    background-size:38px 38px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #000 18%,
+            #000 75%,
+            transparent
+        );
+}
+
+
+/* GLOWS */
+
+.glow{
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(55px);
+
+    pointer-events:none;
+}
+
+.glow-one{
+    width:260px;
+    height:260px;
+
+    right:2%;
+    top:15%;
+
+    background:
+        rgba(139,92,246,.18);
+}
+
+.glow-two{
+    width:220px;
+    height:220px;
+
+    left:0;
+    bottom:8%;
+
+    background:
+        rgba(34,211,238,.12);
+}
+
+
+/* ORBITS */
+
+.orbit{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-15deg);
+}
+
+.orbit-one{
+    width:490px;
+    height:590px;
+}
+
+.orbit-two{
+    width:410px;
+    height:500px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(32deg);
+
+    border-color:
+        rgba(139,92,246,.18);
+}
+
+
+/* =========================================================
+   PORTRAIT CARD
+========================================================= */
+
+.portrait-card{
+    position:absolute;
+
+    z-index:3;
+
+    left:50%;
+    top:50%;
+
+    width:355px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(2deg);
+
+    padding:10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    background:
+        rgba(12,15,21,.78);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:22px;
+
+    box-shadow:
+        0 45px 100px rgba(0,0,0,.55);
+}
+
+.portrait-top,
+.portrait-bottom{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:11px 10px;
+}
+
+.portrait-top{
+    font-family:Manrope,sans-serif;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    color:#778091;
+}
+
+.portrait-top i{
+    font-size:6px;
+
+    color:var(--green);
+
+    margin-right:5px;
+}
+
+.portrait-image{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    height:465px;
+
+    background:#0a0b0f;
+}
+
+.portrait-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center 25%;
+
+    filter:
+        grayscale(100%)
+        contrast(1.12)
+        brightness(.86);
+
+    transform:scale(1.02);
+
+    transition:
+        filter .6s ease,
+        transform .8s var(--ease);
+}
+
+.portrait-card:hover .portrait-image img{
+    filter:
+        grayscale(45%)
+        contrast(1.06)
+        brightness(.94);
+
+    transform:scale(1.045);
+}
+
+.portrait-shade{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.22),
+            transparent 35%,
+            rgba(0,0,0,.45)
+        ),
+
+        linear-gradient(
+            120deg,
+            rgba(139,92,246,.12),
+            transparent 45%,
+            rgba(34,211,238,.08)
+        );
+}
+
+.scanline{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    top:0;
+
+    height:1px;
+
+    background:
+        rgba(255,255,255,.4);
+
+    box-shadow:
+        0 0 14px
+        rgba(255,255,255,.45);
+
+    opacity:.45;
+}
+
+.corner{
+    position:absolute;
+
+    width:20px;
+    height:20px;
+
+    border-color:
+        rgba(255,255,255,.7);
+
+    border-style:solid;
+
+    opacity:.7;
+}
+
+.corner-tl{
+    top:14px;
+    left:14px;
+
+    border-width:
+        1px 0 0 1px;
+}
+
+.corner-tr{
+    top:14px;
+    right:14px;
+
+    border-width:
+        1px 1px 0 0;
+}
+
+.corner-bl{
+    bottom:14px;
+    left:14px;
+
+    border-width:
+        0 0 1px 1px;
+}
+
+.corner-br{
+    bottom:14px;
+    right:14px;
+
+    border-width:
+        0 1px 1px 0;
+}
+
+.portrait-bottom small{
+    display:block;
+
+    font-family:Manrope,sans-serif;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:.16em;
+
+    color:#687180;
+
+    margin-bottom:2px;
+}
+
+.portrait-bottom strong{
+    font-family:Manrope,sans-serif;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.mini-arrow{
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:9px;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   FLOATING TECHNOLOGY CHIPS
+========================================================= */
+
+.tech-chip,
+.floating-code{
+    position:absolute;
+
+    z-index:5;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(10,13,18,.78);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.28);
+}
+
+.tech-chip{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 12px;
+
+    border-radius:11px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    color:#d8dde6;
+
+    white-space:nowrap;
+}
+
+.tech-chip i{
+    font-size:13px;
+
+    color:#a994ff;
+}
+
+.chip-php i{
+    color:#9aa5b8;
+}
+
+.chip-woo i{
+    color:#6ee7f9;
+}
+
+.chip-wordpress{
+    top:14%;
+    left:1%;
+}
+
+.chip-php{
+    top:30%;
+    right:0;
+}
+
+.chip-laravel{
+    bottom:20%;
+    left:0;
+}
+
+.chip-woo{
+    bottom:8%;
+    right:5%;
+}
+
+.laravel-mark{
+    width:15px;
+    height:15px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:4px;
+
+    background:#ff5b67;
+
+    color:white;
+
+    font-family:Manrope,sans-serif;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+
+/* CODE */
+
+.floating-code{
+    padding:7px 9px;
+
+    border-radius:7px;
+
+    color:#70798a;
+
+    font:
+        600 8px/1.2
+        monospace;
+
+    letter-spacing:.02em;
+
+    white-space:nowrap;
+}
+
+.code-one{
+    top:8%;
+    right:13%;
+
+    color:#a78bfa;
+}
+
+.code-two{
+    bottom:15%;
+    right:1%;
+
+    color:#67e8f9;
+}
+
+.code-three{
+    top:45%;
+    left:-3%;
+
+    color:#a7f3d0;
+}
+
+
+/* EXTRA UI */
+
+.vertical-label{
+    position:absolute;
+
+    right:-5%;
+    top:50%;
+
+    transform:
+        rotate(90deg)
+        translateX(50%);
+
+    transform-origin:right center;
+
+    font-family:Manrope,sans-serif;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:.2em;
+
+    color:#4e5664;
+}
+
+.stage-number{
+    position:absolute;
+
+    left:6%;
+    bottom:2%;
+
+    font-family:Manrope,sans-serif;
+
+    font-size:72px;
+
+    line-height:.8;
+
+    font-weight:800;
+
+    color:rgba(255,255,255,.035);
+
+    letter-spacing:-.08em;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+    padding:125px 0;
+
+    position:relative;
+}
+
+.section-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    gap:30px;
+
+    margin-bottom:50px;
+}
+
+.kicker{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--cyan);
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+    margin-bottom:13px;
+}
+
+.kicker::before{
+    content:"";
+
+    width:22px;
+    height:1px;
+
+    background:currentColor;
+}
+
+h2{
+    font-family:Manrope,sans-serif;
+
+    font-size:clamp(39px,5.2vw,67px);
+
+    line-height:.98;
+
+    font-weight:800;
+
+    letter-spacing:-.065em;
+
+    max-width:720px;
+}
+
+.section-note{
+    max-width:390px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.85;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+    display:grid;
+
+    grid-template-columns:
+        .72fr
+        1.28fr;
+
+    gap:80px;
+
+    align-items:start;
+}
+
+.about-copy{
+    max-width:650px;
+}
+
+.about-copy p{
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.95;
+
+    margin-bottom:18px;
+}
+
+.about-copy p strong{
+    color:white;
+}
+
+.about-points{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+
+    margin-top:28px;
+}
+
+.point{
+    padding:16px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    font-size:11px;
+
+    color:#c1c8d4;
+}
+
+.point i{
+    color:var(--cyan);
+
+    margin-right:7px;
+}
+
+.mini-card{
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+}
+
+.mini-card .big{
+    font-family:Manrope,sans-serif;
+
+    font-size:52px;
+
+    font-weight:800;
+
+    letter-spacing:-.06em;
+}
+
+.mini-card p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    margin-top:65px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.stat{
+    padding:28px 22px;
+
+    border-right:
+        1px solid
+        var(--line);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat b{
+    display:block;
+
+    font-family:Manrope,sans-serif;
+
+    font-size:27px;
+
+    font-weight:800;
+
+    margin-bottom:5px;
+}
+
+.stat span{
+    font-size:10px;
+
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.journey{
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.015),
+            transparent
+        );
+}
+
+.timeline{
+    position:relative;
+
+    margin-top:65px;
+}
+
+.timeline-line{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    top:21px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            rgba(255,255,255,.08),
+            var(--cyan)
+        );
+}
+
+.timeline-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+}
+
+.step{
+    position:relative;
+
+    padding-top:55px;
+}
+
+.step-dot{
+    position:absolute;
+
+    top:14px;
+    left:0;
+
+    width:15px;
+    height:15px;
+
+    border-radius:50%;
+
+    background:var(--bg);
+
+    border:
+        3px solid
+        #9b7cff;
+
+    box-shadow:
+        0 0 0 7px
+        rgba(139,92,246,.07);
+}
+
+.step:nth-child(3) .step-dot,
+.step:nth-child(4) .step-dot{
+    border-color:var(--cyan);
+}
+
+.step-card{
+    height:100%;
+
+    padding:24px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.4s var(--ease);
+}
+
+.step-card:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(139,92,246,.35);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+.step-year{
+    font-size:10px;
+
+    color:var(--cyan);
+
+    font-weight:800;
+
+    letter-spacing:.1em;
+
+    text-transform:uppercase;
+}
+
+.step h3{
+    font-family:Manrope,sans-serif;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin:10px 0 8px;
+}
+
+.step p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    line-height:1.8;
+}
+
+.tags{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:15px;
+}
+
+.tag{
+    padding:5px 8px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:7px;
+
+    color:#8f98a8;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+}
+
+.skill{
+    min-height:205px;
+
+    padding:24px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.4s var(--ease);
+}
+
+.skill:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(34,211,238,.25);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+.skill-icon{
+    width:43px;
+    height:43px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:11px;
+
+    color:var(--cyan);
+
+    margin-bottom:22px;
+}
+
+.skill h3{
+    font-family:Manrope,sans-serif;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:7px;
+}
+
+.skill p{
+    font-size:11px;
+
+    color:var(--muted);
+
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+}
+
+.project{
+    position:relative;
+
+    min-height:360px;
+
+    padding:28px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:21px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
+
+    transition:.45s var(--ease);
+}
+
+.project::after{
+    content:"";
+
+    position:absolute;
+
+    right:-70px;
+    bottom:-100px;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:var(--pc);
+
+    filter:blur(80px);
+
+    opacity:.11;
+
+    transition:.45s;
+}
+
+.project:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        var(--line-strong);
+}
+
+.project:hover::after{
+    opacity:.22;
+}
+
+.project-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:75px;
+}
+
+.project-no{
+    font-family:Manrope,sans-serif;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    color:#626a78;
+}
+
+.project-link{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:10px;
+
+    color:#9da5b2;
+
+    transition:.35s;
+}
+
+.project:hover .project-link{
+    background:white;
+
+    color:#000;
+
+    transform:rotate(45deg);
+}
+
+.project h3{
+    font-family:Manrope,sans-serif;
+
+    font-size:27px;
+
+    font-weight:700;
+
+    letter-spacing:-.035em;
+
+    margin-bottom:10px;
+}
+
+.project p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    line-height:1.8;
+
+    max-width:540px;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:11px;
+}
+
+.service{
+    padding:23px;
+
+    min-height:220px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:.4s var(--ease);
+}
+
+.service:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(139,92,246,.3);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+.service-no{
+    font-size:9px;
+
+    font-weight:800;
+
+    color:#606978;
+
+    margin-bottom:40px;
+}
+
+.service i{
+    display:block;
+
+    color:var(--cyan);
+
+    font-size:19px;
+
+    margin-bottom:16px;
+}
+
+.service h3{
+    font-family:Manrope,sans-serif;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.service p{
+    font-size:10px;
+
+    color:var(--muted);
+
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-box{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:70px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:26px;
+
+    background:
+        radial-gradient(
+            circle at 10% 0,
+            rgba(139,92,246,.14),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(34,211,238,.08),
+            transparent 32%
+        ),
+
+        rgba(255,255,255,.025);
+}
+
+.contact-box h2{
+    max-width:850px;
+}
+
+.contact-box p{
+    max-width:620px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.85;
+
+    margin:20px 0 28px;
+}
+
+.contact-links{
+    display:flex;
+
+    gap:9px;
+
+    flex-wrap:wrap;
+}
+
+.contact-link{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:11px 14px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.contact-link:hover{
+    background:white;
+
+    color:#000;
+
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:28px 0;
+
+    border-top:
+        1px solid
+        var(--line);
+}
+
+.footer-inner{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.footer-copy,
+.footer-links a{
+    font-size:10px;
+
+    color:#687180;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:17px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(28px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media(max-width:1000px){
-    .hero-grid{grid-template-columns:1fr;gap:55px}.hero-content{max-width:800px}
-    .hero-visual{min-height:520px}.portrait-wrap{width:360px}
-    .timeline-grid{grid-template-columns:1fr 1fr}.timeline-line{left:7px;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(var(--accent),rgba(255,255,255,.08),var(--accent-2))}
-    .step{padding:24px 0 0 35px}.step-dot{top:28px;left:0}
-    .services{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr;gap:30px}
+
+    .hero-grid{
+        grid-template-columns:1fr;
+
+        gap:55px;
+    }
+
+    .hero-content{
+        max-width:800px;
+    }
+
+    .hero-visual{
+        min-height:570px;
+    }
+
+    .visual-stage{
+        height:560px;
+    }
+
+    .portrait-card{
+        width:330px;
+    }
+
+    .portrait-image{
+        height:420px;
+    }
+
+    .timeline-grid{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .timeline-line{
+        left:7px;
+
+        top:0;
+        bottom:0;
+
+        width:1px;
+
+        height:auto;
+
+        background:
+            linear-gradient(
+                var(--purple),
+                rgba(255,255,255,.08),
+                var(--cyan)
+            );
+    }
+
+    .step{
+        padding:
+            24px 0 0 35px;
+    }
+
+    .step-dot{
+        top:28px;
+        left:0;
+    }
+
+    .services{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:
+            1fr;
+
+        gap:30px;
+    }
 }
+
+
 @media(max-width:800px){
-    .nav-links{display:none;position:absolute;top:72px;left:15px;right:15px;padding:10px;flex-direction:column;align-items:stretch;border:1px solid var(--line);border-radius:15px;background:rgba(8,10,14,.97);backdrop-filter:blur(18px)}
-    .nav-links.open{display:flex}.nav-links a{padding:13px}.menu{display:block}
-    .hero h1{font-size:clamp(52px,13vw,82px)}section{padding:95px 0}
-    .section-top{display:block}.section-note{margin-top:18px}.skills{grid-template-columns:1fr 1fr}
-    .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
-    .projects{grid-template-columns:1fr}
+
+    .nav-links{
+        display:none;
+
+        position:absolute;
+
+        top:72px;
+
+        left:15px;
+        right:15px;
+
+        padding:10px;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        border:
+            1px solid
+            var(--line);
+
+        border-radius:15px;
+
+        background:
+            rgba(8,10,14,.97);
+
+        backdrop-filter:blur(18px);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:13px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:
+            clamp(
+                52px,
+                13vw,
+                82px
+            );
+    }
+
+    section{
+        padding:95px 0;
+    }
+
+    .section-top{
+        display:block;
+    }
+
+    .section-note{
+        margin-top:18px;
+    }
+
+    .skills{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .stats{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+
+    .stat:nth-child(-n+2){
+        border-bottom:
+            1px solid
+            var(--line);
+    }
+
+    .projects{
+        grid-template-columns:
+            1fr;
+    }
 }
+
+
 @media(max-width:560px){
-    .container{width:min(var(--max),calc(100% - 28px))}.hero{padding-top:115px}.hero h1{font-size:50px}
-    .hero-copy{font-size:13px}.actions{flex-direction:column;width:100%}.btn{justify-content:center}
-    .hero-visual{min-height:430px}.portrait-wrap{width:min(300px,78vw)}.portrait img{height:385px}
-    .label-a{right:-2%;top:8%}.label-b{left:-4%;bottom:14%}
-    .about-points,.skills,.services,.timeline-grid{grid-template-columns:1fr}.stats{margin-top:45px}
-    .section-top{margin-bottom:35px}.project{min-height:320px}.project-top{margin-bottom:60px}
-    .contact-box{padding:40px 23px}.contact-links{flex-direction:column}.contact-link{justify-content:center}
-    .footer-inner{flex-direction:column;text-align:center}.footer-links{justify-content:center;flex-wrap:wrap}
+
+    .container{
+        width:
+            min(
+                var(--max),
+                calc(100% - 28px)
+            );
+    }
+
+    .hero{
+        padding-top:115px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero-copy{
+        font-size:13px;
+    }
+
+    .actions{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .btn{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        min-height:470px;
+    }
+
+    .visual-stage{
+        height:470px;
+    }
+
+    .portrait-card{
+        width:
+            min(
+                285px,
+                72vw
+            );
+    }
+
+    .portrait-image{
+        height:365px;
+    }
+
+    .chip-wordpress{
+        left:-1%;
+        top:12%;
+    }
+
+    .chip-php{
+        right:-1%;
+        top:27%;
+    }
+
+    .chip-laravel{
+        left:-2%;
+        bottom:18%;
+    }
+
+    .chip-woo{
+        right:0;
+        bottom:6%;
+    }
+
+    .code-three{
+        display:none;
+    }
+
+    .vertical-label{
+        right:-1%;
+    }
+
+    .about-points,
+    .skills,
+    .services,
+    .timeline-grid{
+        grid-template-columns:
+            1fr;
+    }
+
+    .stats{
+        margin-top:45px;
+    }
+
+    .section-top{
+        margin-bottom:35px;
+    }
+
+    .project{
+        min-height:320px;
+    }
+
+    .project-top{
+        margin-bottom:60px;
+    }
+
+    .contact-box{
+        padding:40px 23px;
+    }
+
+    .contact-links{
+        flex-direction:column;
+    }
+
+    .contact-link{
+        justify-content:center;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .footer-links{
+        justify-content:center;
+
+        flex-wrap:wrap;
+    }
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
 @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}.reveal{opacity:1!important;transform:none!important}
-    *,*::before,*::after{animation:none!important;transition:none!important}
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    .reveal{
+        opacity:1!important;
+
+        transform:none!important;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+
+        transition:none!important;
+    }
 }
+
 </style>
 </head>
 
+
 <body>
-<div class="site-bg"><div class="noise"></div></div>
+
+
+<!-- ======================================================
+     BACKGROUND
+====================================================== -->
+
+<div class="site-bg">
+
+    <div class="noise"></div>
+
+</div>
+
 <div class="cursor-light" id="cursorLight"></div>
 
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
 <header class="header" id="header">
+
     <div class="container">
+
         <nav class="nav">
-            <a href="#home" class="logo">Jahid<span>.</span></a>
+
+            <a href="#home" class="logo">
+                Jahid<span>.</span>
+            </a>
+
+
             <div class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#journey">Journey</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact" class="nav-cta">Let's Talk</a>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#journey">
+                    Journey
+                </a>
+
+                <a href="#skills">
+                    Skills
+                </a>
+
+                <a href="#projects">
+                    Projects
+                </a>
+
+                <a href="#contact" class="nav-cta">
+                    Let's Talk
+                </a>
+
             </div>
-            <button class="menu" id="menu" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+
+
+            <button
+                class="menu"
+                id="menu"
+                aria-label="Menu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
         </nav>
+
     </div>
+
 </header>
 
+
+
 <main>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
 <section class="hero" id="home">
+
     <div class="container">
+
         <div class="hero-grid">
+
+
+            <!-- LEFT -->
+
             <div class="hero-content">
-                <div class="eyebrow reveal"><span class="status"></span> WordPress Developer · Plugin Developer</div>
+
+                <div class="eyebrow reveal">
+
+                    <span class="status"></span>
+
+                    WordPress Developer
+                    ·
+                    Plugin Developer
+
+                </div>
+
+
                 <h1 class="hero-title">
-                    I build <span class="gradient">web experiences</span> that feel <span class="outline">alive.</span>
+
+                    I build
+
+                    <span class="gradient">
+                        web experiences
+                    </span>
+
+                    that feel
+
+                    <span class="outline">
+                        alive.
+                    </span>
+
                 </h1>
+
+
                 <p class="hero-copy reveal">
-                    I'm <strong>Jahid Hasan</strong> — a WordPress Developer focused on
-                    custom WordPress websites, WooCommerce, Elementor and plugin development.
-                    My journey started with HTML/CSS and PHP, grew through Laravel and Vue,
-                    and now I'm building production-focused WordPress solutions.
+
+                    I'm <strong>Jahid Hasan</strong> —
+                    a WordPress Developer focused on
+                    custom WordPress websites,
+                    WooCommerce, Elementor and
+                    plugin development.
+
+                    My journey started with HTML/CSS
+                    and PHP, grew through Laravel
+                    and Vue, and now I'm building
+                    production-focused WordPress
+                    solutions.
+
                 </p>
+
+
                 <div class="actions reveal">
-                    <a href="#projects" class="btn btn-primary">View Selected Work <i class="fa-solid fa-arrow-down"></i></a>
-                    <a href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view" target="_blank" rel="noopener" class="btn btn-ghost">View Resume <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+                    <a
+                        href="#projects"
+                        class="btn btn-primary"
+                    >
+
+                        View Selected Work
+
+                        <i class="fa-solid fa-arrow-down"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view"
+                        target="_blank"
+                        rel="noopener"
+                        class="btn btn-ghost"
+                    >
+
+                        View Resume
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
                 </div>
+
+
                 <div class="socials reveal">
-                    <a href="https://github.com/jahid-we" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://profiles.wordpress.org/jahidzendforce/" target="_blank" rel="noopener" aria-label="WordPress.org"><i class="fa-brands fa-wordpress"></i></a>
-                    <a href="mailto:jahidhasan370919@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+
+                    <a
+                        href="https://github.com/jahid-we"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="GitHub"
+                    >
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+
+                    <a
+                        href="https://profiles.wordpress.org/jahidzendforce/"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="WordPress"
+                    >
+                        <i class="fa-brands fa-wordpress"></i>
+                    </a>
+
+
+                    <a
+                        href="mailto:jahidhasan370919@gmail.com"
+                        aria-label="Email"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+
                 </div>
+
             </div>
+
+
+
+            <!-- RIGHT -->
 
             <div class="hero-visual reveal">
-                <div class="portrait-wrap">
-                    <div class="portrait">
-                        <img src="a_clean_cinematic_studio_style_dark_blackish.png" alt="Jahid Hasan">
-                        <div class="portrait-meta">
-                            <strong>Jahid Hasan</strong>
-                            <span>WordPress · WooCommerce · PHP · Plugin Development</span>
-                        </div>
+
+
+                <div class="visual-stage">
+
+
+                    <!-- GRID -->
+
+                    <div class="stage-grid"></div>
+
+
+                    <!-- GLOW -->
+
+                    <div class="glow glow-one"></div>
+
+                    <div class="glow glow-two"></div>
+
+
+                    <!-- ORBITS -->
+
+                    <div class="orbit orbit-one"></div>
+
+                    <div class="orbit orbit-two"></div>
+
+
+                    <!-- TECHNOLOGY -->
+
+                    <div class="tech-chip chip-wordpress">
+
+                        <i class="fa-brands fa-wordpress"></i>
+
+                        <span>
+                            WordPress
+                        </span>
+
                     </div>
+
+
+                    <div class="tech-chip chip-php">
+
+                        <i class="fa-brands fa-php"></i>
+
+                        <span>
+                            PHP
+                        </span>
+
+                    </div>
+
+
+                    <div class="tech-chip chip-laravel">
+
+                        <span class="laravel-mark">
+                            L
+                        </span>
+
+                        <span>
+                            Laravel
+                        </span>
+
+                    </div>
+
+
+                    <div class="tech-chip chip-woo">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span>
+                            WooCommerce
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- CODE -->
+
+                    <div class="floating-code code-one">
+                        &lt;?php
+                    </div>
+
+
+                    <div class="floating-code code-two">
+                        wp_enqueue_script()
+                    </div>
+
+
+                    <div class="floating-code code-three">
+                        Laravel → Vue → WP
+                    </div>
+
+
+
+                    <!-- PORTRAIT -->
+
+                    <div class="portrait-card">
+
+
+                        <div class="portrait-top">
+
+                            <span>
+
+                                <i class="fa-solid fa-circle"></i>
+
+                                AVAILABLE FOR WORK
+
+                            </span>
+
+
+                            <span>
+                                01 — 26
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="portrait-image">
+
+                            <img
+                                src="a_clean_cinematic_studio_style_dark_blackish.png"
+                                alt="Jahid Hasan"
+                            >
+
+
+                            <div class="portrait-shade"></div>
+
+                            <div class="scanline"></div>
+
+
+                            <div class="corner corner-tl"></div>
+
+                            <div class="corner corner-tr"></div>
+
+                            <div class="corner corner-bl"></div>
+
+                            <div class="corner corner-br"></div>
+
+                        </div>
+
+
+
+                        <div class="portrait-bottom">
+
+                            <div>
+
+                                <small>
+                                    JAHID HASAN
+                                </small>
+
+                                <strong>
+                                    WordPress Developer
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mini-arrow">
+
+                                <i class="fa-solid fa-arrow-up-right"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="vertical-label">
+                        DIGITAL CRAFT · 2026
+                    </div>
+
+
+                    <div class="stage-number">
+                        01
+                    </div>
+
+
                 </div>
-                <div class="float-label label-a"><i class="fa-brands fa-wordpress"></i> WordPress Development</div>
-                <div class="float-label label-b"><i class="fa-solid fa-code"></i> Clean · Fast · Scalable</div>
+
             </div>
+
+
         </div>
+
     </div>
+
 </section>
+
+
+
+<!-- ======================================================
+     ABOUT
+====================================================== -->
 
 <section id="about">
+
     <div class="container">
+
+
         <div class="section-top reveal">
-            <div><span class="kicker">About Me</span><h2>From learning code to <span class="gradient">building real products.</span></h2></div>
-            <p class="section-note">A developer journey shaped by curiosity, backend fundamentals, frontend experimentation and hands-on WordPress work.</p>
-        </div>
-        <div class="about-grid">
-            <div class="mini-card reveal"><div class="big">01 → 26</div><p>From my first HTML/CSS steps to professional WordPress development.</p></div>
-            <div class="about-copy">
-                <p class="reveal">I started my web development journey with <strong>HTML and CSS in January 2024</strong>. Soon after, I moved into PHP and began learning backend development, databases and application architecture.</p>
-                <p class="reveal">In <strong>March 2024</strong>, I started learning Laravel. That experience gave me a strong foundation in MVC, Eloquent, authentication, APIs, MySQL and structured backend development. I later expanded into <strong>Vue.js and Inertia</strong> to understand modern full-stack application development.</p>
-                <p class="reveal">After building that foundation, my focus shifted toward <strong>WordPress development</strong>. I now work with WordPress, WooCommerce, Elementor, PHP, JavaScript and custom plugin development — combining my backend knowledge with practical client-focused website work.</p>
-                <div class="about-points reveal">
-                    <div class="point"><i class="fa-solid fa-check"></i> Custom WordPress Development</div>
-                    <div class="point"><i class="fa-solid fa-check"></i> WooCommerce Customization</div>
-                    <div class="point"><i class="fa-solid fa-check"></i> PHP & Plugin Development</div>
-                    <div class="point"><i class="fa-solid fa-check"></i> Responsive & Performance Focus</div>
-                </div>
+
+            <div>
+
+                <span class="kicker">
+                    About Me
+                </span>
+
+
+                <h2>
+
+                    From learning code to
+
+                    <span class="gradient">
+                        building real products.
+                    </span>
+
+                </h2>
+
             </div>
+
+
+            <p class="section-note">
+
+                A developer journey shaped by curiosity,
+                backend fundamentals, frontend experimentation
+                and hands-on WordPress work.
+
+            </p>
+
         </div>
+
+
+
+        <div class="about-grid">
+
+
+            <div class="mini-card reveal">
+
+                <div class="big">
+                    01 → 26
+                </div>
+
+
+                <p>
+                    From my first HTML/CSS steps
+                    to professional WordPress development.
+                </p>
+
+            </div>
+
+
+
+            <div class="about-copy">
+
+
+                <p class="reveal">
+
+                    I started my web development journey with
+                    <strong>HTML and CSS in January 2024</strong>.
+
+                    Soon after, I moved into PHP and began
+                    learning backend development, databases
+                    and application architecture.
+
+                </p>
+
+
+                <p class="reveal">
+
+                    In <strong>March 2024</strong>, I started
+                    learning Laravel.
+
+                    That experience gave me a strong foundation
+                    in MVC, Eloquent, authentication, APIs,
+                    MySQL and structured backend development.
+
+                    I later expanded into
+                    <strong>Vue.js and Inertia</strong>
+                    to understand modern full-stack
+                    application development.
+
+                </p>
+
+
+                <p class="reveal">
+
+                    After building that foundation, my focus
+                    shifted toward
+                    <strong>WordPress development</strong>.
+
+                    I now work with WordPress,
+                    WooCommerce, Elementor, PHP,
+                    JavaScript and custom plugin development —
+                    combining my backend knowledge with
+                    practical client-focused website work.
+
+                </p>
+
+
+                <div class="about-points reveal">
+
+
+                    <div class="point">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Custom WordPress Development
+
+                    </div>
+
+
+                    <div class="point">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        WooCommerce Customization
+
+                    </div>
+
+
+                    <div class="point">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        PHP & Plugin Development
+
+                    </div>
+
+
+                    <div class="point">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Responsive & Performance Focus
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
         <div class="stats reveal">
-            <div class="stat"><b>2024</b><span>Started Web Development</span></div>
-            <div class="stat"><b>PHP</b><span>Backend Foundation</span></div>
-            <div class="stat"><b>WP</b><span>Current Core Focus</span></div>
-            <div class="stat"><b>∞</b><span>Always Learning & Building</span></div>
+
+
+            <div class="stat">
+
+                <b>
+                    2024
+                </b>
+
+                <span>
+                    Started Web Development
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    PHP
+                </b>
+
+                <span>
+                    Backend Foundation
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    WP
+                </b>
+
+                <span>
+                    Current Core Focus
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b>
+                    ∞
+                </b>
+
+                <span>
+                    Always Learning & Building
+                </span>
+
+            </div>
+
+
         </div>
+
+
     </div>
+
 </section>
 
-<section class="journey" id="journey">
+
+
+<!-- ======================================================
+     JOURNEY
+====================================================== -->
+
+<section
+    class="journey"
+    id="journey"
+>
+
     <div class="container">
+
+
         <div class="section-top reveal">
-            <div><span class="kicker">My Journey</span><h2>The path that brought me <span class="gradient">here.</span></h2></div>
-            <p class="section-note">Not just job titles — each stage added a different layer to how I think about building for the web.</p>
-        </div>
-        <div class="timeline">
-            <div class="timeline-line"></div>
-            <div class="timeline-grid">
-                <article class="step reveal">
-                    <span class="step-dot"></span>
-                    <div class="step-card">
-                        <span class="step-year">Jan 2024</span>
-                        <h3>The Beginning</h3>
-                        <p>Started with HTML and CSS, learning the fundamentals of layouts, responsive design and the web.</p>
-                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive UI</span></div>
-                    </div>
-                </article>
-                <article class="step reveal">
-                    <span class="step-dot"></span>
-                    <div class="step-card">
-                        <span class="step-year">Mar — Aug 2024</span>
-                        <h3>PHP & Laravel</h3>
-                        <p>Completed a 6-month PHP & Laravel course and built a deeper understanding of backend development, databases and MVC architecture.</p>
-                        <div class="tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">MySQL</span></div>
-                    </div>
-                </article>
-                <article class="step reveal">
-                    <span class="step-dot"></span>
-                    <div class="step-card">
-                        <span class="step-year">After Laravel</span>
-                        <h3>Full-Stack Exploration</h3>
-                        <p>Expanded into Vue.js and Inertia while working on application ideas and learning how frontend and backend systems connect.</p>
-                        <div class="tags"><span class="tag">Vue 3</span><span class="tag">Inertia</span><span class="tag">Vite</span></div>
-                    </div>
-                </article>
-                <article class="step reveal">
-                    <span class="step-dot"></span>
-                    <div class="step-card">
-                        <span class="step-year">May 2026 — Present</span>
-                        <h3>WordPress Developer</h3>
-                        <p>Moved into professional WordPress development, working with WordPress, Elementor, WooCommerce, custom functionality and plugins.</p>
-                        <div class="tags"><span class="tag">WordPress</span><span class="tag">WooCommerce</span><span class="tag">Elementor</span><span class="tag">Plugins</span></div>
-                    </div>
-                </article>
+
+            <div>
+
+                <span class="kicker">
+                    My Journey
+                </span>
+
+
+                <h2>
+
+                    The path that brought me
+
+                    <span class="gradient">
+                        here.
+                    </span>
+
+                </h2>
+
             </div>
+
+
+            <p class="section-note">
+
+                Not just job titles — each stage added
+                a different layer to how I think about
+                building for the web.
+
+            </p>
+
         </div>
+
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-line"></div>
+
+
+            <div class="timeline-grid">
+
+
+                <!-- 01 -->
+
+                <article class="step reveal">
+
+                    <span class="step-dot"></span>
+
+
+                    <div class="step-card">
+
+                        <span class="step-year">
+                            Jan 2024
+                        </span>
+
+
+                        <h3>
+                            The Beginning
+                        </h3>
+
+
+                        <p>
+
+                            Started with HTML and CSS,
+                            learning the fundamentals of
+                            layouts, responsive design
+                            and the web.
+
+                        </p>
+
+
+                        <div class="tags">
+
+                            <span class="tag">
+                                HTML
+                            </span>
+
+                            <span class="tag">
+                                CSS
+                            </span>
+
+                            <span class="tag">
+                                Responsive UI
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article class="step reveal">
+
+                    <span class="step-dot"></span>
+
+
+                    <div class="step-card">
+
+                        <span class="step-year">
+                            Mar — Aug 2024
+                        </span>
+
+
+                        <h3>
+                            PHP & Laravel
+                        </h3>
+
+
+                        <p>
+
+                            Completed a 6-month
+                            PHP & Laravel course and
+                            built a deeper understanding
+                            of backend development,
+                            databases and MVC architecture.
+
+                        </p>
+
+
+                        <div class="tags">
+
+                            <span class="tag">
+                                PHP
+                            </span>
+
+                            <span class="tag">
+                                Laravel
+                            </span>
+
+                            <span class="tag">
+                                MySQL
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article class="step reveal">
+
+                    <span class="step-dot"></span>
+
+
+                    <div class="step-card">
+
+                        <span class="step-year">
+                            After Laravel
+                        </span>
+
+
+                        <h3>
+                            Full-Stack Exploration
+                        </h3>
+
+
+                        <p>
+
+                            Expanded into Vue.js and
+                            Inertia while working on
+                            application ideas and learning
+                            how frontend and backend
+                            systems connect.
+
+                        </p>
+
+
+                        <div class="tags">
+
+                            <span class="tag">
+                                Vue 3
+                            </span>
+
+                            <span class="tag">
+                                Inertia
+                            </span>
+
+                            <span class="tag">
+                                Vite
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article class="step reveal">
+
+                    <span class="step-dot"></span>
+
+
+                    <div class="step-card">
+
+                        <span class="step-year">
+                            May 2026 — Present
+                        </span>
+
+
+                        <h3>
+                            WordPress Developer
+                        </h3>
+
+
+                        <p>
+
+                            Moved into professional
+                            WordPress development,
+                            working with WordPress,
+                            Elementor, WooCommerce,
+                            custom functionality
+                            and plugins.
+
+                        </p>
+
+
+                        <div class="tags">
+
+                            <span class="tag">
+                                WordPress
+                            </span>
+
+                            <span class="tag">
+                                WooCommerce
+                            </span>
+
+                            <span class="tag">
+                                Elementor
+                            </span>
+
+                            <span class="tag">
+                                Plugins
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
+
+
+
+<!-- ======================================================
+     SKILLS
+====================================================== -->
 
 <section id="skills">
+
     <div class="container">
+
+
         <div class="section-top reveal">
-            <div><span class="kicker">Expertise</span><h2>What I use to <span class="gradient">build.</span></h2></div>
-            <p class="section-note">A practical stack combining WordPress expertise with the backend foundation I built through PHP and Laravel.</p>
+
+            <div>
+
+                <span class="kicker">
+                    Expertise
+                </span>
+
+
+                <h2>
+
+                    What I use to
+
+                    <span class="gradient">
+                        build.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-note">
+
+                A practical stack combining WordPress
+                expertise with the backend foundation
+                I built through PHP and Laravel.
+
+            </p>
+
         </div>
+
+
+
         <div class="skills">
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-brands fa-wordpress"></i></div><h3>WordPress</h3><p>Custom websites, themes, hooks, filters, integrations and business-focused WordPress solutions.</p></article>
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-solid fa-cart-shopping"></i></div><h3>WooCommerce</h3><p>Product systems, checkout customization, ecommerce functionality and store optimization.</p></article>
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-solid fa-puzzle-piece"></i></div><h3>Plugin Development</h3><p>Custom WordPress plugins designed around specific features, workflows and requirements.</p></article>
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div><h3>Elementor</h3><p>Responsive landing pages, reusable components, visual customization and conversion-focused layouts.</p></article>
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-brands fa-php"></i></div><h3>PHP</h3><p>Backend logic, WordPress APIs, hooks, filters, integrations and structured application development.</p></article>
-            <article class="skill reveal"><div class="skill-icon"><i class="fa-brands fa-js"></i></div><h3>JavaScript</h3><p>Interactive interfaces, frontend behavior, custom WordPress functionality and modern browser APIs.</p></article>
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-brands fa-wordpress"></i>
+
+                </div>
+
+
+                <h3>
+                    WordPress
+                </h3>
+
+
+                <p>
+
+                    Custom websites, themes, hooks,
+                    filters, integrations and
+                    business-focused WordPress solutions.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+
+                <h3>
+                    WooCommerce
+                </h3>
+
+
+                <p>
+
+                    Product systems, checkout customization,
+                    ecommerce functionality and
+                    store optimization.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-solid fa-puzzle-piece"></i>
+
+                </div>
+
+
+                <h3>
+                    Plugin Development
+                </h3>
+
+
+                <p>
+
+                    Custom WordPress plugins designed
+                    around specific features,
+                    workflows and requirements.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                </div>
+
+
+                <h3>
+                    Elementor
+                </h3>
+
+
+                <p>
+
+                    Responsive landing pages,
+                    reusable components,
+                    visual customization and
+                    conversion-focused layouts.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-brands fa-php"></i>
+
+                </div>
+
+
+                <h3>
+                    PHP
+                </h3>
+
+
+                <p>
+
+                    Backend logic, WordPress APIs,
+                    hooks, filters, integrations
+                    and structured application development.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="skill reveal">
+
+                <div class="skill-icon">
+
+                    <i class="fa-brands fa-js"></i>
+
+                </div>
+
+
+                <h3>
+                    JavaScript
+                </h3>
+
+
+                <p>
+
+                    Interactive interfaces, frontend behavior,
+                    custom WordPress functionality
+                    and modern browser APIs.
+
+                </p>
+
+            </article>
+
+
         </div>
+
     </div>
+
 </section>
+
+
+
+<!-- ======================================================
+     PROJECTS
+====================================================== -->
 
 <section id="projects">
+
     <div class="container">
+
+
         <div class="section-top reveal">
-            <div><span class="kicker">Selected Work</span><h2>Things I've <span class="gradient">built.</span></h2></div>
-            <p class="section-note">Projects that show both my current WordPress focus and the backend development foundation behind it.</p>
+
+            <div>
+
+                <span class="kicker">
+                    Selected Work
+                </span>
+
+
+                <h2>
+
+                    Things I've
+
+                    <span class="gradient">
+                        built.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-note">
+
+                Projects that show both my current
+                WordPress focus and the backend
+                development foundation behind it.
+
+            </p>
+
         </div>
+
+
+
         <div class="projects">
-            <article class="project reveal" style="--pc:#3b82f6">
-                <div class="project-top"><span class="project-no">01 / APPLICATION</span><a class="project-link" href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-                <h3>Freelance Time Tracker</h3>
-                <p>A time tracking platform for freelancers to manage projects, time logs and productivity. Built during my Laravel-focused development phase.</p>
-                <div class="tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">Vue</span><span class="tag">MySQL</span></div>
+
+
+            <!-- PROJECT 01 -->
+
+            <article
+                class="project reveal"
+                style="--pc:#3b82f6"
+            >
+
+                <div class="project-top">
+
+                    <span class="project-no">
+                        01 / APPLICATION
+                    </span>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-"
+                        target="_blank"
+                        rel="noopener"
+                    >
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </div>
+
+
+                <h3>
+                    Freelance Time Tracker
+                </h3>
+
+
+                <p>
+
+                    A time tracking platform for
+                    freelancers to manage projects,
+                    time logs and productivity.
+
+                    Built during my Laravel-focused
+                    development phase.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        PHP
+                    </span>
+
+                    <span class="tag">
+                        Laravel
+                    </span>
+
+                    <span class="tag">
+                        Vue
+                    </span>
+
+                    <span class="tag">
+                        MySQL
+                    </span>
+
+                </div>
+
             </article>
-            <article class="project reveal" style="--pc:#8b5cf6">
-                <div class="project-top"><span class="project-no">02 / WORDPRESS</span><a class="project-link" href="https://github.com/jahid-we/loginflux" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-                <h3>Loginflux</h3>
-                <p>A modern WordPress login customizer plugin with animated backgrounds, advanced styling controls and a focused customization experience.</p>
-                <div class="tags"><span class="tag">WordPress</span><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">CSS</span></div>
+
+
+
+            <!-- PROJECT 02 -->
+
+            <article
+                class="project reveal"
+                style="--pc:#8b5cf6"
+            >
+
+                <div class="project-top">
+
+                    <span class="project-no">
+                        02 / WORDPRESS
+                    </span>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/jahid-we/loginflux"
+                        target="_blank"
+                        rel="noopener"
+                    >
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </div>
+
+
+                <h3>
+                    Loginflux
+                </h3>
+
+
+                <p>
+
+                    A modern WordPress login customizer
+                    plugin with animated backgrounds,
+                    advanced styling controls and
+                    a focused customization experience.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        WordPress
+                    </span>
+
+                    <span class="tag">
+                        PHP
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                    <span class="tag">
+                        CSS
+                    </span>
+
+                </div>
+
             </article>
-            <article class="project reveal" style="--pc:#22d3ee">
-                <div class="project-top"><span class="project-no">03 / WEB APP</span><a class="project-link" href="https://github.com/jahid-we/Smart-Contact" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-                <h3>Smart Contact</h3>
-                <p>A contact management application designed to organize and manage contact information through a clean web interface.</p>
-                <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div>
+
+
+
+            <!-- PROJECT 03 -->
+
+            <article
+                class="project reveal"
+                style="--pc:#22d3ee"
+            >
+
+                <div class="project-top">
+
+                    <span class="project-no">
+                        03 / WEB APP
+                    </span>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/jahid-we/Smart-Contact"
+                        target="_blank"
+                        rel="noopener"
+                    >
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </div>
+
+
+                <h3>
+                    Smart Contact
+                </h3>
+
+
+                <p>
+
+                    A contact management application
+                    designed to organize and manage
+                    contact information through a
+                    clean web interface.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        PHP
+                    </span>
+
+                    <span class="tag">
+                        MySQL
+                    </span>
+
+                    <span class="tag">
+                        JavaScript
+                    </span>
+
+                </div>
+
             </article>
-            <article class="project reveal" style="--pc:#14b8a6">
-                <div class="project-top"><span class="project-no">04 / WORDPRESS</span><a class="project-link" href="https://github.com/jahid-we" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-                <h3>Custom WordPress Work</h3>
-                <p>WordPress websites, WooCommerce customizations, Elementor builds and business-specific functionality developed for practical use cases.</p>
-                <div class="tags"><span class="tag">WordPress</span><span class="tag">WooCommerce</span><span class="tag">Elementor</span></div>
+
+
+
+            <!-- PROJECT 04 -->
+
+            <article
+                class="project reveal"
+                style="--pc:#14b8a6"
+            >
+
+                <div class="project-top">
+
+                    <span class="project-no">
+                        04 / WORDPRESS
+                    </span>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/jahid-we"
+                        target="_blank"
+                        rel="noopener"
+                    >
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </div>
+
+
+                <h3>
+                    Custom WordPress Work
+                </h3>
+
+
+                <p>
+
+                    WordPress websites, WooCommerce
+                    customizations, Elementor builds
+                    and business-specific functionality
+                    developed for practical use cases.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span class="tag">
+                        WordPress
+                    </span>
+
+                    <span class="tag">
+                        WooCommerce
+                    </span>
+
+                    <span class="tag">
+                        Elementor
+                    </span>
+
+                </div>
+
             </article>
+
+
         </div>
+
     </div>
+
 </section>
+
+
+
+<!-- ======================================================
+     SERVICES
+====================================================== -->
 
 <section>
+
     <div class="container">
+
+
         <div class="section-top reveal">
-            <div><span class="kicker">What I Do</span><h2>From idea to <span class="gradient">launch.</span></h2></div>
+
+            <div>
+
+                <span class="kicker">
+                    What I Do
+                </span>
+
+
+                <h2>
+
+                    From idea to
+
+                    <span class="gradient">
+                        launch.
+                    </span>
+
+                </h2>
+
+            </div>
+
         </div>
+
+
+
         <div class="services">
-            <article class="service reveal"><div class="service-no">01</div><i class="fa-brands fa-wordpress"></i><h3>WordPress Development</h3><p>Custom websites and functionality tailored around real business needs.</p></article>
-            <article class="service reveal"><div class="service-no">02</div><i class="fa-solid fa-cart-shopping"></i><h3>WooCommerce</h3><p>Ecommerce stores, product systems, checkout and store customization.</p></article>
-            <article class="service reveal"><div class="service-no">03</div><i class="fa-solid fa-puzzle-piece"></i><h3>Custom Plugins</h3><p>Purpose-built plugins for unique features and workflows.</p></article>
-            <article class="service reveal"><div class="service-no">04</div><i class="fa-solid fa-gauge-high"></i><h3>Optimization</h3><p>Cleaner frontend, better loading performance and practical UX improvements.</p></article>
+
+
+            <article class="service reveal">
+
+                <div class="service-no">
+                    01
+                </div>
+
+
+                <i class="fa-brands fa-wordpress"></i>
+
+
+                <h3>
+                    WordPress Development
+                </h3>
+
+
+                <p>
+
+                    Custom websites and functionality
+                    tailored around real business needs.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="service reveal">
+
+                <div class="service-no">
+                    02
+                </div>
+
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+
+                <h3>
+                    WooCommerce
+                </h3>
+
+
+                <p>
+
+                    Ecommerce stores, product systems,
+                    checkout and store customization.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="service reveal">
+
+                <div class="service-no">
+                    03
+                </div>
+
+
+                <i class="fa-solid fa-puzzle-piece"></i>
+
+
+                <h3>
+                    Custom Plugins
+                </h3>
+
+
+                <p>
+
+                    Purpose-built plugins for
+                    unique features and workflows.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="service reveal">
+
+                <div class="service-no">
+                    04
+                </div>
+
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+
+                <h3>
+                    Optimization
+                </h3>
+
+
+                <p>
+
+                    Cleaner frontend, better loading
+                    performance and practical UX improvements.
+
+                </p>
+
+            </article>
+
+
         </div>
+
     </div>
+
 </section>
+
+
+
+<!-- ======================================================
+     CONTACT
+====================================================== -->
 
 <section id="contact">
+
     <div class="container">
+
+
         <div class="contact-box reveal">
-            <span class="kicker">Let's Work Together</span>
-            <h2>Have a project? <span class="gradient">Let's build it.</span></h2>
-            <p>Need a WordPress website, WooCommerce store, custom plugin or a developer who understands both frontend and backend? Let's talk.</p>
+
+
+            <span class="kicker">
+                Let's Work Together
+            </span>
+
+
+            <h2>
+
+                Have a project?
+
+                <span class="gradient">
+                    Let's build it.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Need a WordPress website,
+                WooCommerce store, custom plugin
+                or a developer who understands
+                both frontend and backend?
+
+                Let's talk.
+
+            </p>
+
+
             <div class="contact-links">
-                <a class="contact-link" href="mailto:jahidhasan370919@gmail.com"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                <a class="contact-link" href="tel:+8801701367333"><i class="fa-solid fa-phone"></i> Call Me</a>
-                <a class="contact-link" href="https://www.linkedin.com/in/jahid-hasan-6891123a8" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
-                <a class="contact-link" href="https://github.com/jahid-we" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+
+
+                <a
+                    class="contact-link"
+                    href="mailto:jahidhasan370919@gmail.com"
+                >
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Email Me
+
+                </a>
+
+
+                <a
+                    class="contact-link"
+                    href="tel:+8801701367333"
+                >
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    Call Me
+
+                </a>
+
+
+                <a
+                    class="contact-link"
+                    href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <i class="fa-brands fa-linkedin-in"></i>
+
+                    LinkedIn
+
+                </a>
+
+
+                <a
+                    class="contact-link"
+                    href="https://github.com/jahid-we"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    <i class="fa-brands fa-github"></i>
+
+                    GitHub
+
+                </a>
+
+
             </div>
+
         </div>
+
     </div>
+
 </section>
+
+
 </main>
 
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
 <footer>
+
     <div class="container">
+
         <div class="footer-inner">
-            <div class="footer-copy">© <span id="year"></span> Jahid Hasan. All rights reserved.</div>
-            <div class="footer-links">
-                <a href="https://github.com/jahid-we" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://profiles.wordpress.org/jahidzendforce/" target="_blank" rel="noopener">WordPress.org</a>
-                <a href="mailto:jahidhasan370919@gmail.com">Email</a>
+
+
+            <div class="footer-copy">
+
+                ©
+                <span id="year"></span>
+                Jahid Hasan.
+
+                All rights reserved.
+
             </div>
+
+
+            <div class="footer-links">
+
+
+                <a
+                    href="https://github.com/jahid-we"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    GitHub
+                </a>
+
+
+                <a
+                    href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    LinkedIn
+                </a>
+
+
+                <a
+                    href="https://profiles.wordpress.org/jahidzendforce/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WordPress.org
+                </a>
+
+
+                <a
+                    href="mailto:jahidhasan370919@gmail.com"
+                >
+                    Email
+                </a>
+
+
+            </div>
+
         </div>
+
     </div>
+
 </footer>
 
+
+
+<!-- ======================================================
+     GSAP
+====================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+
 <script>
+
+/* =========================================================
+   GSAP SETUP
+========================================================= */
+
 gsap.registerPlugin(ScrollTrigger);
 
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduceMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-document.getElementById("year").textContent = new Date().getFullYear();
 
-const header = document.getElementById("header");
-const menu = document.getElementById("menu");
-const navLinks = document.getElementById("navLinks");
+/* =========================================================
+   BASIC
+========================================================= */
 
-window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 30);
-}, {passive:true});
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-menu.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-    menu.innerHTML = navLinks.classList.contains("open")
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
-});
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menu.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    });
-});
+/* =========================================================
+   HEADER
+========================================================= */
 
-if (!reduceMotion) {
-    // Small, premium hero entrance — no giant zooms or spinning elements.
-    const heroTl = gsap.timeline({defaults:{ease:"power3.out"}});
-    heroTl
-        .from(".hero-title", {y:55, opacity:0, duration:1.05})
-        .from(".hero .reveal", {y:24, opacity:0, duration:.7, stagger:.09}, "-=.55")
-        .from(".portrait-wrap", {y:35, opacity:0, scale:.97, duration:1}, "-=.65")
-        .from(".float-label", {y:12, opacity:0, duration:.5, stagger:.12}, "-=.55");
+const header =
+    document.getElementById("header");
 
-    gsap.utils.toArray(".reveal").forEach((el) => {
-        if (el.closest(".hero")) return;
-        gsap.fromTo(el,
-            {y:30, opacity:0},
-            {
-                y:0, opacity:1, duration:.8, ease:"power3.out",
-                scrollTrigger:{trigger:el,start:"top 88%",once:true}
+const menu =
+    document.getElementById("menu");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        );
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+menu.addEventListener(
+    "click",
+    () => {
+
+        navLinks.classList.toggle("open");
+
+        menu.innerHTML =
+            navLinks.classList.contains("open")
+
+            ? '<i class="fa-solid fa-xmark"></i>'
+
+            : '<i class="fa-solid fa-bars"></i>';
+
+    }
+);
+
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                navLinks.classList.remove("open");
+
+                menu.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+
             }
         );
+
     });
 
-    gsap.utils.toArray(".step-card").forEach((card, i) => {
-        gsap.from(card, {
-            y:35, opacity:0, duration:.75, delay:i*.08, ease:"power3.out",
-            scrollTrigger:{trigger:card,start:"top 88%",once:true}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+if(!reduceMotion){
+
+
+    /* -----------------------------------------------------
+       HERO INTRO
+    ----------------------------------------------------- */
+
+    const heroTl =
+        gsap.timeline({
+            defaults:{
+                ease:"power3.out"
+            }
         });
-    });
 
-    gsap.from(".timeline-line", {
-        scaleX:0, transformOrigin:"left center", duration:1.3, ease:"power2.out",
-        scrollTrigger:{trigger:".timeline",start:"top 80%",once:true}
-    });
 
-    gsap.to(".portrait-wrap", {
-        y:-18, ease:"none",
-        scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}
-    });
+    heroTl
 
-    const cursorLight = document.getElementById("cursorLight");
-    window.addEventListener("pointermove", (e) => {
-        gsap.to(cursorLight, {x:e.clientX,y:e.clientY,duration:.45,ease:"power2.out"});
-    });
-} else {
-    document.querySelectorAll(".reveal").forEach(el => {
-        el.style.opacity = "1";
-        el.style.transform = "none";
-    });
+        .from(
+            ".hero-title",
+            {
+                y:55,
+                opacity:0,
+                duration:1
+            }
+        )
+
+
+        .from(
+            ".hero .reveal",
+            {
+                y:22,
+                opacity:0,
+                duration:.65,
+                stagger:.08
+            },
+            "-=.55"
+        )
+
+
+        .from(
+            ".portrait-card",
+            {
+                y:45,
+                opacity:0,
+                rotate:7,
+                scale:.94,
+                duration:1.05
+            },
+            "-=.55"
+        )
+
+
+        .from(
+            ".tech-chip",
+            {
+                y:18,
+                opacity:0,
+                scale:.9,
+                duration:.5,
+                stagger:.08
+            },
+            "-=.65"
+        )
+
+
+        .from(
+            ".floating-code",
+            {
+                opacity:0,
+                y:10,
+                duration:.4,
+                stagger:.07
+            },
+            "-=.55"
+        )
+
+
+        .from(
+            ".orbit",
+            {
+                scale:.75,
+                opacity:0,
+                duration:1,
+                stagger:.12
+            },
+            "-=.8"
+        );
+
+
+    /* -----------------------------------------------------
+       SCROLL REVEALS
+    ----------------------------------------------------- */
+
+    gsap.utils
+        .toArray(".reveal")
+        .forEach(el => {
+
+            if(el.closest(".hero")){
+                return;
+            }
+
+            gsap.fromTo(
+                el,
+
+                {
+                    y:30,
+                    opacity:0
+                },
+
+                {
+                    y:0,
+                    opacity:1,
+
+                    duration:.8,
+
+                    ease:"power3.out",
+
+                    scrollTrigger:{
+                        trigger:el,
+
+                        start:"top 88%",
+
+                        once:true
+                    }
+                }
+            );
+
+        });
+
+
+    /* -----------------------------------------------------
+       TIMELINE CARDS
+    ----------------------------------------------------- */
+
+    gsap.utils
+        .toArray(".step-card")
+        .forEach(
+            (card,index) => {
+
+                gsap.from(
+                    card,
+                    {
+                        y:35,
+                        opacity:0,
+
+                        duration:.75,
+
+                        delay:index*.08,
+
+                        ease:"power3.out",
+
+                        scrollTrigger:{
+                            trigger:card,
+
+                            start:"top 88%",
+
+                            once:true
+                        }
+                    }
+                );
+
+            }
+        );
+
+
+    /* -----------------------------------------------------
+       TIMELINE LINE
+    ----------------------------------------------------- */
+
+    gsap.from(
+        ".timeline-line",
+        {
+            scaleX:0,
+
+            transformOrigin:
+                "left center",
+
+            duration:1.3,
+
+            ease:"power2.out",
+
+            scrollTrigger:{
+                trigger:".timeline",
+
+                start:"top 80%",
+
+                once:true
+            }
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       PORTRAIT FLOAT
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".portrait-card",
+        {
+            y:-9,
+
+            rotate:.8,
+
+            duration:3.4,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       ORBIT ROTATION
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".orbit-one",
+        {
+            rotation:345,
+
+            duration:22,
+
+            repeat:-1,
+
+            ease:"none"
+        }
+    );
+
+
+    gsap.to(
+        ".orbit-two",
+        {
+            rotation:-328,
+
+            duration:28,
+
+            repeat:-1,
+
+            ease:"none"
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       TECHNOLOGY FLOATING
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".chip-wordpress",
+        {
+            x:8,
+            y:-5,
+
+            duration:2.7,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    gsap.to(
+        ".chip-php",
+        {
+            x:-7,
+            y:6,
+
+            duration:3.1,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    gsap.to(
+        ".chip-laravel",
+        {
+            x:7,
+            y:4,
+
+            duration:3.5,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    gsap.to(
+        ".chip-woo",
+        {
+            x:-6,
+            y:-5,
+
+            duration:2.9,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       SCAN LINE
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".scanline",
+        {
+            top:"100%",
+
+            duration:3.2,
+
+            repeat:-1,
+
+            ease:"none",
+
+            delay:.8
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       MOUSE LIGHT
+    ----------------------------------------------------- */
+
+    const cursorLight =
+        document.getElementById(
+            "cursorLight"
+        );
+
+
+    window.addEventListener(
+        "pointermove",
+        event => {
+
+            gsap.to(
+                cursorLight,
+                {
+                    x:event.clientX,
+                    y:event.clientY,
+
+                    duration:.45,
+
+                    ease:"power2.out"
+                }
+            );
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       HERO PARALLAX
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".visual-stage",
+        {
+            y:-35,
+
+            ease:"none",
+
+            scrollTrigger:{
+                trigger:".hero",
+
+                start:"top top",
+
+                end:"bottom top",
+
+                scrub:1
+            }
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       HERO GRID PARALLAX
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".stage-grid",
+        {
+            y:30,
+
+            opacity:.15,
+
+            ease:"none",
+
+            scrollTrigger:{
+                trigger:".hero",
+
+                start:"top top",
+
+                end:"bottom top",
+
+                scrub:1
+            }
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       GLOW MOVEMENT
+    ----------------------------------------------------- */
+
+    gsap.to(
+        ".glow-one",
+        {
+            x:25,
+            y:-20,
+
+            duration:4,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
+    gsap.to(
+        ".glow-two",
+        {
+            x:-20,
+            y:20,
+
+            duration:5,
+
+            repeat:-1,
+
+            yoyo:true,
+
+            ease:"sine.inOut"
+        }
+    );
+
+
 }
 
-// Active section navigation
-const sections = [...document.querySelectorAll("main section[id]")];
-const links = [...document.querySelectorAll(".nav-links a")];
-const updateActive = () => {
-    let current = "home";
-    sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 180) current = section.id;
-    });
-    links.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + current));
-};
-window.addEventListener("scroll", updateActive, {passive:true});
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+else{
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(el => {
+
+            el.style.opacity="1";
+
+            el.style.transform="none";
+
+        });
+
+}
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const sections =
+    [
+        ...document.querySelectorAll(
+            "main section[id]"
+        )
+    ];
+
+
+const links =
+    [
+        ...document.querySelectorAll(
+            ".nav-links a"
+        )
+    ];
+
+
+const updateActive =
+    () => {
+
+        let current =
+            "home";
+
+
+        sections.forEach(
+            section => {
+
+                if(
+                    window.scrollY >=
+                    section.offsetTop - 180
+                ){
+
+                    current =
+                        section.id;
+
+                }
+
+            }
+        );
+
+
+        links.forEach(
+            link => {
+
+                link.classList.toggle(
+                    "active",
+
+                    link.getAttribute(
+                        "href"
+                    ) ===
+                    "#" + current
+                );
+
+            }
+        );
+
+    };
+
+
+window.addEventListener(
+    "scroll",
+    updateActive,
+    {
+        passive:true
+    }
+);
+
+
 updateActive();
+
 </script>
+
 </body>
 </html>
