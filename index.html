@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jahid Hasan — WordPress Developer</title>
+    <title>Jahid Hasan — WordPress & Laravel Developer</title>
 
-    <meta
-        name="description"
-        content="Jahid Hasan is a WordPress Developer specializing in custom WordPress websites, WooCommerce, Elementor, custom plugins and website performance."
-    >
+    <meta name="description"
+        content="Jahid Hasan is a Bangladesh-based WordPress Developer at Zend Force with experience in WooCommerce, Elementor, PHP, Laravel, Vue.js, Inertia.js and web application development.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
         /* =========================================================
@@ -30,13 +25,16 @@
         ========================================================= */
 
         :root {
-            --bg: #05070d;
-            --bg-soft: #080c16;
+            --bg: #FFFAF7;
+            --bg-soft: #FFF0E8;
 
             --surface: rgba(255, 255, 255, 0.045);
             --surface-2: rgba(255, 255, 255, 0.07);
 
-            --blue: #4f7cff;
+            --blue: #FF4F00;
+            --secondary: #2B1A14;
+            --accent: #FF9A62;
+            --heading: #2B1A14;
             --blue-light: #7aa2ff;
             --purple: #8b5cf6;
             --cyan: #22d3ee;
@@ -175,12 +173,10 @@
 
         .gradient-text {
             background:
-                linear-gradient(
-                    100deg,
+                linear-gradient(100deg,
                     var(--blue-light),
                     var(--purple),
-                    var(--cyan)
-                );
+                    var(--cyan));
 
             -webkit-background-clip: text;
             background-clip: text;
@@ -205,24 +201,18 @@
             inset: 0;
 
             background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                );
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px),
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px);
 
             background-size: 55px 55px;
 
             mask-image:
-                linear-gradient(
-                    to bottom,
+                linear-gradient(to bottom,
                     black,
-                    transparent 90%
-                );
+                    transparent 90%);
         }
 
         .noise {
@@ -295,12 +285,10 @@
             z-index: 9999;
 
             background:
-                linear-gradient(
-                    90deg,
+                linear-gradient(90deg,
                     var(--blue),
                     var(--purple),
-                    var(--cyan)
-                );
+                    var(--cyan));
         }
 
         /* =========================================================
@@ -365,11 +353,9 @@
             color: white;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     rgba(79, 124, 255, 0.25),
-                    rgba(139, 92, 246, 0.18)
-                );
+                    rgba(139, 92, 246, 0.18));
 
             box-shadow:
                 0 0 30px rgba(79, 124, 255, 0.15);
@@ -494,8 +480,7 @@
             display: grid;
 
             grid-template-columns:
-                minmax(0, 1.05fr)
-                minmax(380px, 0.95fr);
+                minmax(0, 1.05fr) minmax(380px, 0.95fr);
 
             align-items: center;
 
@@ -541,7 +526,9 @@
         }
 
         @keyframes pulseDot {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
@@ -637,11 +624,9 @@
             color: white;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     var(--blue),
-                    #7255e8
-                );
+                    #7255e8);
 
             box-shadow:
                 0 15px 35px rgba(79, 124, 255, 0.2);
@@ -744,15 +729,13 @@
             border-radius: 30px;
 
             background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.12),
-                    rgba(255,255,255,0.025)
-                );
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.12),
+                    rgba(255, 255, 255, 0.025));
 
             box-shadow:
-                0 35px 80px rgba(0,0,0,0.45),
-                0 0 80px rgba(79,124,255,0.13);
+                0 35px 80px rgba(0, 0, 0, 0.45),
+                0 0 80px rgba(79, 124, 255, 0.13);
 
             transform-style: preserve-3d;
 
@@ -779,11 +762,9 @@
             inset: 0;
 
             background:
-                linear-gradient(
-                    to top,
-                    rgba(5,7,13,0.7),
-                    transparent 55%
-                );
+                linear-gradient(to top,
+                    rgba(5, 7, 13, 0.7),
+                    transparent 55%);
         }
 
         .profile-inner img {
@@ -838,7 +819,7 @@
             -webkit-backdrop-filter: blur(15px);
 
             box-shadow:
-                0 15px 40px rgba(0,0,0,0.25);
+                0 15px 40px rgba(0, 0, 0, 0.25);
 
             font-size: 0.75rem;
 
@@ -869,7 +850,9 @@
         }
 
         @keyframes floating {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
@@ -886,20 +869,17 @@
             padding: 120px 0;
 
             background:
-                linear-gradient(
-                    to bottom,
+                linear-gradient(to bottom,
                     transparent,
-                    rgba(255,255,255,0.015),
-                    transparent
-                );
+                    rgba(255, 255, 255, 0.015),
+                    transparent);
         }
 
         .about-grid {
             display: grid;
 
             grid-template-columns:
-                minmax(0, 0.9fr)
-                minmax(0, 1.1fr);
+                minmax(0, 0.9fr) minmax(0, 1.1fr);
 
             gap: 80px;
 
@@ -912,7 +892,7 @@
             font-size: 1rem;
         }
 
-        .about-copy p + p {
+        .about-copy p+p {
             margin-top: 18px;
         }
 
@@ -1016,11 +996,9 @@
             border-radius: 13px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,124,255,0.15),
-                    rgba(139,92,246,0.12)
-                );
+                linear-gradient(135deg,
+                    rgba(79, 124, 255, 0.15),
+                    rgba(139, 92, 246, 0.12));
 
             color: var(--blue-light);
 
@@ -1050,7 +1028,7 @@
 
             border-radius: 999px;
 
-            background: rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .skill-progress {
@@ -1061,11 +1039,9 @@
             border-radius: inherit;
 
             background:
-                linear-gradient(
-                    90deg,
+                linear-gradient(90deg,
                     var(--blue),
-                    var(--purple)
-                );
+                    var(--purple));
 
             transition: width 1.2s ease;
         }
@@ -1078,7 +1054,7 @@
             padding: 120px 0;
 
             background:
-                rgba(255,255,255,0.012);
+                rgba(255, 255, 255, 0.012);
         }
 
         .timeline {
@@ -1101,11 +1077,9 @@
             width: 1px;
 
             background:
-                linear-gradient(
-                    to bottom,
+                linear-gradient(to bottom,
                     var(--blue),
-                    rgba(255,255,255,0.05)
-                );
+                    rgba(255, 255, 255, 0.05));
         }
 
         .timeline-item {
@@ -1136,8 +1110,8 @@
             background: var(--blue);
 
             box-shadow:
-                0 0 0 5px rgba(79,124,255,0.12),
-                0 0 25px rgba(79,124,255,0.3);
+                0 0 0 5px rgba(79, 124, 255, 0.12),
+                0 0 25px rgba(79, 124, 255, 0.3);
         }
 
         .timeline-card {
@@ -1155,7 +1129,7 @@
             transform: translateX(5px);
 
             border-color:
-                rgba(122,162,255,0.2);
+                rgba(122, 162, 255, 0.2);
         }
 
         .timeline-meta {
@@ -1209,15 +1183,13 @@
             padding: 120px 0;
 
             background:
-                linear-gradient(
-                    to bottom,
+                linear-gradient(to bottom,
                     transparent,
-                    rgba(79,124,255,0.025),
-                    transparent
-                );
+                    rgba(79, 124, 255, 0.025),
+                    transparent);
 
-            border-top: 1px solid rgba(255,255,255,0.025);
-            border-bottom: 1px solid rgba(255,255,255,0.025);
+            border-top: 1px solid rgba(255, 255, 255, 0.025);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.025);
         }
 
         .projects-grid {
@@ -1249,11 +1221,9 @@
             border-radius: var(--radius-lg);
 
             background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.065),
-                    rgba(255,255,255,0.025)
-                );
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.065),
+                    rgba(255, 255, 255, 0.025));
 
             overflow: hidden;
 
@@ -1289,10 +1259,10 @@
             transform: translateY(-8px);
 
             border-color:
-                rgba(122,162,255,0.25);
+                rgba(122, 162, 255, 0.25);
 
             box-shadow:
-                0 25px 60px rgba(0,0,0,0.25);
+                0 25px 60px rgba(0, 0, 0, 0.25);
         }
 
         .project-card:hover::before {
@@ -1384,12 +1354,12 @@
         .project-tag {
             padding: 6px 9px;
 
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 7px;
 
             color: #aeb8ca;
 
-            background: rgba(255,255,255,0.035);
+            background: rgba(255, 255, 255, 0.035);
 
             font-size: 0.68rem;
             font-weight: 600;
@@ -1450,7 +1420,7 @@
             transform: translateY(-7px);
 
             border-color:
-                rgba(122,162,255,0.2);
+                rgba(122, 162, 255, 0.2);
 
             background: var(--surface-2);
         }
@@ -1467,11 +1437,9 @@
             border-radius: 14px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,124,255,0.15),
-                    rgba(139,92,246,0.14)
-                );
+                linear-gradient(135deg,
+                    rgba(79, 124, 255, 0.15),
+                    rgba(139, 92, 246, 0.14));
 
             color: var(--blue-light);
         }
@@ -1503,18 +1471,16 @@
 
             padding: clamp(35px, 7vw, 70px);
 
-            border: 1px solid rgba(122,162,255,0.16);
+            border: 1px solid rgba(122, 162, 255, 0.16);
             border-radius: 30px;
 
             overflow: hidden;
 
             background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,124,255,0.08),
-                    rgba(139,92,246,0.06),
-                    rgba(255,255,255,0.025)
-                );
+                linear-gradient(135deg,
+                    rgba(79, 124, 255, 0.08),
+                    rgba(139, 92, 246, 0.06),
+                    rgba(255, 255, 255, 0.025));
         }
 
         .contact-box::before {
@@ -1583,7 +1549,7 @@
             border: 1px solid var(--border);
             border-radius: 10px;
 
-            background: rgba(255,255,255,0.035);
+            background: rgba(255, 255, 255, 0.035);
 
             color: #c8cfdd;
 
@@ -1596,10 +1562,10 @@
             color: white;
 
             border-color:
-                rgba(122,162,255,0.25);
+                rgba(122, 162, 255, 0.25);
 
             background:
-                rgba(79,124,255,0.08);
+                rgba(79, 124, 255, 0.08);
 
             transform: translateY(-2px);
         }
@@ -1653,7 +1619,7 @@
             color: white;
 
             border-color:
-                rgba(122,162,255,0.25);
+                rgba(122, 162, 255, 0.25);
 
             background: var(--surface-2);
 
@@ -1688,8 +1654,7 @@
 
             .hero-grid {
                 grid-template-columns:
-                    minmax(0, 1fr)
-                    minmax(330px, 0.8fr);
+                    minmax(0, 1fr) minmax(330px, 0.8fr);
 
                 gap: 45px;
             }
@@ -1717,10 +1682,8 @@
         @media (max-width: 900px) {
 
             .container {
-                width: min(
-                    var(--container),
-                    calc(100% - 32px)
-                );
+                width: min(var(--container),
+                        calc(100% - 32px));
             }
 
             .section-padding,
@@ -1757,14 +1720,13 @@
                 -webkit-backdrop-filter: blur(20px);
 
                 box-shadow:
-                    0 25px 70px rgba(0,0,0,0.4);
+                    0 25px 70px rgba(0, 0, 0, 0.4);
 
                 opacity: 0;
                 visibility: hidden;
 
                 transform:
-                    translateY(-10px)
-                    scale(0.98);
+                    translateY(-10px) scale(0.98);
 
                 transition: var(--transition);
             }
@@ -1774,8 +1736,7 @@
                 visibility: visible;
 
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0) scale(1);
             }
 
             .nav-links a {
@@ -1788,7 +1749,7 @@
 
             .nav-links a:hover,
             .nav-links a.active {
-                background: rgba(255,255,255,0.04);
+                background: rgba(255, 255, 255, 0.04);
             }
 
             .nav-links a::after {
@@ -1847,10 +1808,8 @@
         @media (max-width: 650px) {
 
             .container {
-                width: min(
-                    var(--container),
-                    calc(100% - 28px)
-                );
+                width: min(var(--container),
+                        calc(100% - 28px));
             }
 
             .nav {
@@ -1884,17 +1843,14 @@
                 min-height: auto;
 
                 padding:
-                    110px 0
-                    70px;
+                    110px 0 70px;
             }
 
             .hero-title {
                 font-size:
-                    clamp(
-                        3rem,
+                    clamp(3rem,
                         16vw,
-                        4.8rem
-                    );
+                        4.8rem);
             }
 
             .hero-subtitle {
@@ -2098,6 +2054,461 @@
                 transform: none;
             }
         }
+
+
+        /* =========================================================
+           WARM ORANGE THEME — JAHID HASAN PORTFOLIO
+           Palette: #FF4F00 / #2B1A14 / #FF9A62 / #FFFAF7
+        ========================================================= */
+
+        :root {
+            --bg: #FFFAF7;
+            --bg-soft: #FFF0E8;
+            --surface: #FFFFFF;
+            --surface-2: #FFF4EE;
+
+            --blue: #FF4F00;
+            --secondary: #2B1A14;
+            --accent: #FF9A62;
+            --heading: #2B1A14;
+            --blue-light: #FF4F00;
+            --purple: #FF9A62;
+            --cyan: #FFB68F;
+
+            --white: #FFFFFF;
+            --text: #625149;
+            --muted: #806D63;
+            --border: #EBD8D0;
+
+            --shadow: 0 18px 50px rgba(71, 39, 24, 0.08);
+        }
+
+        body {
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        ::selection {
+            background: var(--blue);
+            color: #FFFFFF;
+        }
+
+        .background {
+            z-index: -1;
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(43, 26, 20, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(43, 26, 20, 0.035) 1px, transparent 1px);
+            background-size: 58px 58px;
+            opacity: 0.45;
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        .noise {
+            opacity: 0.018;
+        }
+
+        .glow {
+            filter: blur(115px);
+            opacity: 0.12;
+        }
+
+        .glow-1 {
+            background: #FF9A62;
+        }
+
+        .glow-2 {
+            background: #FF4F00;
+            opacity: 0.07;
+        }
+
+        .glow-3 {
+            background: #FFD0B8;
+            opacity: 0.2;
+        }
+
+        .scroll-progress {
+            background: linear-gradient(90deg, #FF4F00, #FF9A62);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 250, 247, 0.88);
+            border-color: rgba(235, 216, 208, 0.9);
+            box-shadow: 0 8px 28px rgba(71, 39, 24, 0.055);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .logo {
+            color: var(--secondary);
+        }
+
+        .logo-mark {
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 79, 0, 0.2);
+            background: linear-gradient(135deg, #FF4F00, #FF9A62);
+            box-shadow: 0 7px 18px rgba(255, 79, 0, 0.2);
+        }
+
+        .nav-links a {
+            color: #806D63;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            background: var(--blue);
+        }
+
+        .nav-cta {
+            color: #FFFFFF;
+            border: 1px solid var(--blue);
+            background: var(--blue);
+            box-shadow: 0 8px 20px rgba(255, 79, 0, 0.14);
+        }
+
+        .nav-cta:hover {
+            color: #FFFFFF;
+            background: #E94700;
+            border-color: #E94700;
+            box-shadow: 0 12px 26px rgba(255, 79, 0, 0.22);
+        }
+
+        .menu-toggle {
+            color: var(--secondary);
+            border-color: var(--border);
+            background: #FFFFFF;
+        }
+
+        .section-kicker {
+            color: var(--blue);
+        }
+
+        .section-title,
+        .hero-title,
+        .contact-title,
+        .skill-card h3,
+        .service-card h3,
+        .project-card h3,
+        .timeline-card h3 {
+            color: var(--secondary);
+        }
+
+        .section-description,
+        .about-copy,
+        .hero-subtitle,
+        .contact-text {
+            color: var(--muted);
+        }
+
+        .gradient-text {
+            background: linear-gradient(100deg, #FF4F00 5%, #FF7A3D 55%, #D94A12 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .eyebrow {
+            color: #B83B08;
+            border-color: #F5C7B2;
+            background: #FFF0E8;
+        }
+
+        .eyebrow-dot {
+            background: #22A06B;
+            box-shadow: 0 0 12px rgba(34, 160, 107, 0.35);
+        }
+
+        .typing-line,
+        .typing-cursor {
+            color: var(--blue);
+        }
+
+        .typing-cursor {
+            background: var(--blue);
+        }
+
+        .btn-primary {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, #FF4F00, #F56B2F);
+            box-shadow: 0 12px 28px rgba(255, 79, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            color: #FFFFFF;
+            box-shadow: 0 16px 34px rgba(255, 79, 0, 0.27);
+        }
+
+        .btn-secondary {
+            color: var(--secondary);
+            border-color: var(--border);
+            background: #FFFFFF;
+        }
+
+        .btn-secondary:hover {
+            color: var(--blue);
+            border-color: #FFB18D;
+            background: #FFF4EE;
+        }
+
+        .hero-visual .orbit {
+            border-color: rgba(255, 79, 0, 0.13);
+        }
+
+        .hero-visual .orbit-2 {
+            border-color: rgba(255, 154, 98, 0.24);
+        }
+
+        .hero-visual .orbit-3 {
+            border-color: rgba(43, 26, 20, 0.1);
+        }
+
+        .profile-card {
+            border-color: rgba(255, 255, 255, 0.85);
+            background: linear-gradient(145deg, #FFFFFF, #FFF0E8);
+            box-shadow:
+                0 28px 65px rgba(71, 39, 24, 0.15),
+                0 0 65px rgba(255, 79, 0, 0.09);
+        }
+
+        .profile-inner {
+            background: #EBD8D0;
+        }
+
+        .profile-inner::after {
+            background: linear-gradient(to top, rgba(43, 26, 20, 0.76), transparent 58%);
+        }
+
+        .profile-label strong {
+            color: #FFFFFF;
+        }
+
+        .profile-label span {
+            color: #F7DDD0;
+        }
+
+        .floating-card {
+            color: var(--secondary);
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 12px 32px rgba(71, 39, 24, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .floating-card i {
+            color: var(--blue);
+        }
+
+        .about {
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 240, 232, 0.72),
+                    transparent);
+        }
+
+        .highlight,
+        .skill-card,
+        .timeline-card,
+        .service-card {
+            border-color: var(--border);
+            background: #FFFFFF;
+            box-shadow: 0 8px 26px rgba(71, 39, 24, 0.035);
+        }
+
+        .highlight:hover,
+        .skill-card:hover,
+        .service-card:hover {
+            border-color: #FFB18D;
+            background: #FFFFFF;
+            box-shadow: 0 18px 40px rgba(71, 39, 24, 0.09);
+        }
+
+        .highlight-number {
+            color: var(--blue);
+        }
+
+        .highlight-text,
+        .skill-card p,
+        .service-card p,
+        .timeline-card p {
+            color: var(--muted);
+        }
+
+        .skill-icon,
+        .service-icon {
+            color: var(--blue);
+            background: #FFF0E8;
+        }
+
+        .skill-bar {
+            background: #F3E7E0;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, #FF4F00, #FF9A62);
+        }
+
+        .experience {
+            background: rgba(255, 240, 232, 0.48);
+        }
+
+        .timeline::before {
+            background: linear-gradient(to bottom, #FF4F00, rgba(255, 154, 98, 0.18));
+        }
+
+        .timeline-dot {
+            border-color: var(--bg);
+            background: var(--blue);
+            box-shadow:
+                0 0 0 5px rgba(255, 79, 0, 0.11),
+                0 0 22px rgba(255, 79, 0, 0.18);
+        }
+
+        .timeline-card:hover {
+            border-color: #FFB18D;
+            box-shadow: 0 12px 30px rgba(71, 39, 24, 0.07);
+        }
+
+        .timeline-meta {
+            color: var(--blue);
+        }
+
+        .timeline-company {
+            color: #806D63;
+        }
+
+        .projects {
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 240, 232, 0.65),
+                    transparent);
+            border-top-color: rgba(235, 216, 208, 0.75);
+            border-bottom-color: rgba(235, 216, 208, 0.75);
+        }
+
+        .project-card {
+            border-color: var(--border);
+            background: linear-gradient(145deg, #FFFFFF, #FFFCFA);
+            box-shadow: 0 10px 30px rgba(71, 39, 24, 0.045);
+        }
+
+        .project-card::before {
+            background: var(--blue);
+            opacity: 0.07;
+        }
+
+        .project-card:hover {
+            border-color: #FFB18D;
+            box-shadow: 0 22px 48px rgba(71, 39, 24, 0.1);
+        }
+
+        .project-number {
+            color: #A28B7F;
+        }
+
+        .project-arrow {
+            color: var(--blue);
+            border-color: var(--border);
+            background: #FFFFFF;
+        }
+
+        .project-card:hover .project-arrow {
+            color: #FFFFFF;
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .project-card p {
+            color: var(--muted);
+        }
+
+        .project-tag {
+            color: #765E52;
+            border-color: #F0DED4;
+            background: #FFF5EF;
+        }
+
+        .project-link {
+            color: var(--blue);
+        }
+
+        .project-link:hover {
+            color: #D94300;
+        }
+
+        .contact-box {
+            border-color: #F2C6B1;
+            background: linear-gradient(125deg, #FFF0E8, #FFFAF7 65%, #FFE4D5);
+            box-shadow: 0 20px 55px rgba(71, 39, 24, 0.07);
+        }
+
+        .contact-box::before {
+            background: #FF9A62;
+            opacity: 0.16;
+        }
+
+        .contact-link {
+            color: var(--secondary);
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .contact-link:hover {
+            color: var(--blue);
+            border-color: #FFB18D;
+            background: #FFFFFF;
+        }
+
+        .footer {
+            border-top-color: var(--border);
+            background: rgba(255, 240, 232, 0.38);
+        }
+
+        .footer-copy {
+            color: #806D63;
+        }
+
+        .social-link {
+            color: #806D63;
+            border-color: var(--border);
+            background: #FFFFFF;
+        }
+
+        .social-link:hover {
+            color: var(--blue);
+            border-color: #FFB18D;
+            background: #FFF0E8;
+        }
+
+        .menu-open {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                border-color: var(--border);
+                background: rgba(255, 250, 247, 0.98);
+                box-shadow: 0 22px 55px rgba(71, 39, 24, 0.13);
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: var(--blue);
+                background: #FFF0E8;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glow {
+                animation: none;
+            }
+        }
     </style>
 </head>
 
@@ -2153,9 +2564,6 @@
                     </li>
 
                     <li>
-                        <a href="#skills" class="nav-link">
-                            Skills
-                        </a>
                     </li>
 
                     <li>
@@ -2178,19 +2586,11 @@
 
                 </ul>
 
-                <a
-                    href="#contact"
-                    class="nav-cta"
-                >
+                <a href="#contact" class="nav-cta">
                     Let's Talk
                 </a>
 
-                <button
-                    class="menu-toggle"
-                    id="menuToggle"
-                    aria-label="Toggle navigation"
-                    aria-expanded="false"
-                >
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
@@ -2225,7 +2625,7 @@
                         <h1 class="hero-title">
 
                             <span>
-                                WordPress
+                                WordPress & Laravel
                             </span>
 
                             <span class="gradient-text">
@@ -2246,29 +2646,23 @@
 
                         <p class="hero-subtitle">
 
-                            I build modern, scalable and high-performance
-                            WordPress websites, WooCommerce stores,
-                            custom plugins and digital experiences.
+                            I build user-friendly WordPress websites and
+                            WooCommerce experiences, and develop PHP/Laravel
+                            applications with practical backend functionality,
+                            APIs and database-driven features.
 
                         </p>
 
                         <div class="hero-buttons">
 
-                            <a
-                                href="#projects"
-                                class="btn btn-primary"
-                            >
+                            <a href="#projects" class="btn btn-primary">
                                 View My Work
 
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
 
-                            <a
-                                href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view"
-                                target="_blank"
-                                rel="noopener"
-                                class="btn btn-secondary"
-                            >
+                            <a href="https://drive.google.com/file/d/1Gimc0JfNnDWEfmWPYc4JfLyL2Cyy6EC0/view"
+                                target="_blank" rel="noopener" class="btn btn-secondary">
                                 <i class="fa-solid fa-file-arrow-down"></i>
 
                                 Resume
@@ -2291,7 +2685,7 @@
 
                             <i class="fa-brands fa-wordpress"></i>
 
-                            WordPress Expert
+                            WordPress & WooCommerce
 
                         </div>
 
@@ -2311,17 +2705,11 @@
 
                         </div>
 
-                        <div
-                            class="profile-card"
-                            id="profileCard"
-                        >
+                        <div class="profile-card" id="profileCard">
 
                             <div class="profile-inner">
 
-                                <img
-                                    src="passport_size_photo.jpg"
-                                    alt="Jahid Hasan"
-                                >
+                                <img src="passport_size_photo.jpg" alt="Jahid Hasan">
 
                                 <div class="profile-label">
 
@@ -2330,7 +2718,7 @@
                                     </strong>
 
                                     <span>
-                                        WordPress Developer
+                                        WordPress Developer at Zend Force
                                     </span>
 
                                 </div>
@@ -2375,50 +2763,47 @@
                     <div class="about-copy reveal">
 
                         <p>
-                            I'm a WordPress Developer focused on building
-                            clean, scalable and performance-oriented
-                            websites and digital products.
+                            I'm Jahid Hasan, a Bangladesh-based WordPress Developer
+                            at Zend Force. I work on practical website projects,
+                            WooCommerce solutions, Elementor layouts, custom
+                            functionality and performance improvements.
                         </p>
 
                         <p>
-                            My work includes custom WordPress development,
-                            WooCommerce solutions, Elementor-based websites,
-                            custom plugins, website optimization and
-                            integrations.
+                            My development journey started with HTML and CSS in
+                            2024, followed by PHP and Laravel. I have continued
+                            building backend-focused applications and exploring
+                            Vue.js with Inertia.js, REST APIs, authentication,
+                            database design and business logic.
                         </p>
 
                         <p>
-                            Earlier in my development journey, I also worked
-                            as a Laravel Developer. That experience helped me
-                            build a strong foundation in backend development,
-                            database-driven applications, APIs,
-                            authentication and custom business logic.
+                            Alongside WordPress work, I build and improve Laravel
+                            applications such as a Freelance Time Tracker,
+                            Inventory/POS software and an ecommerce application.
+                            These projects have helped me work with testing,
+                            validation, role-based access, multi-tenant data
+                            boundaries, integrations and application security.
+                        </p>
+
+                        <p>
+                            I enjoy learning through real project work,
+                            documentation, experimentation and AI-assisted
+                            problem solving. I focus on writing maintainable
+                            code and building useful solutions rather than
+                            overstating what I know.
                         </p>
 
                         <div class="about-highlight">
 
                             <div class="highlight">
-
-                                <span class="highlight-number">
-                                    5+
-                                </span>
-
-                                <span class="highlight-text">
-                                    Years of Development Experience
-                                </span>
-
+                                <span class="highlight-number">2024</span>
+                                <span class="highlight-text">Started Web Development</span>
                             </div>
 
                             <div class="highlight">
-
-                                <span class="highlight-number">
-                                    20+
-                                </span>
-
-                                <span class="highlight-text">
-                                    Projects & Solutions
-                                </span>
-
+                                <span class="highlight-number">2026</span>
+                                <span class="highlight-text">WordPress Developer at Zend Force</span>
                             </div>
 
                         </div>
@@ -2435,190 +2820,12 @@
              SKILLS
         ====================================================== -->
 
-        <section class="skills" id="skills">
-
-            <div class="container">
-
-                <div class="section-header reveal">
-
-                    <span class="section-kicker">
-                        Skills
-                    </span>
-
-                    <h2 class="section-title">
-                        What I
-                        <span class="gradient-text">
-                            work with.
-                        </span>
-                    </h2>
-
-                    <p class="section-description">
-                        A practical development stack focused on WordPress,
-                        ecommerce, custom development and performance.
-                    </p>
-
-                </div>
-
-                <div class="skills-grid">
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-wordpress"></i>
-                        </div>
-
-                        <h3>
-                            WordPress
-                        </h3>
-
-                        <p>
-                            Custom websites, themes, plugins,
-                            integrations and WordPress architecture.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="96%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-
-                        <h3>
-                            WooCommerce
-                        </h3>
-
-                        <p>
-                            Ecommerce stores, products, checkout,
-                            payment and custom WooCommerce solutions.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="92%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-puzzle-piece"></i>
-                        </div>
-
-                        <h3>
-                            Custom Plugins
-                        </h3>
-
-                        <p>
-                            Building custom WordPress plugins and
-                            extending existing functionality.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="90%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-layer-group"></i>
-                        </div>
-
-                        <h3>
-                            Elementor
-                        </h3>
-
-                        <p>
-                            Pixel-focused layouts, responsive pages,
-                            reusable sections and dynamic websites.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="95%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-php"></i>
-                        </div>
-
-                        <h3>
-                            PHP
-                        </h3>
-
-                        <p>
-                            WordPress APIs, backend functionality,
-                            custom business logic and integrations.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="88%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                    <article class="skill-card reveal">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-gauge-high"></i>
-                        </div>
-
-                        <h3>
-                            Performance
-                        </h3>
-
-                        <p>
-                            Caching, asset optimization, image
-                            optimization and Core Web Vitals.
-                        </p>
-
-                        <div class="skill-bar">
-                            <div
-                                class="skill-progress"
-                                data-width="90%"
-                            ></div>
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
 
         <!-- =====================================================
              EXPERIENCE
         ====================================================== -->
 
-        <section
-            class="experience"
-            id="experience"
-        >
+        <section class="experience" id="experience">
 
             <div class="container">
 
@@ -2644,68 +2851,56 @@
 
                 <div class="timeline">
 
-                    <!-- CURRENT -->
-
                     <article class="timeline-item reveal">
-
                         <span class="timeline-dot"></span>
-
                         <div class="timeline-card">
-
-                            <div class="timeline-meta">
-                                <span>Current</span>
-                            </div>
-
-                            <h3>
-                                WordPress Developer
-                            </h3>
-
-                            <div class="timeline-company">
-                                Zend Force
-                            </div>
-
+                            <div class="timeline-meta"><span>June 2026 – Present</span></div>
+                            <h3>WordPress Developer</h3>
+                            <div class="timeline-company">Zend Force</div>
                             <p>
-                                Working on WordPress websites, custom
-                                plugins, WooCommerce solutions,
-                                Elementor-based projects, performance
-                                optimization and custom functionality.
+                                Working on WordPress and WooCommerce projects,
+                                Elementor-based page building, custom widgets,
+                                website customization, plugin-related tasks,
+                                performance improvements and practical
+                                troubleshooting for business websites.
                             </p>
-
                         </div>
-
                     </article>
 
-                    <!-- LARAVEL -->
 
                     <article class="timeline-item reveal">
-
                         <span class="timeline-dot"></span>
-
                         <div class="timeline-card">
-
-                            <div class="timeline-meta">
-                                <span>Previous Experience</span>
-                            </div>
-
-                            <h3>
-                                Laravel Developer
-                            </h3>
-
-                            <div class="timeline-company">
-                                Professional Projects
-                            </div>
-
+                            <div class="timeline-meta"><span>2024 – Present · Personal & Practice Projects</span></div>
+                            <h3>PHP & Laravel Application Development</h3>
+                            <div class="timeline-company">Independent Projects</div>
                             <p>
-                                Earlier in my development journey, I worked
-                                as a Laravel Developer, building database-driven
-                                web applications, REST APIs, authentication
-                                systems, admin dashboards and custom business
-                                logic. This experience strengthened my backend
-                                development and database skills.
+                                After learning PHP and Laravel, I continued
+                                developing full-stack applications including
+                                Freelance Time Tracker, Inventory Pro Superstore
+                                and an ecommerce application using Laravel,
+                                MySQL, Vue.js and Inertia.js. My work has covered
+                                authentication, roles and permissions, APIs,
+                                financial validation, automated tests,
+                                inventory/POS workflows and integrations.
                             </p>
-
                         </div>
+                    </article>
 
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-card">
+                            <div class="timeline-meta"><span>March 2024 – August 2024</span></div>
+                            <h3>PHP & Laravel Training</h3>
+                            <div class="timeline-company">OSTAD</div>
+                            <p>
+                                Completed PHP and Laravel web development
+                                training, building a foundation in backend
+                                development, databases, MVC structure and
+                                dynamic web applications. My web development
+                                learning began with HTML and CSS in January 2024.
+                            </p>
+                        </div>
                     </article>
 
                 </div>
@@ -2719,10 +2914,7 @@
              IMPORTANT: PROJECTS NOW HAS ITS OWN SECTION + CONTAINER
         ====================================================== -->
 
-        <section
-            class="projects"
-            id="projects"
-        >
+        <section class="projects" id="projects">
 
             <div class="container">
 
@@ -2758,15 +2950,7 @@
                                 01
                             </span>
 
-                            <a
-                                href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-"
-                                target="_blank"
-                                rel="noopener"
-                                class="project-arrow"
-                                aria-label="View Freelance Time Tracker"
-                            >
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
+                            <span class="project-arrow" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
 
                         </div>
 
@@ -2800,16 +2984,6 @@
 
                         </div>
 
-                        <a
-                            href="https://github.com/jahid-we/Freelance-Time-Tracker-Software-"
-                            target="_blank"
-                            rel="noopener"
-                            class="project-link"
-                        >
-                            View on GitHub
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
                     </article>
 
                     <!-- PROJECT 02 -->
@@ -2822,13 +2996,8 @@
                                 02
                             </span>
 
-                            <a
-                                href="https://github.com/jahid-we/loginflux"
-                                target="_blank"
-                                rel="noopener"
-                                class="project-arrow"
-                                aria-label="View Loginflux"
-                            >
+                            <a href="https://github.com/jahid-we/loginflux" target="_blank" rel="noopener"
+                                class="project-arrow" aria-label="View Loginflux">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
 
@@ -2864,12 +3033,8 @@
 
                         </div>
 
-                        <a
-                            href="https://github.com/jahid-we/loginflux"
-                            target="_blank"
-                            rel="noopener"
-                            class="project-link"
-                        >
+                        <a href="https://github.com/jahid-we/loginflux" target="_blank" rel="noopener"
+                            class="project-link">
                             View on GitHub
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -2886,13 +3051,8 @@
                                 03
                             </span>
 
-                            <a
-                                href="https://github.com/jahid-we/Smart-Contact"
-                                target="_blank"
-                                rel="noopener"
-                                class="project-arrow"
-                                aria-label="View Smart Contact"
-                            >
+                            <a href="https://github.com/jahid-we/Smart-Contact" target="_blank" rel="noopener"
+                                class="project-arrow" aria-label="View Smart Contact">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
 
@@ -2928,12 +3088,8 @@
 
                         </div>
 
-                        <a
-                            href="https://github.com/jahid-we/Smart-Contact"
-                            target="_blank"
-                            rel="noopener"
-                            class="project-link"
-                        >
+                        <a href="https://github.com/jahid-we/Smart-Contact" target="_blank" rel="noopener"
+                            class="project-link">
                             View on GitHub
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -2943,11 +3099,136 @@
                     <!-- PROJECT 04 -->
 
                     <article class="project-card reveal">
+                        <div class="project-top">
+                            <span class="project-number">04</span>
+                            <span class="project-arrow"><i class="fa-solid fa-boxes-stacked"></i></span>
+                        </div>
+                        <h3>Inventory Pro Superstore</h3>
+                        <p>
+                            A Laravel-based inventory and POS application
+                            covering products, purchasing, sales, stock
+                            management, cash reconciliation, reporting and
+                            WooCommerce synchronization. Development has
+                            included tenant-aware access controls, safer stock
+                            handling, financial validation and extensive
+                            automated testing. A recent audit milestone
+                            passed 153 tests with 747 assertions.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">POS & Inventory</span>
+                            <span class="project-tag">PHPUnit</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 05 -->
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <span class="project-number">05</span>
+                            <span class="project-arrow"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                        <h3>Freelance Time Tracker</h3>
+                        <p>
+                            A Laravel application for freelancers and small
+                            teams to organize clients, projects, time entries,
+                            retainers and reports. Built with a modern
+                            Laravel and Vue/Inertia stack, with role-based
+                            workflows and a focus on turning tracked time
+                            into useful business insights.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">Inertia.js</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 06 -->
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <span class="project-number">06</span>
+                            <span class="project-arrow"><i class="fa-solid fa-cart-shopping"></i></span>
+                        </div>
+                        <h3>Laravel Ecommerce Application</h3>
+                        <p>
+                            A Laravel and Vue/Inertia ecommerce application
+                            exploring customer authentication, admin access,
+                            product and order workflows, email OTP
+                            verification and database-backed application
+                            features.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Laravel</span>
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">Inertia.js</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 07 -->
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <span class="project-number">07</span>
+                            <span class="project-arrow"><i class="fa-solid fa-gauge-high"></i></span>
+                        </div>
+                        <h3>Optimazz – WordPress Optimization</h3>
+                        <p>
+                            Contributing to a WordPress optimization product
+                            focused on caching, CSS/JavaScript and image
+                            optimization, database cleanup, performance
+                            controls and practical compatibility testing.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">Performance</span>
+                            <span class="project-tag">Testing</span>
+                        </div>
+                        <a href="https://wordpress.org/plugins/optimazz/" target="_blank" rel="noopener"
+                            class="project-link">
+                            View WordPress Plugin <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- PROJECT 08 -->
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <span class="project-number">08</span>
+                            <span class="project-arrow"><i class="fa-solid fa-server"></i></span>
+                        </div>
+                        <h3>BestHosting.BD</h3>
+                        <p>
+                            Working on a Bangladesh-focused hosting website
+                            experience, including Elementor page building,
+                            service content presentation, local SEO-oriented
+                            structure and hosting plan communication.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">Elementor</span>
+                            <span class="project-tag">SEO</span>
+                            <span class="project-tag">Hosting</span>
+                        </div>
+                        <a href="https://besthosting.bd/" target="_blank" rel="noopener" class="project-link">
+                            Visit Website <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- PROJECT 09 -->
+
+                    <article class="project-card reveal">
 
                         <div class="project-top">
 
                             <span class="project-number">
-                                04
+                                09
                             </span>
 
                             <span class="project-arrow">
@@ -2995,7 +3276,7 @@
                         <div class="project-top">
 
                             <span class="project-number">
-                                05
+                                10
                             </span>
 
                             <span class="project-arrow">
@@ -3043,7 +3324,7 @@
                         <div class="project-top">
 
                             <span class="project-number">
-                                06
+                                11
                             </span>
 
                             <span class="project-arrow">
@@ -3094,10 +3375,7 @@
              SERVICES
         ====================================================== -->
 
-        <section
-            class="services"
-            id="services"
-        >
+        <section class="services" id="services">
 
             <div class="container">
 
@@ -3129,9 +3407,9 @@
                         </h3>
 
                         <p>
-                            Custom WordPress websites, themes, plugins
-                            and advanced functionality built around
-                            specific business requirements.
+                            WordPress website development, customization,
+                            custom functionality and integrations built
+                            around business requirements.
                         </p>
 
                     </article>
@@ -3165,9 +3443,9 @@
                         </h3>
 
                         <p>
-                            Custom WordPress plugins designed to add
-                            unique functionality without unnecessary
-                            dependencies.
+                            Extend WordPress functionality with practical
+                            custom widgets, tailored features and
+                            well-integrated plugin configurations.
                         </p>
 
                     </article>
@@ -3217,10 +3495,23 @@
                         </h3>
 
                         <p>
-                            Custom PHP development, APIs, integrations
-                            and business-specific WordPress solutions.
+                            PHP and Laravel backend features, REST APIs,
+                            database-driven workflows and integrations
+                            for web applications.
                         </p>
 
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <i class="fa-brands fa-laravel"></i>
+                        </div>
+                        <h3>Laravel Web Applications</h3>
+                        <p>
+                            Backend application features, authentication,
+                            role-based access, database workflows and
+                            API-connected interfaces using Laravel.
+                        </p>
                     </article>
 
                 </div>
@@ -3233,10 +3524,7 @@
              CONTACT
         ====================================================== -->
 
-        <section
-            class="contact"
-            id="contact"
-        >
+        <section class="contact" id="contact">
 
             <div class="container">
 
@@ -3263,44 +3551,29 @@
 
                         <div class="contact-links">
 
-                            <a
-                                href="mailto:jahidhasan370919@gmail.com"
-                                class="contact-link"
-                            >
+                            <a href="mailto:jahidhasan370919@gmail.com" class="contact-link">
                                 <i class="fa-solid fa-envelope"></i>
 
                                 Email Me
 
                             </a>
 
-                            <a
-                                href="tel:+8801701367333"
-                                class="contact-link"
-                            >
+                            <a href="tel:+8801701367333" class="contact-link">
                                 <i class="fa-solid fa-phone"></i>
 
                                 Call Me
 
                             </a>
 
-                            <a
-                                href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
-                                target="_blank"
-                                rel="noopener"
-                                class="contact-link"
-                            >
+                            <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8" target="_blank" rel="noopener"
+                                class="contact-link">
                                 <i class="fa-brands fa-linkedin-in"></i>
 
                                 LinkedIn
 
                             </a>
 
-                            <a
-                                href="https://github.com/jahid-we"
-                                target="_blank"
-                                rel="noopener"
-                                class="contact-link"
-                            >
+                            <a href="https://github.com/jahid-we" target="_blank" rel="noopener" class="contact-link">
                                 <i class="fa-brands fa-github"></i>
 
                                 GitHub
@@ -3338,33 +3611,18 @@
 
                 <div class="social-links">
 
-                    <a
-                        href="https://github.com/jahid-we"
-                        target="_blank"
-                        rel="noopener"
-                        class="social-link"
-                        aria-label="GitHub"
-                    >
+                    <a href="https://github.com/jahid-we" target="_blank" rel="noopener" class="social-link"
+                        aria-label="GitHub">
                         <i class="fa-brands fa-github"></i>
                     </a>
 
-                    <a
-                        href="https://www.linkedin.com/in/jahid-hasan-6891123a8"
-                        target="_blank"
-                        rel="noopener"
-                        class="social-link"
-                        aria-label="LinkedIn"
-                    >
+                    <a href="https://www.linkedin.com/in/jahid-hasan-6891123a8" target="_blank" rel="noopener"
+                        class="social-link" aria-label="LinkedIn">
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
 
-                    <a
-                        href="https://profiles.wordpress.org/jahidzendforce/"
-                        target="_blank"
-                        rel="noopener"
-                        class="social-link"
-                        aria-label="WordPress"
-                    >
+                    <a href="https://profiles.wordpress.org/jahidzendforce/" target="_blank" rel="noopener"
+                        class="social-link" aria-label="WordPress">
                         <i class="fa-brands fa-wordpress"></i>
                     </a>
 
@@ -3559,7 +3817,10 @@
         const roles = [
             "WordPress Developer",
             "WooCommerce Developer",
-            "Custom Plugin Developer",
+            "WordPress & WooCommerce",
+            "PHP & Laravel Developer",
+            "Full-Stack Application Builder",
+            "Elementor & Custom Widgets",
             "Elementor Developer",
             "Performance Optimizer"
         ];
@@ -3793,4 +4054,5 @@
     </script>
 
 </body>
+
 </html>
