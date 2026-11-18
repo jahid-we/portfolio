@@ -1016,8 +1016,8 @@
         }
 
         .floating-card.two {
-            right: 0;
-            bottom: 16%;
+            right: -8px;
+            bottom: 24%;
 
             animation-delay: -1.5s;
         }
@@ -2090,8 +2090,8 @@
             }
 
             .floating-card.two {
-                right: 0;
-                bottom: 14%;
+                right: -6px;
+                bottom: 22%;
             }
 
             .floating-card.three {
@@ -2449,27 +2449,91 @@
         }
 
         .profile-card {
-            border-color: rgba(255, 255, 255, 0.85);
-            background: linear-gradient(145deg, #FFFFFF, #FFF0E8);
+            border: 1px solid rgba(235, 216, 208, 0.95);
+            background: #FFFFFF;
+            padding: 9px;
+            border-radius: 28px;
             box-shadow:
-                0 28px 65px rgba(71, 39, 24, 0.15),
-                0 0 65px rgba(255, 79, 0, 0.09);
+                0 24px 60px rgba(43, 26, 20, 0.09),
+                0 0 50px rgba(255, 79, 0, 0.06);
         }
 
         .profile-inner {
-            background: #EBD8D0;
+            background: linear-gradient(180deg, #F5EAE4, #EBDCD3);
+            border-radius: 20px;
         }
 
         .profile-inner::after {
-            background: linear-gradient(to top, rgba(43, 26, 20, 0.76), transparent 58%);
+            display: none;
+        }
+
+        .profile-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: contrast(1.02) brightness(1.02);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-card:hover .profile-inner img {
+            transform: scale(1.03);
+        }
+
+        .profile-label {
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            z-index: 4;
+            padding: 11px 15px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(235, 216, 208, 0.9);
+            box-shadow: 0 10px 28px rgba(43, 26, 20, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         .profile-label strong {
-            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: -0.01em;
         }
 
-        .profile-label span {
-            color: #F7DDD0;
+        .profile-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: #1b8a5a;
+            background: #E8F7F0;
+            padding: 2px 7px;
+            border-radius: 100px;
+            letter-spacing: 0.02em;
+        }
+
+        .profile-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22A06B;
+            box-shadow: 0 0 8px rgba(34, 160, 107, 0.6);
+        }
+
+        .profile-label span.profile-sub {
+            display: block;
+            color: #766359;
+            font-size: 0.76rem;
+            font-weight: 500;
+            margin-top: 3px;
         }
 
         .floating-card {
@@ -2904,9 +2968,10 @@
 
                                     <strong>
                                         Jahid Hasan
+                                        <span class="profile-status"><span class="profile-status-dot"></span> Available</span>
                                     </strong>
 
-                                    <span>
+                                    <span class="profile-sub">
                                         Web & WordPress Developer • Brahmanbaria, BD
                                     </span>
 
